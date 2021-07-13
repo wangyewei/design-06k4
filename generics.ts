@@ -53,5 +53,23 @@ interface keyPair<T, U> {
 
 let kp1: keyPair<number, string> = { key: 1, value: 'str' }
 let kp2: keyPair<string, number> = { key: 'str', value: 2 }
-let arr: number[] = [1, 2, 3]
 
+let arr: number[] = [1, 2, 3]
+let arrTwo: Array<number> = [1, 2, 3]
+
+// 描述函数
+
+interface IPlus<T> {
+  (a: T, b: T): T
+}
+
+function plus(a: number, b: number): number {
+  return a + b
+}
+
+function connect(a: string, b: string) {
+  return a + b
+}
+const a: IPlus<number> = plus
+
+const b: IPlus<string> = connect
