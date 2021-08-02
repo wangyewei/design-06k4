@@ -23,7 +23,7 @@ const Menu: React.FC<MebuProps> = props => {
   const { className, mode, style, children, defaultIndex, onSelect } = props
   const [currentActive, setActive] = useState(defaultIndex)
   const classes = classNames('yewei-menu', className, {
-    'menu-vertical': mode === 'vertical'
+    'yewei-menu-vertical': mode === 'vertical'
   })
 
   const handleClick = (index: number): void => {

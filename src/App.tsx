@@ -6,7 +6,9 @@ function App() {
   return (
     <div className="App">
 
-      <Menu defaultIndex={0} onSelect={(index) => { alert(index) }}>
+      <Menu defaultIndex={0}
+        mode='vertical'
+        className="ss">
         <MenuItem index={0}>cool link 1</MenuItem>
         <MenuItem index={1}>cool link 2</MenuItem>
         <MenuItem index={2} disabled>cool link 3</MenuItem>
