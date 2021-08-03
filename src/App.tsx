@@ -9,8 +9,9 @@ function App() {
   return (
     <div className="App">
 
-      <Menu defaultIndex={0}
+      <Menu defaultIndex='0'
         mode="vertical"
+        defaultOpenSubMenus={['2']}
       >
         <MenuItem>cool link 1</MenuItem>
         <MenuItem>cool link 2</MenuItem>

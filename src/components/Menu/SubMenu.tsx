@@ -5,16 +5,16 @@ import { MenuItemProps } from "./MenuItem";
 // import { clearTimeout } from "timers";
 
 export interface SubMenuProps {
-  index?: number,
+  index?: string,
   title: string,
   className?: string
 }
 
 const SubMenu: React.FC<SubMenuProps> = ({ index, title, children, className }) => {
-
-  const [menuOpen, setOpen] = useState(false)
-
   const conetxt = useContext(MenuContext)
+  const openSubMenus = conetxt.defaultOpenSubMenus as Array<string>
+  const isOpend = (index && conetxt.mode === 'vertical') ? openSubMenus.includes(index) : false
+  const [menuOpen, setOpen] = useState(isOpend)
   const classes = classNames('yewei-menu-item yewei-submenu-item', className, {
     'is-active': conetxt.index === index
   })
@@ -49,7 +49,9 @@ const SubMenu: React.FC<SubMenuProps> = ({ index, title, children, className }) 
     const childrenComponent = React.Children.map(children, (child, i) => {
       const childernElement = child as FunctionComponentElement<MenuItemProps>
       if (childernElement.type.displayName === 'MenuItem') {
-        return childernElement
+        return React.cloneElement(childernElement, {
+          index: `${index}-${i}`
+        })
       } else {
         throw Error('yewei-design-Waring: SubMenu has a child witch is not a MenuItem component')
       }
