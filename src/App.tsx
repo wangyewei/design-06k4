@@ -8,7 +8,7 @@ function App() {
     <div className="App">
 
       <Menu defaultIndex={0}
-
+        mode="vertical"
       >
         <MenuItem >cool link 1</MenuItem>
         <MenuItem>cool link 2</MenuItem>
