@@ -1,7 +1,124 @@
+// .yewei-menu {
+//   display: flex;
+//   flex-wrap: wrap; //换行
+//   padding-left: 0;
+//   list-style: none;
+//   border-bottom: $menu-border-width solid $menu-border-color;
+//   box-shadow: $menu-box-shadow;
+
+//   >.yewei-menu-item {
+//     padding: $menu-item-padding-y $menu-item-padding-x;
+//     cursor: pointer;
+//     transition: $menu-transition;
+
+//     &:hover,
+//     &:focus {
+//       text-decoration: none;
+//     }
+
+//     &.is-disabled {
+//       color: $menu-item-disabled-color;
+//       pointer-events: none;
+//       cursor: default;
+//     }
+
+//     &.is-active,
+//     &:hover {
+//       color: $menu-item-active-color;
+//       border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
+//     }
+//   }
+
+//   .yewei-submenu-item {
+//     position: relative;
+
+//     .yewei.submenu-title {
+//       display: flex;
+//       align-items: center;
+//     }
+
+//     .yewei-arrow-icon {
+//       transition: transform .25s ease-in-out;
+//       margin-left: 3px;
+//     }
+
+//     &:hover {
+//       .yewei-arrow-icon {
+//         transform: rotate(180deg);
+//       }
+//     }
+//   }
+
+//   .is-vertical {
+//     .yewei-arrow-icon {
+//       transform: rotate(0deg) !important;
+//     }
+//   }
+
+//   .is-vertical.is-opened {
+//     .yewei-arrow-icon {
+//       transform: rotate(180deg) !important;
+//     }
+//   }
+
+//   .yewei-submenu {
+//     //display: none;
+//     list-style: none;
+//     padding-left: 0;
+//     white-space: nowrap;
+
+//     //transition: $menu-transition;
+//     .yewei-menu-item {
+//       padding: $menu-item-padding-y $menu-item-padding-x;
+//       cursor: pointer;
+//       transition: $menu-transition;
+//       color: $body-color;
+
+//       &.is-active,
+//       &:hover {
+//         color: $menu-item-active-color !important;
+//       }
+//     }
+//   }
+// }
+
+// .yewei-horizontal {
+//   >.yewei-menu-item {
+//     border-bottom: $menu-item-active-border-width solid transparent;
+//   }
+
+//   .yewei-submenu {
+//     position: absolute;
+//     background: $white;
+//     z-index: 100;
+//     top: calc(100% + 8px);
+//     left: 0;
+//     border: $menu-border-width solid $menu-border-color;
+//     box-shadow: $submenu-box-shadow;
+//   }
+// }
+
+// .yewei-menu-vertical {
+//   flex-direction: column;
+//   border-bottom: 0;
+//   border-right: $menu-border-width solid $menu-border-color;
+
+//   .yewei-menu-item {
+//     border-left: $menu-border-width solid transparent;
+
+//     &.is-active,
+//     &:hover {
+//       border-bottom: 0;
+//       border-left: $menu-item-active-border-width solid $menu-item-active-color;
+//     }
+//   }
+// }
+
 .yewei-menu {
   display: flex;
-  flex-wrap: wrap; //换行
+  flex-wrap: wrap;
   padding-left: 0;
+  margin-bottom: 30px;
   list-style: none;
   border-bottom: $menu-border-width solid $menu-border-color;
   box-shadow: $menu-box-shadow;
@@ -32,7 +149,7 @@
   .yewei-submenu-item {
     position: relative;
 
-    .yewei.submenu-title {
+    .yewei-submenu-title {
       display: flex;
       align-items: center;
     }
@@ -80,9 +197,13 @@
       }
     }
   }
+
+  .yewei-submenu.yewei-menu-opened {
+    //display: block;
+  }
 }
 
-.yewei-arrow-icon {
+.yewei-menu-horizontal {
   >.yewei-menu-item {
     border-bottom: $menu-item-active-border-width solid transparent;
   }
@@ -100,15 +221,16 @@
 
 .yewei-menu-vertical {
   flex-direction: column;
-  border-bottom: 0;
+  border-bottom: 0px;
+  margin: 10px 20px;
   border-right: $menu-border-width solid $menu-border-color;
 
-  .yewei-menu-item {
-    border-left: $menu-border-width solid transparent;
+  >.yewei-menu-item {
+    border-left: $menu-item-active-border-width solid transparent;
 
     &.is-active,
     &:hover {
-      border-bottom: 0;
+      border-bottom: 0px;
       border-left: $menu-item-active-border-width solid $menu-item-active-color;
     }
   }

@@ -2,16 +2,22 @@ import React from 'react';
 // import Button, { ButtonType, ButtonSize } from './components/Button/Button'
 import Menu from './components/Menu/Menu'
 import MenuItem from './components/Menu/MenuItem'
+import SubMenu from './components/Menu/SubMenu'
 function App() {
   return (
     <div className="App">
 
       <Menu defaultIndex={0}
-        mode='vertical'
-        className="ss">
-        <MenuItem index={0}>cool link 1</MenuItem>
-        <MenuItem index={1}>cool link 2</MenuItem>
-        <MenuItem index={2} disabled>cool link 3</MenuItem>
+
+      >
+        <MenuItem >cool link 1</MenuItem>
+        <MenuItem>cool link 2</MenuItem>
+        <SubMenu title="dropdown">
+          <MenuItem>drop down 1</MenuItem>
+          <MenuItem>drop down 2</MenuItem>
+          <MenuItem>drop down 3</MenuItem>
+        </SubMenu>
+        <MenuItem disabled>cool link 3</MenuItem>
       </Menu>
 
       {/* <Button>button</Button>
