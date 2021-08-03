@@ -4,11 +4,13 @@ import React from 'react';
 import Menu from './components/Menu/Menu'
 import MenuItem from './components/Menu/MenuItem'
 import SubMenu from './components/Menu/SubMenu'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 function App() {
   return (
     <div className="App">
-
+      <FontAwesomeIcon icon={faCoffee} size="10x"></FontAwesomeIcon>
       <Menu defaultIndex='0'
         mode="vertical"
         defaultOpenSubMenus={['2']}
