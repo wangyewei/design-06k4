@@ -1,16 +1,17 @@
 import React from 'react';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons';
 
 // import Button, { ButtonType, ButtonSize } from './components/Button/Button'
 import Menu from './components/Menu/Menu'
 import MenuItem from './components/Menu/MenuItem'
 import SubMenu from './components/Menu/SubMenu'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-
+import Icon from './components/Icon/Icon'
+library.add(fas)
 function App() {
   return (
     <div className="App">
-      <FontAwesomeIcon icon={faCoffee} size="10x"></FontAwesomeIcon>
+      <Icon icon="arrow-down" theme="danger" size="10x" />
       <Menu defaultIndex='0'
         mode="vertical"
         defaultOpenSubMenus={['2']}
@@ -31,7 +32,7 @@ function App() {
       <Button size={ButtonSize.Small} btnType={ButtonType.Danger}>small danger</Button>
       <Button btnType={ButtonType.Link} href="https://www.baidu.com">Link</Button>
       <Button btnType={ButtonType.Link} href="https://www.baidu.com" disabled>Link Disabled</Button> */}
-    </div>
+    </div >
   );
 }
 
