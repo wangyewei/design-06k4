@@ -1,3 +1,5 @@
+ENGLISH | [CHINESE](https://github.com/WangYeWei/YeweiDesign_ts_react/blob/main/README_ZH.md)
+
 ### This is a component library based on React & typescript
 
 
