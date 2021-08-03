@@ -1,8 +1,10 @@
 import React from 'react';
+
 // import Button, { ButtonType, ButtonSize } from './components/Button/Button'
 import Menu from './components/Menu/Menu'
 import MenuItem from './components/Menu/MenuItem'
 import SubMenu from './components/Menu/SubMenu'
+
 function App() {
   return (
     <div className="App">
@@ -10,7 +12,7 @@ function App() {
       <Menu defaultIndex={0}
         mode="vertical"
       >
-        <MenuItem >cool link 1</MenuItem>
+        <MenuItem>cool link 1</MenuItem>
         <MenuItem>cool link 2</MenuItem>
         <SubMenu title="dropdown">
           <MenuItem>drop down 1</MenuItem>
