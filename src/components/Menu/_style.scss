@@ -69,9 +69,6 @@
 
 
   .yewei-submenu {
-    display: none;
-    // visibility: none;
-    opacity: 0;
     list-style: none;
     padding-left: 0;
     white-space: nowrap;
@@ -90,11 +87,7 @@
     }
   }
 
-  .yewei-submenu.yewei-menu-opened {
-    opacity: 1;
-    // visibility: visible;
-    display: block;
-  }
+  .yewei-submenu.yewei-menu-opened {}
 }
 
 .yewei-menu-horizontal {

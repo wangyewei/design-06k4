@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <Icon icon="arrow-down" theme="primary" size="10x" />
       <Menu defaultIndex='0'
-        mode="vertical"
+        // mode="vertical"
         defaultOpenSubMenus={['2']}
       >
         <MenuItem>cool link 1</MenuItem>
