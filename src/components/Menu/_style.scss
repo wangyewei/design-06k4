@@ -69,14 +69,13 @@
 
 
   .yewei-submenu {
-    display: none;
+    // display: none;
     // visibility: none;
-    // opacity: 0;
+    opacity: 0;
     list-style: none;
     padding-left: 0;
     white-space: nowrap;
-
-    transition: all .25s linear;
+    transition: opacity .5s ease-in;
 
     .yewei-menu-item {
       padding: $menu-item-padding-y $menu-item-padding-x;
@@ -92,9 +91,9 @@
   }
 
   .yewei-submenu.yewei-menu-opened {
-    // opacity: 1;
+    opacity: 1;
     // visibility: visible;
-    display: block;
+    // display: block;
   }
 }
 
