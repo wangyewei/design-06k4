@@ -11,7 +11,7 @@ library.add(fas)
 function App() {
   return (
     <div className="App">
-      <Icon icon="arrow-down" theme="danger" size="10x" />
+      <Icon icon="arrow-down" theme="primary" size="10x" />
       <Menu defaultIndex='0'
         mode="vertical"
         defaultOpenSubMenus={['2']}
