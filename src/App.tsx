@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons';
 
@@ -7,8 +7,11 @@ import Menu from './components/Menu/Menu'
 import MenuItem from './components/Menu/MenuItem'
 import SubMenu from './components/Menu/SubMenu'
 import Icon from './components/Icon/Icon'
+import Transition from './components/Transition/Transition'
+import Button from './components/Button/Button'
 library.add(fas)
 function App() {
+  const [show, setShow] = useState(false)
   return (
     <div className="App">
       <Icon icon="arrow-down" theme="primary" size="10x" />
@@ -25,6 +28,26 @@ function App() {
         </SubMenu>
         <MenuItem disabled>cool link 3</MenuItem>
       </Menu>
+
+      <Button size="lg" onClick={() => { setShow(!show) }} >
+        Toggle
+      </Button>
+
+      <Transition in={show} timeout={300} animation="zoom-in-left">
+
+        <div>
+          <div>I don't wanna be you anymore</div>
+          <div>I don't wanna be you anymore</div>
+          <div>I don't wanna be you anymore</div>
+          <div>I don't wanna be you anymore</div>
+          <div>I don't wanna be you anymore</div>
+        </div>
+
+      </Transition>
+
+      <Transition in={show} timeout={300} animation="zoom-in-top" wrapper>
+        <Button btnType="primary" size="lg">A Large Button</Button>
+      </Transition>
 
       {/* <Button>button</Button>
       <Button disabled>disabled</Button>
