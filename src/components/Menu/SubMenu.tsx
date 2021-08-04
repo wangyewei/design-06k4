@@ -2,7 +2,7 @@ import React, { useContext, FunctionComponentElement, useState } from "react";
 import classNames from "classnames";
 import { MenuContext } from './Menu'
 import { MenuItemProps } from "./MenuItem";
-// import { clearTimeout } from "timers";
+import Icon from '../Icon/Icon'
 
 export interface SubMenuProps {
   index?: string,
@@ -16,7 +16,9 @@ const SubMenu: React.FC<SubMenuProps> = ({ index, title, children, className }) 
   const isOpend = (index && conetxt.mode === 'vertical') ? openSubMenus.includes(index) : false
   const [menuOpen, setOpen] = useState(isOpend)
   const classes = classNames('yewei-menu-item yewei-submenu-item', className, {
-    'is-active': conetxt.index === index
+    'is-active': conetxt.index === index,
+    'is-opend': menuOpen,
+    'is-vertical': conetxt.mode === 'vertical'
   })
 
   const handleClick = (e: React.MouseEvent) => {
@@ -67,6 +69,7 @@ const SubMenu: React.FC<SubMenuProps> = ({ index, title, children, className }) 
       <div className="yewei-submenu-title"
         {...clickEvents}>
         {title}
+        <Icon icon="angle-down" className="yewei-arrow-icon" />
       </div>
       {renderChildern()}
     </li>

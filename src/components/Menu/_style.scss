@@ -39,6 +39,22 @@
     }
 
     .yewei-arrow-icon {
+      margin-left: 3px;
+      transition: transform .25s ease-in-out;
+    }
+
+    &:hover {
+      .yewei-arrow-icon {
+        transform: rotate(180deg);
+      }
+    }
+
+    .yewei-submenu-title {
+      display: flex;
+      align-items: center;
+    }
+
+    .yewei-arrow-icon {
       transition: transform .25s ease-in-out;
       margin-left: 3px;
     }
@@ -50,17 +66,7 @@
     }
   }
 
-  .is-vertical {
-    .yewei-arrow-icon {
-      transform: rotate(0deg) !important;
-    }
-  }
 
-  .is-vertical.is-opened {
-    .yewei-arrow-icon {
-      transform: rotate(180deg) !important;
-    }
-  }
 
   .yewei-submenu {
     display: none;
@@ -122,5 +128,17 @@
       border-bottom: 0px;
       border-left: $menu-item-active-border-width solid $menu-item-active-color;
     }
+  }
+}
+
+.is-vertical {
+  .yewei-arrow-icon {
+    transform: rotate(0deg) !important;
+  }
+}
+
+.is-vertical.is-opend {
+  .yewei-arrow-icon {
+    transform: rotate(180deg) !important;
   }
 }
