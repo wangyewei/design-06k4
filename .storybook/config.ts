@@ -1,3 +1,4 @@
 import { configure, addDecorator } from '@storybook/react';
+import "../src/styles/index.scss"
 
-configure(require.context('../stories', true, /\.stories\.tsx$/), module)
+configure(require.context('../src/components', true, /\.stories\.tsx$/), module)

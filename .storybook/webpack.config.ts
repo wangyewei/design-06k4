@@ -9,7 +9,11 @@ module.exports = ({ config }) => {
         }
       }
     ]
-  });
+  },
+    {
+      test: /\.(scss|css$)/,
+      use: ['style-loader', 'css-loader', 'sass-loader']
+    });
   config.resolve.extensions.push(".ts", ".tsx");
 
   return config;
