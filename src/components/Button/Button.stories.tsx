@@ -2,9 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
-
 import Button from './Button'
-
 const defaultButton = () => (
   <Button onClick={action('clicked')}>default button</Button>
 )
@@ -24,4 +22,5 @@ const diffrentTypeButton = () => (
   </>
 )
 
-storiesOf('Button Component', module).add('默认 button', defaultButton).add('不同尺寸 button', diffrentSizeButton).add('不同类型 button', diffrentTypeButton)
+storiesOf('Button Component', module)
+  .add('默认 button', defaultButton).add('不同尺寸 button', diffrentSizeButton).add('不同类型 button', diffrentTypeButton)
