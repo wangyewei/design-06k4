@@ -1,22 +1,22 @@
 {
-  "name": "06k4-design",
-  "version": "0.1.4",
-  "description": "React components library with React and Typescript",
-  "author": "WangYewei",
+  "name": "06k4-desgin",
+  "version": "0.1.1",
+  "description": "React components library With Typescript & React",
+  "author": "Wang Yewei",
   "private": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
-  "license": "MIT",
+  "license": "Anti 996",
   "keywords": [
     "Component",
     "UI",
     "React"
   ],
-  "homepage": "http://vikingship.xyz",
+  "homepage": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vikingmute/vikingship"
+    "url": "https://github.com/wangyewei"
   },
   "files": [
     "dist"
@@ -47,6 +47,11 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "prepublishOnly": "npm run test:nowatch && npm run lint && npm run build"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test:nowatch && npm run lint"
+    }
   },
   "eslintConfig": {
     "extends": "react-app"

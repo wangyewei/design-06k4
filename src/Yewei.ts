@@ -1,5 +1,5 @@
 export default class Yewei {
-  sayhi(meesage: any): string {
+  sayhi(meesage: string): string {
     return `you said ${meesage}`
   }
 }
