@@ -9,11 +9,16 @@ import SubMenu from './components/Menu/SubMenu'
 import Icon from './components/Icon/Icon'
 import Transition from './components/Transition/Transition'
 import Button from './components/Button/Button'
+// import Yewei from './Yewei'
 library.add(fas)
 function App() {
   const [show, setShow] = useState(false)
+
   return (
     <div className="App">
+
+      {/* <div>{Object.keys(info)}</div> */}
+      {/* {Object.keys(info).map<defaultItem>(item => <div key={item}>{item}: {info[item]}</div>)} */}
       <Icon icon="arrow-down" theme="primary" size="10x" />
       <Menu defaultIndex='0'
         // mode="vertical"
@@ -28,13 +33,10 @@ function App() {
         </SubMenu>
         <MenuItem disabled>cool link 3</MenuItem>
       </Menu>
-
       <Button size="lg" onClick={() => { setShow(!show) }} >
         Toggle
       </Button>
-
       <Transition in={show} timeout={300} animation="zoom-in-left">
-
         <div>
           <div>I don't wanna be you anymore</div>
           <div>I don't wanna be you anymore</div>
