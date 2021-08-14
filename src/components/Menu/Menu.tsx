@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, FC } from "react";
 import classNames from "classnames";
 import { MenuItemProps } from './MenuItem'
 
@@ -6,11 +6,15 @@ type MenuMode = 'horizontal' | 'vertical'
 type SelectCallbak = (selectedIndex: string) => void
 
 export interface MenuProps {
+  /**默认选中的索引 */
   defaultIndex?: string;
   className?: string;
+  /**横纵向展示方式 */
   mode?: MenuMode;
   style?: React.CSSProperties;
+  /**选中后的回调函数 */
   onSelect?: SelectCallbak;
+  /**默认选中的下拉菜单索引 */
   defaultOpenSubMenus?: string[];
 }
 
@@ -22,8 +26,15 @@ interface IMenuContext {
 }
 
 export const MenuContext = createContext<IMenuContext>({ index: '0' })
-
-const Menu: React.FC<MenuProps> = props => {
+/**
+ * 常用的导航菜单
+ * ### 使用方法
+ * 
+ * ~~~js
+ * import { Menu } from '06k4-design'
+ * ~~~
+ */
+export const Menu: FC<MenuProps> = props => {
   const { className, mode, style, children, defaultIndex, onSelect, defaultOpenSubMenus } = props
   const [currentActive, setActive] = useState(defaultIndex)
   const classes = classNames('yewei-menu', className, {
@@ -73,4 +84,4 @@ Menu.defaultProps = {
   defaultOpenSubMenus: [],
 }
 
-export default Menu
+export default Menu;

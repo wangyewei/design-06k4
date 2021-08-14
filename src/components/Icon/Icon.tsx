@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import classNames from "classnames";
 import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome'
 
@@ -7,9 +7,19 @@ export type ThemeProps = 'primary' | 'secondary' | 'success' | 'info' | 'warning
 export interface IconProps extends FontAwesomeIconProps {
   theme?: ThemeProps
 }
-
-const Icon: React.FC<IconProps> = props => {
-  const { className, theme, ...restPros } = props
+/**
+ * 页面中最常用的的字体图标元素
+ * ### 引用方法
+ * 
+ * ~~~js
+ * import { Icon } from '06k4-design'
+ * ~~~
+ */
+export const Icon: FC<IconProps> = props => {
+  const { className,
+    /** 设置 Icon 的主题*/
+    theme
+    , ...restPros } = props
   const classes = classNames('yewei-icon', className, {
     [`yewei-icon-${theme}`]: theme
   })
@@ -18,4 +28,4 @@ const Icon: React.FC<IconProps> = props => {
   )
 }
 
-export default Icon
+export default Icon;

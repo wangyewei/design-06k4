@@ -6,7 +6,11 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import "../src/styles/index.scss"
 library.add(fas)
 const wrapperStyle: React.CSSProperties = {
-  padding: '20px 40px'
+  margin: '0px 0px',
+  padding: '20px 40px',
+  // background: '#9b59b6',
+  // height: '100%',
+  // width: '100%'
 }
 
 const storyWrapper = (stroyFn: any) => (
