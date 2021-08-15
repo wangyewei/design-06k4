@@ -27,12 +27,12 @@ interface IMenuContext {
 
 export const MenuContext = createContext<IMenuContext>({ index: '0' })
 /**
- * 常用的导航菜单
- * 
- * ### 使用方法
+ * 开发中最常用的导航菜单栏
+ *  
+ * ### 引用方法
  * 
  * ~~~js
- * import { Menu } from '06k4-design'
+ * import { Menu, MenuItem, SubMenu } from '06k4-design'
  * ~~~
  */
 export const Menu: FC<MenuProps> = props => {
@@ -68,6 +68,7 @@ export const Menu: FC<MenuProps> = props => {
       }
     })
   }
+
   return (
     <MenuContext.Provider value={passedContext}>
       <ul className={classes}
