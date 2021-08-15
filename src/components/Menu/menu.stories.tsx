@@ -8,13 +8,13 @@ import SubMenu from './SubMenu'
 export const defaultMenu = () => (
   <Menu defaultIndex='0' onSelect={(index) => { action(`clicked ${index} item`) }} >
     <MenuItem>
-      cool link
+      menu item 1
     </MenuItem>
     <MenuItem disabled>
-      disabled
+      menu item2 disabled
     </MenuItem>
     <MenuItem>
-      cool link 2
+      menu item3
     </MenuItem>
   </Menu>
 )
@@ -46,7 +46,7 @@ export const diffrentSubMenu = () => (
   </Menu>
 )
 
-storiesOf('Menu Component', module)
+storiesOf('菜单导航 Menu', module)
   .add('Menu', defaultMenu)
   .add('不同横纵向的 Menu', diffrentMenu)
   .add('带下拉菜单的 Menu', diffrentSubMenu)

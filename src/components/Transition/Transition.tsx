@@ -1,15 +1,25 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { CSSTransitionProps } from 'react-transition-group/CSSTransition'
 
 type AnimationName = 'zoom-in-top' | 'zoom-in-left' | 'zoom-in-bottom' | 'zoom-in-right'
 
 export type TransitionProps = CSSTransitionProps & {
+  /**动画方式 */
   animation?: AnimationName,
+  /**是否添加一层包裹 */
   wrapper?: boolean
 }
-
-const Transition: React.FC<TransitionProps> = (props) => {
+/**
+ * 动画组件，可以让您简单的操作实现有趣的动画交互
+ * 
+ * ### 使用方式
+ * 
+ * ~~~js
+ * import { Transition } from '06k4-design'
+ * ~~~
+ */
+export const Transition: FC<TransitionProps> = (props) => {
   const {
     children,
     classNames,
@@ -31,4 +41,4 @@ Transition.defaultProps = {
   appear: true,
 }
 
-export default Transition
+export default Transition;
