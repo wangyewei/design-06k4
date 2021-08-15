@@ -12,12 +12,12 @@ export interface IconProps extends FontAwesomeIconProps {
  * ### 引用方法
  * 
  * ~~~js
- * import { Icon } from '06k4-design'
+ * import { KIcon } from '06k4-design'
  * ~~~
  */
-export const Icon: FC<IconProps> = props => {
+export const KIcon: FC<IconProps> = props => {
   const { className,
-    /** 设置 Icon 的主题*/
+    /** 设置 KIcon 的主题*/
     theme
     , ...restPros } = props
   const classes = classNames('yewei-icon', className, {
@@ -28,4 +28,4 @@ export const Icon: FC<IconProps> = props => {
   )
 }
 
-export default Icon;
+export default KIcon;

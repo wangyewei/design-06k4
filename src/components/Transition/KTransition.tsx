@@ -16,10 +16,10 @@ export type TransitionProps = CSSTransitionProps & {
  * ### 使用方式
  * 
  * ~~~js
- * import { Transition } from '06k4-design'
+ * import { KTransition } from '06k4-design'
  * ~~~
  */
-export const Transition: FC<TransitionProps> = (props) => {
+export const KTransition: FC<TransitionProps> = (props) => {
   const {
     children,
     classNames,
@@ -36,9 +36,9 @@ export const Transition: FC<TransitionProps> = (props) => {
     </CSSTransition>
   )
 }
-Transition.defaultProps = {
+KTransition.defaultProps = {
   unmountOnExit: true,
   appear: true,
 }
 
-export default Transition;
+export default KTransition;

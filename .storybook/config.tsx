@@ -23,7 +23,7 @@ addDecorator(storyWrapper)
 addDecorator(withInfo)
 addParameters({ info: { inline: true, header: false } })
 const loaderFn = () => {
-  const allExports = [require('../src/components/Button/Button.stories')];
+  const allExports = [require('../src/components/Button/button.stories')];
   const req = require.context('../src/components', true, /\.stories\.tsx$/);
   req.keys().forEach(fname => allExports.push(req(fname)));
   return allExports;

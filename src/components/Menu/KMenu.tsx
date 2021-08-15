@@ -1,6 +1,6 @@
 import React, { useState, createContext, FC } from "react";
 import classNames from "classnames";
-import { MenuItemProps } from './MenuItem'
+import { MenuItemProps } from './KMenuItem'
 
 type MenuMode = 'horizontal' | 'vertical'
 type SelectCallbak = (selectedIndex: string) => void
@@ -32,10 +32,10 @@ export const MenuContext = createContext<IMenuContext>({ index: '0' })
  * ### 引用方法
  * 
  * ~~~js
- * import { Menu, MenuItem, SubMenu } from '06k4-design'
+ * import { KMenu, KMenuItem, KSubMenu } from '06k4-design'
  * ~~~
  */
-export const Menu: FC<MenuProps> = props => {
+export const KMenu: FC<MenuProps> = props => {
   const { className, mode, style, children, defaultIndex, onSelect, defaultOpenSubMenus } = props
   const [currentActive, setActive] = useState(defaultIndex)
   const classes = classNames('yewei-menu', className, {
@@ -61,10 +61,10 @@ export const Menu: FC<MenuProps> = props => {
     return React.Children.map(children, (child, index) => {
       const childElement = child as React.FunctionComponentElement<MenuItemProps>
       const { displayName } = childElement.type
-      if (displayName === 'MenuItem' || displayName === 'SubMenu') {
+      if (displayName === 'KMenuItem' || displayName === 'KSubMenu') {
         return React.cloneElement(childElement, { index: index.toString() })
       } else {
-        throw Error('yewei-design-Waring: Menu has a child witch is not a MenuItem component')
+        throw Error('yewei-design-Waring: KMenu has a child witch is not a KMenuItem component')
       }
     })
   }
@@ -80,10 +80,10 @@ export const Menu: FC<MenuProps> = props => {
   )
 }
 
-Menu.defaultProps = {
+KMenu.defaultProps = {
   defaultIndex: '0',
   mode: 'horizontal',
   defaultOpenSubMenus: [],
 }
 
-export default Menu;
+export default KMenu;

@@ -6,11 +6,11 @@ export type ButtonType = 'primary' | 'default' | 'danger' | 'link'
 
 interface BaseButtonProps {
   className?: string;
-  /**设置 Button 的禁用 */
+  /**设置 KButton 的禁用 */
   disabled?: boolean;
-  /**设置 Button 的尺寸 */
+  /**设置 KButton 的尺寸 */
   size?: ButtonSize;
-  /**设置 Button 的类型 */
+  /**设置 KButton 的类型 */
   btnType?: ButtonType;
   children: React.ReactNode;
   href?: string;
@@ -23,10 +23,10 @@ export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>
  * ### 引用方法
  * 
  * ~~~js
- * import { Button } from '06k4-design'
+ * import { KButton } from '06k4-design'
  * ~~~
  */
-export const Button: FC<ButtonProps> = (props) => {
+export const KButton: FC<ButtonProps> = (props) => {
   const {
     btnType,
     className,
@@ -65,9 +65,9 @@ export const Button: FC<ButtonProps> = (props) => {
   }
 }
 
-Button.defaultProps = {
+KButton.defaultProps = {
   disabled: false,
   btnType: 'default'
 }
 
-export default Button;
+export default KButton;

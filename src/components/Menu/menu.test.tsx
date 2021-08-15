@@ -1,9 +1,9 @@
 import React from "react";
 import { cleanup, fireEvent, render, RenderResult, waitFor } from "@testing-library/react";
 
-import Menu, { MenuProps } from './Menu'
-import MenuItem from './MenuItem'
-import SubMenu from "./SubMenu";
+import KMenu, { MenuProps } from './KMenu'
+import KMenuItem from './KMenuItem'
+import KSubMenu from "./KSubMenu";
 
 const testProps: MenuProps = {
   defaultIndex: '0',
@@ -19,27 +19,27 @@ const verTestProps: MenuProps = {
 
 const generateMenu = (props: MenuProps) => {
   return (
-    <Menu {...props}>
-      <MenuItem>
+    <KMenu {...props}>
+      <KMenuItem>
         active
-      </MenuItem>
-      <MenuItem disabled>
+      </KMenuItem>
+      <KMenuItem disabled>
         disabled
-      </MenuItem>
-      <MenuItem>
+      </KMenuItem>
+      <KMenuItem>
         normal
-      </MenuItem>
-      <SubMenu title="dropdown">
-        <MenuItem>
+      </KMenuItem>
+      <KSubMenu title="dropdown">
+        <KMenuItem>
           drop1
-        </MenuItem>
-      </SubMenu>
-      <SubMenu title="opened">
-        <MenuItem>
+        </KMenuItem>
+      </KSubMenu>
+      <KSubMenu title="opened">
+        <KMenuItem>
           opened1
-        </MenuItem>
-      </SubMenu>
-    </Menu>
+        </KMenuItem>
+      </KSubMenu>
+    </KMenu>
   )
 }
 const createStyleFile = () => {
@@ -56,7 +56,7 @@ const createStyleFile = () => {
   return style
 }
 let wrapper: RenderResult, wrapper2: RenderResult, menuElement: HTMLElement, activeElment: HTMLElement, disabledElment: HTMLElement
-describe('test Menu and MeniItem component', () => {
+describe('test KMenu and MeniItem component', () => {
   beforeEach(() => {
     wrapper = render(generateMenu(testProps))
     wrapper.container.append(createStyleFile())
@@ -64,7 +64,7 @@ describe('test Menu and MeniItem component', () => {
     activeElment = wrapper.getByText('active')
     disabledElment = wrapper.getByText('disabled')
   })
-  it('should render correct Menu and MenuItem based on defalut props', () => {
+  it('should render correct KMenu and KMenuItem based on defalut props', () => {
     expect(menuElement).toBeInTheDocument()
     expect(menuElement).toHaveClass('yewei-menu')
     expect(menuElement.querySelectorAll(':scope > li').length).toEqual(5)
@@ -89,7 +89,7 @@ describe('test Menu and MeniItem component', () => {
     const menuElement = wrapper.getByTestId('test-menu')
     expect(menuElement).toHaveClass('yewei-menu-vertical')
   })
-  it('should show dropdown items when houver on SubMenu', async () => {
+  it('should show dropdown items when houver on KSubMenu', async () => {
     expect(wrapper.queryByText('drop1')).not.toBeVisible()
     const dropdownElenment = wrapper.getByText('dropdown')
     fireEvent.mouseEnter(dropdownElenment)
@@ -105,7 +105,7 @@ describe('test Menu and MeniItem component', () => {
   })
 })
 
-describe('test Menu and MenuItem component in vertical mode', () => {
+describe('test KMenu and KMenuItem component in vertical mode', () => {
   beforeEach(() => {
     wrapper2 = render(generateMenu(verTestProps))
     wrapper2.container.append(createStyleFile())
@@ -123,7 +123,7 @@ describe('test Menu and MenuItem component in vertical mode', () => {
     expect(dropDownItem).toBeVisible()
   })
 
-  it('should show subMenu dropdown when defaultOpenSubMenus contains SubMenu index', () => {
+  it('should show subMenu dropdown when defaultOpenSubMenus contains KSubMenu index', () => {
     expect(wrapper2.queryByText('opened1')).toBeVisible()
   })
 })

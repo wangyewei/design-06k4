@@ -1,9 +1,9 @@
 import React, { useContext, FunctionComponentElement, useState, FC } from "react";
 import classNames from "classnames";
-import { MenuContext } from './Menu'
-import { MenuItemProps } from "./MenuItem";
-import Icon from '../Icon/Icon'
-import Transition from "../Transition/Transition";
+import { MenuContext } from './KMenu'
+import { MenuItemProps } from "./KMenuItem";
+import KIcon from '../Icon/KIcon'
+import KTransition from "../Transition/KTransition";
 
 export interface SubMenuProps {
   /**菜单项索引 */
@@ -13,7 +13,7 @@ export interface SubMenuProps {
   className?: string
 }
 
-export const SubMenu: FC<SubMenuProps> = ({ index, title, children, className }) => {
+export const KSubMenu: FC<SubMenuProps> = ({ index, title, children, className }) => {
   const conetxt = useContext(MenuContext)
   const openSubMenus = conetxt.defaultOpenSubMenus as Array<string>
   const isOpend = (index && conetxt.mode === 'vertical') ? openSubMenus.includes(index) : false
@@ -53,16 +53,16 @@ export const SubMenu: FC<SubMenuProps> = ({ index, title, children, className })
     })
     const childrenComponent = React.Children.map(children, (child, i) => {
       const childernElement = child as FunctionComponentElement<MenuItemProps>
-      if (childernElement.type.displayName === 'MenuItem') {
+      if (childernElement.type.displayName === 'KMenuItem') {
         return React.cloneElement(childernElement, {
           index: `${index}-${i}`
         })
       } else {
-        throw Error('yewei-design-Waring: SubMenu has a child witch is not a MenuItem component')
+        throw Error('yewei-design-Waring: KSubMenu has a child witch is not a KMenuItem component')
       }
     })
     return (
-      <Transition
+      <KTransition
         in={menuOpen}
         timeout={300}
         animation="zoom-in-top"
@@ -70,7 +70,7 @@ export const SubMenu: FC<SubMenuProps> = ({ index, title, children, className })
         <ul className={SubMenuClasses}>
           {childrenComponent}
         </ul>
-      </Transition>
+      </KTransition>
     )
   }
   return (
@@ -78,13 +78,13 @@ export const SubMenu: FC<SubMenuProps> = ({ index, title, children, className })
       <div className="yewei-submenu-title"
         {...clickEvents}>
         {title}
-        <Icon icon="angle-down" className="yewei-arrow-icon" />
+        <KIcon icon="angle-down" className="yewei-arrow-icon" />
       </div>
       {renderChildern()}
     </li>
   )
 }
 
-SubMenu.displayName = 'SubMenu'
+KSubMenu.displayName = 'KSubMenu'
 
-export default SubMenu;
+export default KSubMenu;

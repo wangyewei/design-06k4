@@ -1,6 +1,6 @@
 import React, { useContext, FC } from "react";
 import classNames from "classnames";
-import { MenuContext } from "./Menu";
+import { MenuContext } from "./KMenu";
 export interface MenuItemProps {
   /**菜单项索引 */
   index?: string;
@@ -10,7 +10,7 @@ export interface MenuItemProps {
   style?: React.CSSProperties;
 }
 
-export const MenuItem: FC<MenuItemProps> = props => {
+export const KMenuItem: FC<MenuItemProps> = props => {
   const { index, disabled, className, style, children } = props
   const context = useContext(MenuContext)
   const classes = classNames('yewei-menu-item', className, {
@@ -33,6 +33,6 @@ export const MenuItem: FC<MenuItemProps> = props => {
   )
 }
 
-MenuItem.displayName = 'MenuItem'
+KMenuItem.displayName = 'KMenuItem'
 
-export default MenuItem;
+export default KMenuItem;

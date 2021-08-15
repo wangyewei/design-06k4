@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import Button, { ButtonProps, ButtonSize, ButtonType } from "./Button";
+import KButton, { ButtonProps, ButtonSize, ButtonType } from "./KButton";
 
 const defaultProps = {
   onClick: jest.fn()
@@ -16,9 +16,9 @@ const disabledProps: ButtonProps = {
   disabled: true,
   onClick: jest.fn()
 }
-describe('test Button component', () => {
+describe('test KButton component', () => {
   it('should render the correct default button', () => {
-    const wrapper = render(<Button {...defaultProps}>Nice</Button>)
+    const wrapper = render(<KButton {...defaultProps}>Nice</KButton>)
     const element = wrapper.getByText('Nice') as HTMLButtonElement
     expect(element).toBeInTheDocument()
     expect(element.tagName).toEqual('BUTTON')
@@ -29,14 +29,14 @@ describe('test Button component', () => {
   })
 
   it('should render the corrent conmponent based on different props', () => {
-    const wrapper = render(<Button {...testProps}>Nice</Button>)
+    const wrapper = render(<KButton {...testProps}>Nice</KButton>)
     const element = wrapper.getByText('Nice')
     expect(element).toBeInTheDocument()
     expect(element).toHaveClass('btn-primary btn-lg class')
   })
 
   it('should render a link when btnTypes quals link and href is provided', () => {
-    const wrapper = render(<Button btnType={ButtonType.Link} href="https://github.com/WangYeWei/YeweiDesign_ts_react/">Link</Button>)
+    const wrapper = render(<KButton btnType={ButtonType.Link} href="https://github.com/WangYeWei/YeweiDesign_ts_react/">Link</KButton>)
     const element = wrapper.getByText('Link')
     expect(element).toBeInTheDocument()
     expect(element.tagName).toEqual('A')
@@ -44,7 +44,7 @@ describe('test Button component', () => {
   })
 
   it('should render disabled button when disabled set to true', () => {
-    const wrapper = render(<Button {...disabledProps}>Nice</Button>)
+    const wrapper = render(<KButton {...disabledProps}>Nice</KButton>)
     const element = wrapper.getByText('Nice') as HTMLButtonElement
     expect(element).toBeInTheDocument()
     expect(element.disabled).toBeTruthy()

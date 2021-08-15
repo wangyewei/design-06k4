@@ -1,52 +1,52 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-import Menu from './Menu'
-import MenuItem from './MenuItem'
-import SubMenu from './SubMenu'
+import KMenu from './KMenu'
+import KMenuItem from './KMenuItem'
+import KSubMenu from './KSubMenu'
 
 export const defaultMenu = () => (
-  <Menu defaultIndex='0' onSelect={(index) => { action(`clicked ${index} item`) }} >
-    <MenuItem>
+  <KMenu defaultIndex='0' onSelect={(index) => { action(`clicked ${index} item`) }} >
+    <KMenuItem>
       menu item 1
-    </MenuItem>
-    <MenuItem disabled>
+    </KMenuItem>
+    <KMenuItem disabled>
       menu item2 disabled
-    </MenuItem>
-    <MenuItem>
+    </KMenuItem>
+    <KMenuItem>
       menu item3
-    </MenuItem>
-  </Menu>
+    </KMenuItem>
+  </KMenu>
 )
 
 export const diffrentMenu = () => (
-  <Menu mode="vertical">
-    <MenuItem>
-      Menu item1
-    </MenuItem>
-    <MenuItem disabled>
-      Menu item2 disabled
-    </MenuItem>
-    <MenuItem>
-      Menu item3
-    </MenuItem>
-  </Menu>
+  <KMenu mode="vertical">
+    <KMenuItem>
+      KMenu item1
+    </KMenuItem>
+    <KMenuItem disabled>
+      KMenu item2 disabled
+    </KMenuItem>
+    <KMenuItem>
+      KMenu item3
+    </KMenuItem>
+  </KMenu>
 )
 
 export const diffrentSubMenu = () => (
-  <Menu>
-    <MenuItem>Menu item 1</MenuItem>
-    <MenuItem>Menu item 2</MenuItem>
-    <SubMenu title="subMenu">
-      <MenuItem>SubMenu item1</MenuItem>
-      <MenuItem disabled>SubMenu item2</MenuItem>
-      <MenuItem>SubMenu item3</MenuItem>
-    </SubMenu>
+  <KMenu>
+    <KMenuItem>KMenu item 1</KMenuItem>
+    <KMenuItem>KMenu item 2</KMenuItem>
+    <KSubMenu title="subMenu">
+      <KMenuItem>KSubMenu item1</KMenuItem>
+      <KMenuItem disabled>KSubMenu item2</KMenuItem>
+      <KMenuItem>KSubMenu item3</KMenuItem>
+    </KSubMenu>
 
-  </Menu>
+  </KMenu>
 )
 
-storiesOf('菜单导航 Menu', module)
-  .add('Menu', defaultMenu)
-  .add('不同横纵向的 Menu', diffrentMenu)
-  .add('带下拉菜单的 Menu', diffrentSubMenu)
+storiesOf('菜单导航 KMenu', module)
+  .add('KMenu', defaultMenu)
+  .add('不同横纵向的 KMenu', diffrentMenu)
+  .add('带下拉菜单的 KMenu', diffrentSubMenu)
