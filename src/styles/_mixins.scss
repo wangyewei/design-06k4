@@ -58,3 +58,13 @@
     transform-origin: $origin;
   }
 }
+
+@mixin border-right-radius($raduis) {
+  border-top-right-radius: $raduis !important;
+  border-bottom-right-radius: $raduis !important;
+}
+
+@mixin border-left-radius($raduis) {
+  border-top-left-radius: $raduis !important;
+  border-bottom-left-radius: $raduis !important;
+}

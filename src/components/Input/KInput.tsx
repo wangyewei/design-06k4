@@ -42,6 +42,7 @@ export const KInput: FC<KInputProps> = (props) => {
       <input
         className="yewei-input-inner"
         type="text"
+        disabled={disabled}
         {...restProps} />
       {append && <div className="yewei-input-group-append">{append}</div>}
     </div>
