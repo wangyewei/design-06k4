@@ -1,5 +1,5 @@
 import React from "react";
-import { cleanup, fireEvent, render, RenderResult, waitFor } from "@testing-library/react";
+import { cleanup, fireEvent, render, RenderResult, wait } from "@testing-library/react";
 
 import KMenu, { MenuProps } from './KMenu'
 import KMenuItem from './KMenuItem'
@@ -93,13 +93,13 @@ describe('test KMenu and MeniItem component', () => {
     expect(wrapper.queryByText('drop1')).not.toBeVisible()
     const dropdownElenment = wrapper.getByText('dropdown')
     fireEvent.mouseEnter(dropdownElenment)
-    await waitFor(() => {
+    await wait(() => {
       expect(wrapper.queryByText('drop1')).toBeVisible()
     })
     fireEvent.click(wrapper.getByText('drop1'))
     expect(testProps.onSelect).toHaveBeenCalledWith('3-0')
     fireEvent.mouseLeave(dropdownElenment)
-    await waitFor(() => {
+    await wait(() => {
       expect(wrapper.queryByText('drop1')).not.toBeVisible()
     })
   })

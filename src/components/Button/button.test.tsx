@@ -1,14 +1,14 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import KButton, { ButtonProps, ButtonSize, ButtonType } from "./KButton";
+import KButton, { ButtonProps } from "./KButton";
 
 const defaultProps = {
   onClick: jest.fn()
 }
 
 const testProps: ButtonProps = {
-  btnType: ButtonType.Primary,
-  size: ButtonSize.Large,
+  btnType: 'primary',
+  size: 'lg',
   className: 'class'
 }
 
@@ -16,6 +16,7 @@ const disabledProps: ButtonProps = {
   disabled: true,
   onClick: jest.fn()
 }
+
 describe('test KButton component', () => {
   it('should render the correct default button', () => {
     const wrapper = render(<KButton {...defaultProps}>Nice</KButton>)
@@ -36,7 +37,7 @@ describe('test KButton component', () => {
   })
 
   it('should render a link when btnTypes quals link and href is provided', () => {
-    const wrapper = render(<KButton btnType={ButtonType.Link} href="https://github.com/WangYeWei/YeweiDesign_ts_react/">Link</KButton>)
+    const wrapper = render(<KButton btnType="link" href="https://github.com/WangYeWei/YeweiDesign_ts_react/">Link</KButton>)
     const element = wrapper.getByText('Link')
     expect(element).toBeInTheDocument()
     expect(element.tagName).toEqual('A')
