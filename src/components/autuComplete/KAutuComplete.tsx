@@ -3,8 +3,8 @@ import KInput, { KInputProps } from '../Input/KInput'
 
 interface DataSourceObject {
   value: string;
-  login: string;
-  url: string;
+  // login: string;
+  // url: string;
 }
 export type DataSourceType<T = {}> = T & DataSourceObject
 export interface AutoCompleteProps extends Omit<KInputProps, 'onSelect'> {

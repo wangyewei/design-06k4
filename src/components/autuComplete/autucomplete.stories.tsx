@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-import KAutuComplete, { DataSourceType } from './KAutuComplete'
+import { KAutuComplete, DataSourceType } from './KAutuComplete'
 
 
 interface GitHubUserProps {
@@ -37,11 +37,12 @@ const SimpleComplete = () => {
   // const handleFetch = (query: string) => {
   //   return filePlaersObjArr.filter(player => player.value.includes(query))
   // }
-  const renderOption = (item: DataSourceType<GitHubUserProps>) => {
+  const renderOption = (item: DataSourceType) => {
+    const itemWithGithub = item as DataSourceType<GitHubUserProps>
     return (
       <>
-        <h2>Name: {item.login}</h2>
-        <p>age: {item.url}</p>
+        <h2>Name: {itemWithGithub.login}</h2>
+        <p>age: {itemWithGithub.url}</p>
       </>
     )
   }
