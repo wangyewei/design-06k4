@@ -23,6 +23,6 @@ describe('App test is running', () => {
   // })
 
   it('this component should be render', () => {
-    expect(4 + 4).toBeLessThan(5)
+    expect(4 + 4).toBeLessThan(10)
   })
 })

@@ -52,4 +52,5 @@ describe('test KButton component', () => {
     fireEvent.click(element)
     expect(disabledProps.onClick).not.toHaveBeenCalled()
   })
+
 })

@@ -2,6 +2,7 @@ import React, { ReactElement, FC, InputHTMLAttributes } from "react"
 import classNames from "classnames"
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import KIcon from '../Icon/KIcon'
+
 export type KInputSize = 'lg' | 'sm'
 
 export interface KInputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size'> {
