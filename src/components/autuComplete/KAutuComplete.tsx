@@ -1,11 +1,12 @@
-import React, { FC, useState, ChangeEvent, ReactElement } from "react";
+import React, { FC, useState, ChangeEvent, ReactElement, useEffect } from "react";
 import KInput, { KInputProps } from '../Input/KInput'
+import KIcon from '../Icon/KIcon'
+import useDebounce from '../../hooks/useDebounce'
 
 interface DataSourceObject {
   value: string;
-  // login: string;
-  // url: string;
 }
+
 export type DataSourceType<T = {}> = T & DataSourceObject
 export interface AutoCompleteProps extends Omit<KInputProps, 'onSelect'> {
   fetchSuggestions: (str: string) => DataSourceType[] | Promise<DataSourceType[]>;
@@ -23,18 +24,18 @@ export const KAutuComplete: FC<AutoCompleteProps> = (props?) => {
     ...restProps
   } = props
 
-  const [inputValue, setInputValue] = useState(value)
+  const [inputValue, setInputValue] = useState(value as string)
   const [suggestions, setSuggestions] = useState<DataSourceType[]>([])
+  const [loading, setLoading] = useState(false)
 
-  // console.log(suggestions)
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.trim()
-    setInputValue(value)
-    if (value) {
-      const results = fetchSuggestions(value)
+  const debouncedValue = useDebounce(inputValue, 500)
+  useEffect(() => {
+    if (debouncedValue) {
+      const results = fetchSuggestions(debouncedValue)
       if (results instanceof Promise) {
-        console.log('trigger')
+        setLoading(true)
         results.then(data => {
+          setLoading(false)
           setSuggestions(data)
         })
       } else {
@@ -44,6 +45,12 @@ export const KAutuComplete: FC<AutoCompleteProps> = (props?) => {
     } else {
       setSuggestions([])
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedValue])
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.trim()
+    setInputValue(value)
   }
 
   const handleSelect = (item: DataSourceType) => {
@@ -75,6 +82,7 @@ export const KAutuComplete: FC<AutoCompleteProps> = (props?) => {
         onChange={handleChange}
         {...restProps}
       />
+      {loading && <ul><KIcon icon="spinner" spin /></ul>}
       {(suggestions.length > 0) && generateDropdown()}
     </div>
   )
