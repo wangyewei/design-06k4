@@ -31,22 +31,44 @@ describe(' kAutoComplete component unit test', () => {
     await wait(() => {
       expect(wrapper.queryByText('wangyewei')).toBeInTheDocument()
     })
-
     expect(wrapper.container.querySelectorAll('.yewei-suggestion-item').length).toEqual(3)
-
     fireEvent.click(wrapper.getByText('wangyewei'))
     expect(testProps.onSelect).toHaveBeenCalledWith({ value: 'wangyewei', age: 21 })
 
     expect(wrapper.queryByText('wangyewei')).not.toBeInTheDocument()
   })
 
-  //   it('should provide keyboard support', () => {
+  it('should provide keyboard support', async () => {
+    fireEvent.change(inputNode, { target: { value: 'a' } })
+    await wait(() => {
+      expect(wrapper.queryByText('wangyewei')).toBeInTheDocument()
+    })
+    const firstResult = wrapper.queryByText('wangyewei')
+    const secondResult = wrapper.queryByText('kiko mizuhara')
+    // const thirdResult = wrapper.queryByText('lucian')
 
-  //   })
+    fireEvent.keyDown(inputNode, { key: 'ArrowDown' })
+    expect(firstResult).toHaveClass('yewei-item-highlighted')
+    fireEvent.keyDown(inputNode, { key: 'ArrowDown' })
+    expect(secondResult).toHaveClass('yewei-item-highlighted')
+    fireEvent.keyDown(inputNode, { key: 'ArrowUp' })
+    expect(firstResult).toHaveClass('yewei-item-highlighted')
 
-  //   it('click outside should hide the dropdown', () => {
+    fireEvent.keyDown(inputNode, { key: 'Enter' })
+    expect(testProps.onSelect).toHaveBeenCalledWith({ value: 'wangyewei', age: 21 })
 
-  //   })
+    fireEvent.keyDown(inputNode, { key: 'Escape' })
+    expect(wrapper.queryByText('wangyewei')).not.toBeInTheDocument()
+  })
+
+  it('click outside should hide the dropdown', async () => {
+    fireEvent.change(inputNode, { target: { value: 'a' } })
+    await wait(() => {
+      expect(wrapper.queryByText('wangyewei')).toBeInTheDocument()
+    })
+    fireEvent.click(document)
+    expect(wrapper.queryByText('wangyewei')).not.toBeInTheDocument()
+  })
 
   //   it('renderOptions should generate the current tenplate', () => {
 
