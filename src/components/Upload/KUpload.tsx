@@ -1,7 +1,18 @@
-import React, { ChangeEvent, FC, useRef } from "react";
+import React, { ChangeEvent, FC, useRef, useState } from "react";
 import axios from 'axios'
 import KButton from '../Button/KButton'
 
+export type uploadFileStatus = 'ready' | 'uploadig' | 'success' | 'error'
+export interface uploadFile {
+  uid: string;
+  size: number;
+  name: string;
+  status?: uploadFileStatus;
+  percent?: number;
+  raw?: File;
+  response?: any;
+  error?: any;
+}
 export interface UploadProps {
   action: string;
   beforeUpload?: (file: File) => boolean | Promise<File>
@@ -22,6 +33,7 @@ export const KUpload: FC<UploadProps> = (props?) => {
   } = props
 
   const fileInput = useRef<HTMLInputElement>(null)
+  const [fileList, setFileList] = useState<uploadFile[]>([])
   const handleClick = () => {
     if (fileInput.current) {
       fileInput.current.click()
@@ -29,11 +41,20 @@ export const KUpload: FC<UploadProps> = (props?) => {
   }
 
   const _post = (file: File) => {
+    let _file: uploadFile = {
+      uid: `${Date.now()}upload-file`,
+      status: 'ready',
+      name: file.name,
+      size: file.size,
+      percent: 0,
+      raw: file
+    }
+    setFileList([_file, ...fileList])
     const formData = new FormData()
     formData.append(file.name, file)
     axios.post(action, formData, {
       headers: {
-        'Content-Type': 'mutipart/form-data'
+        'Content-Type': 'mutipart/form-data',
       },
       onUploadProgress: e => {
         let percentage = Math.round(e.load * 100) / e.total | 0
@@ -45,6 +66,7 @@ export const KUpload: FC<UploadProps> = (props?) => {
       }
     }).then(resp => {
       if (onSuccess) onSuccess(resp.data, file)
+      console.log(_file)
       if (onChange) onChange(file)
     }).catch(err => {
       if (onError) onError(err, file)
