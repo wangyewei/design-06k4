@@ -42,7 +42,7 @@ export const KUpload: FC<UploadProps> = (props?) => {
 
   const _post = (file: File) => {
     let _file: uploadFile = {
-      uid: `${Date.now()}upload-file`,
+      uid: `06K4-UFile-${Date.now()}`,
       status: 'ready',
       name: file.name,
       size: file.size,
