@@ -133,7 +133,7 @@ export const KAutuComplete: FC<AutoCompleteProps> = (props?) => {
               'yewei-item-highlighted': index === highlightIndex
             })
             return (
-              <li key={index}
+              <li key={JSON.stringify(item)}
                 className={cnames}
                 onClick={() => handleSelect(item)}>
                 {renderTempalete(item)}

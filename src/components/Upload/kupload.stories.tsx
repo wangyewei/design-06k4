@@ -1,16 +1,21 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-import KUpload from './KUpload'
-
+import { KUpload } from './KUpload'
+import Icon from '../Icon/KIcon'
 const SimpleUpload = () => {
   return (
     <KUpload
-      action="http://192.168.146.1:3000/tests"
-      onProgress={action('progress')}
-      onSuccess={action('success')}
-      onError={action('error')}
+      action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+      onChange={action('changed')}
+      onRemove={action('removed')}
+      name="fileName"
+      multiple
+      drag
     >
+      <Icon icon="upload" size="5x" theme="secondary" />
+      <br />
+      <p>Drag file over to upload</p>
     </KUpload>
   )
 }

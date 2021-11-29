@@ -9,7 +9,7 @@
 #### 基本信息
 - 获取所有开发信息
 
-|  name   | parama  |  return |
+|  name   | parame  |  return |
 |  ----  | ----  | ---- |
 | Yewei.showAllInfo()  | null | object |
 
@@ -33,7 +33,7 @@ Yewei.showAllInfo()
 
 - 获取当前版本号
 
-|  name   | parama  |  return |
+|  name   | parame  |  return |
 |  ----  | ----  | ---- |
 | Yewei.showVersion()  | null | string |
 
@@ -45,7 +45,7 @@ Yewei.showVersion()
 #### cookie方法
 - 获取浏览器cookie值
 
-|  name   | parama  |  return |
+|  name   | parame  |  return |
 |  ----  | ----  | ---- |
 | Yewei.getCookie()  | string | any |
 
@@ -56,7 +56,7 @@ Yewei.getCookie('_ga')
 
 - 清除全部cookie
 
-|  name   | parama  |  return |
+|  name   | parame  |  return |
 |  ----  | ----  | ---- |
 | Yewei.clearCookies()  | null | void |
 
@@ -67,7 +67,7 @@ Yewei.clearCookies()
 #### 颜色方法
 - rgb颜色转16进制
 
-|  name   | parama  |  return |
+|  name   | parame  |  return |
 |  ----  | ----  | ---- |
 | Yewei.rgbaToHex()  | (number, number, numebr) | string |
 
@@ -79,7 +79,7 @@ Yewei.rgbaToHex(0, 51, 255)
 
 - 随机生成16进制颜色
 
-|  name   | parama  |  return |
+|  name   | parame  |  return |
 |  ----  | ----  | ---- |
 | Yewei.randomHex()  | null | string |
 
@@ -92,7 +92,7 @@ Yewei.randomHex()
 #### 剪贴板方法
 - 复制到剪贴板
 
-|  name   | parama  |  return |
+|  name   | parame  |  return |
 |  ----  | ----  | ---- |
 | Yewei.copyToClipboard()  | string | void |
 
@@ -101,7 +101,7 @@ Yewei.copyToClipboard('hello 06k4-design')
 ```
 
 - 获取用户选择的文本
-|  name   | parama  |  return |
+|  name   | parame  |  return |
 |  ----  | ----  | ---- |
 | Yewei.getSelectedText()  | null | any |
 
@@ -112,7 +112,7 @@ Yewei.getSelectedText()
 #### 日期方法
 - 检查日期是否合法
 
-|  name   | parama  |  return |
+|  name   | parame  |  return |
 |  ----  | ----  | ---- |
 | Yewei.isDateValid()  | string | boolean |
 
@@ -123,7 +123,7 @@ Yewei.isDateValid("December 17, 1995 03:24:00")
 
 - 检查日期位于一年中的第几天
 
-|  name   | parama  |  return |
+|  name   | parame  |  return |
 |  ----  | ----  | ---- |
 | Yewei.dayOfYear()  | any | number |
 
@@ -135,7 +135,7 @@ Yewei.dayOfYear(new Date())
 
 - 计算两个日期相差多少天
 
-|  name   | parama  |  return |
+|  name   | parame  |  return |
 |  ----  | ----  | ---- |
 | Yewei.dayDif()  | (Date, Date) | number |
 
@@ -147,7 +147,7 @@ Yewei.dayDif(new Date("2020-10-21"), new Date("2021-10-22"))
 
 - 以 hour::minutes::seconds 格式记录时间
 
-|  name   | parama  |  return |
+|  name   | parame  |  return |
 |  ----  | ----  | ---- |
 | Yewei.timeFromDate()  | Date | string |
 
@@ -160,7 +160,7 @@ Yewei.timeFromDate(new Date(2021, 10, 17, 15, 17, 0))
 
 - 英文字符串首字母大写
 
-|  name   | parama  |  return |
+|  name   | parame  |  return |
 |  ----  | ----  | ---- |
 | Yewei.capitalize()  | sting | string |
 
@@ -171,7 +171,7 @@ Yewei.capitalize('studio 06k4')
 
 - 翻转字符串
 
-|  name   | parama  |  return |
+|  name   | parame  |  return |
 |  ----  | ----  | ---- |
 | Yewei.reverse()  | sting | string |
 
@@ -183,7 +183,7 @@ Yewei.reverse('studio 06k4')
 #### 数字方法
 - 校验数字是不是偶数
 
-|  name   | parama  |  return |
+|  name   | parame  |  return |
 |  ----  | ----  | ---- |
 | Yewei.isEven()  | number | boolean |
 
@@ -194,7 +194,7 @@ Yewei.isEven(4)
 
 - 求多个数字的平均值
 
-|  name   | parama  |  return |
+|  name   | parame  |  return |
 |  ----  | ----  | ---- |
 | Yewei.average()  | ...number: number[] | number |
 
@@ -207,7 +207,7 @@ Yewei.average(1, 2, 3, 4)
 #### 数组方法
 - 数组去重
 
-|  name   | parama  |  return |
+|  name   | parame  |  return |
 |  ----  | ----  | ---- |
 | Yewei.removeDuplicates()  | any[] | any[] |
 
@@ -219,7 +219,7 @@ Yewei.removeDuplicates([1, 2, 2, 2, 3])
 - 校验数组是否为空
 检查数组是否为空，是的话返回false，非空返回true
 
-|  name   | parama  |  return |
+|  name   | parame  |  return |
 |  ----  | ----  | ---- |
 | Yewei.isNotEmpty()  | any[] | boolean |
 
@@ -230,7 +230,7 @@ Yewei.isNotEmpty([1, 2, 2, 2, 3])
 
 - 打乱数组
 
-|  name   | parama  |  return |
+|  name   | parame  |  return |
 |  ----  | ----  | ---- |
 | Yewei.shuffleArray()  | any[] | any[] |
 
@@ -242,7 +242,7 @@ Yewei.shuffleArray([1, 2, 2, 2, 3])
 #### URL方法
 - 从URL获取查询参数
 
-|  name   | parama  |  return |
+|  name   | parame  |  return |
 |  ----  | ----  | ---- |
 | Yewei.getParameters()  | string | string |
 
@@ -259,7 +259,7 @@ Yewei.getParameters(window.location)
 #### 页面交互
 - 回到顶部
 
-|  name   | parama  |  return |
+|  name   | parame  |  return |
 |  ----  | ----  | ---- |
 | Yewei.gotoTop()  | null | void |
 
@@ -270,7 +270,7 @@ Yewei.gotoTop()
 - 检查用户的设备是否处于暗模式
 是的话返回true
 
-|  name   | parama  |  return |
+|  name   | parame  |  return |
 |  ----  | ----  | ---- |
 | Yewei.isDarkMode()  | null | boolean |
 
