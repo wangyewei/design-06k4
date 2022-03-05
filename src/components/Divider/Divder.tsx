@@ -2,8 +2,11 @@ import React, { FC } from "react";
 import { BasedProps } from '../basedTypes'
 import classNames from "classnames";
 import { getPreCls } from "../../shared";
+
+// type DividerType = 
 export interface BasedDividerProps extends BasedProps {
-  dashbord: boolean
+  dashbord: boolean,
+  type: 'horizontal' | 'vertical'
 }
 
 // export type DivderProps = Partial<BasedDividerProps>
@@ -13,19 +16,20 @@ export const KDivider: FC<Partial<BasedDividerProps>> = (props) => {
     className,
     children,
     dashbord,
+    type,
     ...resetProps
   } = props
 
-  const preCls: string = getPreCls('divider')
+  const prefixCls: string = getPreCls('divider')
 
-  console.log(preCls)
-  const cname = classNames('k4-divider', className)
+  console.log(prefixCls)
+  const cname = classNames(prefixCls, className, `${prefixCls}-${type}`)
   return (
     <>
       <div className={cname} {...resetProps}>
         {
           children && (
-            <span className=""></span>
+            <span className={`${prefixCls}-child`}>{children}</span>
           )
         }
       </div>
@@ -34,7 +38,8 @@ export const KDivider: FC<Partial<BasedDividerProps>> = (props) => {
 }
 
 KDivider.defaultProps = {
-  dashbord: false
+  dashbord: false,
+  type: 'horizontal'
 }
 
 export default KDivider

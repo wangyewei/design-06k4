@@ -2,5 +2,5 @@ export function getPreCls(
   name: string,
   preName?: string
 ): string {
-  return (preName ? preName : 'K4kit') + '_' + name
+  return (preName ? preName : 'k4kit') + '_' + name
 }

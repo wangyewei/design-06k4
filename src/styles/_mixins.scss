@@ -4,7 +4,14 @@
   border-radius: $boeder-radius;
 }
 
-@mixin button-style($background, $border, $color, $hover-background:lighten($background, 7.5%), $hover-border:lighten($border, 10%), $hover-color:$color) {
+@mixin button-style(
+  $background,
+  $border,
+  $color,
+  $hover-background: lighten($background, 7.5%),
+  $hover-border: lighten($border, 10%),
+  $hover-color: $color
+) {
   color: $color;
   background: $background;
   border: $border;
@@ -30,10 +37,11 @@
   }
 }
 
-@mixin zoom-animation($direction: 'top',
+@mixin zoom-animation(
+  $direction: "top",
   $scaleStart: scaleY(0),
   $scaleEnd: scaleY(1),
-  $origin: center top,
+  $origin: center top
 ) {
   .zoom-in-#{$direction}-enter {
     opacity: 0;
@@ -43,8 +51,9 @@
   .zoom-in-#{$direction}-enter-active {
     opacity: 1;
     transform: $scaleEnd;
-    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-    transform-origin: $origin
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
+      opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+    transform-origin: $origin;
   }
 
   .zoom-in-#{$direction}-exit {
@@ -54,7 +63,8 @@
   .zoom-in-#{$direction}-exit-active {
     opacity: 0;
     transform: $scaleStart;
-    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
+      opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
     transform-origin: $origin;
   }
 }
