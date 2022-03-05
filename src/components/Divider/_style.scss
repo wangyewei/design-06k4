@@ -8,8 +8,7 @@
     margin: 24px 0;
   }
 
-  &-horizontal,
-  &-with-child {
+  &-horizontal.#{$prefix-cls}divider-with-child {
     display: flex;
     margin: 16px 0;
     color: grey;
@@ -33,19 +32,18 @@
     }
   }
 
-  &-child {
-    display: inline-block;
-    padding: 0 4.3px;
+  &-horizontal.#{$prefix-cls}divider-with-child.#{$prefix-cls}divider-dashed {
+    &::before,
+    &::after {
+      border-style: dashed none none;
+    }
   }
-}
+  &-dashed {
+    border-top: 1px dashed grey;
+  }
 
-// .k4kit_divider {
-//   width: 100px;
-//   height: 100px;
-//   background: #000;
-// }
-// .k4kit_divider {
-//   width: 100px;
-//   height: 100px;
-//   background: #000;
-// }
+  // &-child {
+  //   display: inline-block;
+  //   padding: 0 4.3px;
+  // }
+}

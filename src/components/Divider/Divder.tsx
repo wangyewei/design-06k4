@@ -23,7 +23,8 @@ export const KDivider: FC<Partial<BasedDividerProps>> = (props) => {
   const hasChildren: boolean = !!children
   const prefixCls: string = getPreCls('divider')
   const cname = classNames(prefixCls, className, `${prefixCls}-${type}`, {
-    [`${prefixCls}-with-child`]: hasChildren
+    [`${prefixCls}-with-child`]: hasChildren,
+    [`${prefixCls}-dashed`]: dashbord
   })
   return (
     <>
