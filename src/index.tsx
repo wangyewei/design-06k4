@@ -24,7 +24,7 @@ export { default as KUpload } from './components/Upload'
 
 ReactDOM.render(
   <div>
-    <KDivider></KDivider>
+    <KDivider>text</KDivider>
   </div>,
   document.getElementById('root')
 )

@@ -1,7 +1,42 @@
-@import "../../styles/prefixcls";
-
 .#{$prefix-cls}divider {
-  border-top: 1px solid gray;
+  border-top: 1px solid grey;
+
+  &-horizontal {
+    clear: both;
+    display: flex;
+    min-width: 100%;
+    margin: 24px 0;
+  }
+
+  &-horizontal,
+  &-with-child {
+    display: flex;
+    margin: 16px 0;
+    color: grey;
+    font-weight: 500;
+    font-size: $font-size-lg;
+    white-space: nowrap;
+    text-align: center;
+    border-top: 0;
+    border-top-color: grey;
+
+    &::before,
+    &::after {
+      position: relative;
+      top: 50%;
+      width: 50%;
+      border-top: 1px solid transparent;
+      border-top-color: inherit;
+      border-bottom: 0;
+      transform: translateY(50%);
+      content: "";
+    }
+  }
+
+  &-child {
+    display: inline-block;
+    padding: 0 4.3px;
+  }
 }
 
 // .k4kit_divider {

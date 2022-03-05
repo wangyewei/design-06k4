@@ -20,10 +20,11 @@ export const KDivider: FC<Partial<BasedDividerProps>> = (props) => {
     ...resetProps
   } = props
 
+  const hasChildren: boolean = !!children
   const prefixCls: string = getPreCls('divider')
-
-  console.log(prefixCls)
-  const cname = classNames(prefixCls, className, `${prefixCls}-${type}`)
+  const cname = classNames(prefixCls, className, `${prefixCls}-${type}`, {
+    [`${prefixCls}-with-child`]: hasChildren
+  })
   return (
     <>
       <div className={cname} {...resetProps}>
