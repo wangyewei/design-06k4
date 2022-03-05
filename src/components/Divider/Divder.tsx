@@ -1,26 +1,32 @@
-import React, { Children, FC, ReactNode } from "react";
-
+import React, { FC } from "react";
+import { BasedProps } from '../basedTypes'
 import classNames from "classnames";
-export interface BasedDividerProps {
-  className: string,
-  children: ReactNode,
+import { getPreCls } from "../../shared";
+export interface BasedDividerProps extends BasedProps {
   dashbord: boolean
 }
 
-export type DivderProps = Partial<BasedDividerProps>
+// export type DivderProps = Partial<BasedDividerProps>
 
-export const KDivider: FC<DivderProps> = (props) => {
-
+export const KDivider: FC<Partial<BasedDividerProps>> = (props) => {
   const {
     className,
+    children,
+    dashbord,
     ...resetProps
   } = props
+
+  const preCls: string = getPreCls('divider')
+
+  console.log(preCls)
   const cname = classNames('k4-divider', className)
   return (
     <>
       <div className={cname} {...resetProps}>
         {
-          Children
+          children && (
+            <span className=""></span>
+          )
         }
       </div>
     </>

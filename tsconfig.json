@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext",
     "downlevelIteration": true,
     "lib": [
       "dom",
@@ -16,9 +16,9 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": false,
     "noEmit": true,
     "jsx": "react",
+    "isolatedModules": true
   },
   "include": [
     "src"
