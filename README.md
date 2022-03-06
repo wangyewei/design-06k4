@@ -13,9 +13,10 @@
 
 `Design 06k4`是基于typescript编写的React UI 组件库，用于快速构建React Web应用。
 
-<div style="display: flex;">
-<img src="https://user-images.githubusercontent.com/49926816/156933931-d590e663-b5b4-48d1-b774-8424e55b97bf.png" width="120px">
-<img src="https://user-images.githubusercontent.com/49926816/156934122-e92cd24a-93ef-4c16-a9cc-25c7a54cd1e3.png" width="120px">
+<div style="display:flex;">
+<img src="https://user-images.githubusercontent.com/49926816/156933931-d590e663-b5b4-48d1-b774-8424e55b97bf.png" width="120px"/>
+  <span> </span>
+<img src="https://user-images.githubusercontent.com/49926816/156934122-e92cd24a-93ef-4c16-a9cc-25c7a54cd1e3.png" width="120px" />
 </div>
 
 ### ✨特性：
