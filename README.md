@@ -4,7 +4,7 @@
  * @WeChat: wj826036
  * @Motto: 求知若渴，虚心若愚
  * @Description:
- * @LastEditTime: 2022-03-07 00:53:41
+ * @LastEditTime: 2022-03-07 00:57:12
  * @Version: 1.0
  * @FilePath: \design-06k4\README.md
 -->
@@ -30,8 +30,6 @@ npm 安装: `pnpm install design-06k4`
 🚀 打包更快： 采用 rollup 替换 webpack 打包， rollup 相比与 webpack 更适合与 js 类库项目打包，打包后体积更小，打包速度更快, 支持 tree shaking。
 
 🚀 依赖安装快更：采用 pnpm 代替 npm 进行包管理，依赖安装速度更快，更安全，且支持 monorepo。
-
-💣 更强壮：重构了项目的组织结构，使项目更健壮。
 
 ### 目前支持的组件
 
