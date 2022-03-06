@@ -8,6 +8,8 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "downlevelIteration": true,
+    "baseUrl": ".",
+    
   },
   "include": [
     "src"
