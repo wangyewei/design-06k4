@@ -1,6 +1,0 @@
-@each $key,
-$val in $theme-colors {
-  .yewei-icon-#{$key} {
-    color: $val;
-  }
-}

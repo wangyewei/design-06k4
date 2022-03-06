@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
+    "outDir": "lib",
     "module": "esnext",
     "target": "ES5",
     "declaration": true,
@@ -9,7 +9,9 @@
     "allowSyntheticDefaultImports": true,
     "downlevelIteration": true,
     "baseUrl": ".",
-    
+    "paths": {
+      "@/*": ["src/*"]
+    },
   },
   "include": [
     "src"

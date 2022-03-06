@@ -1,0 +1,73 @@
+.#{$prefix-cls}divider {
+  border-top: 0.4px solid grey;
+
+  &-horizontal {
+    clear: both;
+    display: flex;
+    min-width: 100%;
+    margin: 24px 0;
+  }
+
+  &-horizontal.#{$prefix-cls}divider-with-child {
+    display: flex;
+    margin: 16px 0;
+    color: #000;
+    font-weight: 500;
+    font-size: $font-size-lg;
+    white-space: nowrap;
+    text-align: center;
+    border-top: 0;
+    border-top-color: grey;
+
+    &::before,
+    &::after {
+      position: relative;
+      top: 50%;
+      width: 50%;
+      border-top: 1px solid transparent;
+      border-top-color: inherit;
+      border-bottom: 0;
+      transform: translateY(50%);
+      content: "";
+    }
+  }
+
+  &-horizontal.#{$prefix-cls}divider-with-child.#{$prefix-cls}divider-dashed {
+    &::before,
+    &::after {
+      border-style: dashed none none;
+    }
+  }
+
+  &-horizontal.#{$prefix-cls}divider-oritation-left {
+    &::before {
+      top: 50%;
+      width: $divider-orientation-margin;
+    }
+
+    &::after {
+      top: 50%;
+      width: calc(100% - $divider-orientation-margin);
+    }
+  }
+
+  &-horizontal.#{$prefix-cls}divider-oritation-right {
+    &::before {
+      top: 50%;
+      width: calc(100% - $divider-orientation-margin);
+    }
+
+    &::after {
+      top: 50%;
+      width: $divider-orientation-margin;
+    }
+  }
+  &-dashed {
+    border-style: dashed none none;
+  }
+
+  &-child {
+    display: inline-block;
+    padding: 0 4.3px;
+  }
+}
