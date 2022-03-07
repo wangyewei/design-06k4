@@ -4,14 +4,14 @@
  * @WeChat: wj826036
  * @Motto: 求知若渴，虚心若愚
  * @Description: 分割线
- * @LastEditTime: 2022-03-06 21:36:51
+ * @LastEditTime: 2022-03-07 14:30:35
  * @Version: 1.0
- * @FilePath: \design-06k4-2\src\packages\divider\Divider.tsx
+ * @FilePath: \design-06k4\src\packages\divider\Divider.tsx
  */
 
 import React, { FC } from "react";
-import type { BasedProps } from '@/shared/index'
-import { getPrefixCls } from '@/shared/index'
+import type { BasedProps } from '@/utils/index'
+import { getPrefixCls } from '@/utils/index'
 import classNames from "classnames";
 
 export interface BasedDividerProps extends BasedProps {
@@ -38,7 +38,7 @@ export const KDivider: FC<Partial<BasedDividerProps>> = (props) => {
     dashbord,
     type,
     oritation,
-    ...resetProps
+    ...restProps
   } = props
 
   const hasChildren: boolean = !!children
@@ -47,11 +47,10 @@ export const KDivider: FC<Partial<BasedDividerProps>> = (props) => {
     [`${prefixCls}-with-child`]: hasChildren,
     [`${prefixCls}-dashed`]: dashbord,
     [`${prefixCls}-oritation-${oritation}`]: oritation,
-    // [`${prefixCls}-oritation-right`]: oritation === 'right'
   })
   return (
     <>
-      <div className={cname} {...resetProps}>
+      <div className={cname} {...restProps}>
         {
           children && (
             <span className={`${prefixCls}-child`}>{children}</span>

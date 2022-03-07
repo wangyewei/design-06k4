@@ -1,0 +1,27 @@
+@mixin btn-size($height, $padding-x, $padding-y, $font-size, $border-radius) {
+  height: $height;
+  padding: $padding-x $padding-y;
+  font-size: $font-size;
+  border-radius: $border-radius;
+}
+
+@mixin btn() {
+  position: relative;
+  display: inline-block;
+  font-weight: $font-weight-base;
+  white-space: nowrap;
+  text-align: center;
+  border: $btn-border-width $btn-border-style transparent;
+  box-shadow: $btn-box-shadow;
+  cursor: pointer;
+  transition: all 0.3s all;
+  user-select: none;
+  touch-action: manipulation;
+  @include btn-size(
+    $btn-height-base,
+    $btn-padding-x,
+    $btn-padding-y,
+    $font-size-base,
+    $btn-border-radius
+  );
+}

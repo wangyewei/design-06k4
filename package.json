@@ -19,7 +19,7 @@
   "type": "module",
   "main": "lib/index.js",
   "module": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "typings": "lib/src/index.d.ts",
   "files": [
     "lib"
   ],

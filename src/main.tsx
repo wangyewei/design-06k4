@@ -4,20 +4,27 @@
  * @WeChat: wj826036
  * @Motto: 求知若渴，虚心若愚
  * @Description: 
- * @LastEditTime: 2022-03-06 23:04:37
+ * @LastEditTime: 2022-03-07 14:50:08
  * @Version: 1.0
- * @FilePath: \design-06k4-2\src\main.tsx
+ * @FilePath: \design-06k4\src\main.tsx
  */
 import React from 'react'
 import ReactDOM from 'react-dom'
-import KDivider from './packages/divider/Divider'
+// import KDivider from './packages/divider/Divider'
+
+import { KDivider } from '@/packages/divider/Divider'
+import KButton from './packages/button/Button'
 import './style/index.scss'
 ReactDOM.render(
-  <div>
-    <KDivider></KDivider>
-    <KDivider dashbord>dashed text</KDivider>
-    <KDivider dashbord oritation='left'>left dased text</KDivider>
-    <KDivider dashbord oritation='right'>right dased text</KDivider>
+  <div style={{ "width": "600px" }}>
+    <KDivider oritation='left'>按钮类型</KDivider>
+
+    <div className="btns">
+      <KButton btnType='primary'>主按钮</KButton>
+      <KButton btnType='default'>默认按钮</KButton>
+      <KButton btnType='text'>文本按钮</KButton>
+      <KButton btnType='link'>链接按钮</KButton>
+    </div>
   </div>,
   document.getElementById('root')
 )

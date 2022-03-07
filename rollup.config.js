@@ -4,9 +4,9 @@
  * @WeChat: wj826036
  * @Motto: 求知若渴，虚心若愚
  * @Description: rollup配置
- * @LastEditTime: 2022-03-06 23:53:29
+ * @LastEditTime: 2022-03-07 14:54:47
  * @Version: 1.0
- * @FilePath: \design-06k4-2\rollup.config.js
+ * @FilePath: \design-06k4\rollup.config.js
  */
 //提示宿主环境(项目)去安装满足插件peerDependencies所指定依赖的包
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
@@ -18,6 +18,7 @@ import json from '@rollup/plugin-json'
 import babel from '@rollup/plugin-babel'
 import packageJson from './package.json'
 import sass from 'sass'
+import path from 'path'
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -27,14 +28,14 @@ const babelOptions = {
   exclude: "**/node_modules/**"
 }
 
-const processScss = function(context, payload) {
+const processScss = function (context, payload) {
   return new Promise((resolve, reject) => {
     sass.compile(
       {
         file: context
       },
-      function(err, result) {
-        if(!err) {
+      function (err, result) {
+        if (!err) {
           resolve(result)
         } else {
           reject(result)
@@ -42,19 +43,21 @@ const processScss = function(context, payload) {
       }
     );
     sass.compile(context, {}).then(
-      function(output) {
-        if(output && output.css) {
+      function (output) {
+        if (output && output.css) {
           resolve(output.css)
-        }else {
+        } else {
           reject({})
         }
-      }, 
-      function(err) {
+      },
+      function (err) {
         reject(err)
       }
     )
-  }) 
+  })
 }
+
+const aliasRootDir = path.resolve(__dirname)
 
 export default {
   input: 'src/index.ts',
@@ -62,11 +65,17 @@ export default {
     file: packageJson.main,
     format: "es"
   },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, '.', 'src'),
+    }
+  },
+  external: id => /\/__expample__|main.js/.test(id),
   plugins: [
-    peerDepsExternal({includeDependencies: !isProd}),
+    peerDepsExternal({ includeDependencies: !isProd }),
     resolve(),
-    commonjs({sourceMap: !isProd}),
-    typescript({useTsconfigDeclarationDir: true}),
+    commonjs({ sourceMap: !isProd }),
+    typescript({ useTsconfigDeclarationDir: true }),
     postcss({
       extract: true,
       process: processScss

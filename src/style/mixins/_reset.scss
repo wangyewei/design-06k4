@@ -1,0 +1,9 @@
+@mixin reset-component {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: $black;
+  font-size: $font-size-base;
+  list-style: none;
+  line-height: $line-height-base;
+}

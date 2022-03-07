@@ -15,6 +15,7 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "removeComments": true, //删除注释
     // "downlevelIteration": true,
     // "allowJs": true,
     // "skipLibCheck": true,
@@ -35,6 +36,7 @@
     "node_modules",
     "lib",
     "packages/**/*.stories.tsx",
-    "packages/**/*.test.tsx"
+    "packages/**/*.test.tsx",
+    "packages/**/__example__"
   ]
 }
