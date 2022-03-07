@@ -4,7 +4,7 @@
  * @WeChat: wj826036
  * @Motto: 求知若渴，虚心若愚
  * @Description:
- * @LastEditTime: 2022-03-07 15:52:24
+ * @LastEditTime: 2022-03-07 16:02:29
  * @Version: 1.0
  * @FilePath: \design-06k4\README.md
 -->
@@ -13,9 +13,7 @@
 
 `Design 06k4`是基于 typescript 编写的 React UI 组件库，用于快速构建 React Web 应用。
 
-<<<<<<< Updated upstream
-
-<div style="display:flex;">
+<div style="display:flex; margin: 0 auto;">
 <img src="https://user-images.githubusercontent.com/49926816/156933931-d590e663-b5b4-48d1-b774-8424e55b97bf.png" width="120px"/>
   <span> </span>
 <img src="https://user-images.githubusercontent.com/49926816/156934122-e92cd24a-93ef-4c16-a9cc-25c7a54cd1e3.png" width="120px" />
@@ -27,18 +25,12 @@
 - 🔒 基于 typescript 开发，提供完整的类型定义文件。
 - 🎪 提炼自企业级产品的交互语言和设计风格。
 - # ⚡ 小巧而精干的设计体系。
-  文档地址：https://design.06k4.com(暂未部署，敬请期待)
-  > > > > > > > Stashed changes
+
+文档地址：https://design.06k4.com(暂未部署，敬请期待)
 
 ### v0 到 v1
 
-<<<<<<< Updated upstream
 🚀 启动更快：采用 vite 替换 webpack cli，项目启动速度提升十倍。
-=======
-
-### 从 v0 到 v1
-
-> > > > > > > Stashed changes
 
 🚀 打包更快： 采用 rollup 替换 webpack 打包，打包速度更快。
 
@@ -60,21 +52,18 @@ ReactDOM.render(<KDivider />, mountNode)
 
 ##### 引入样式文件
 
-<<<<<<< Updated upstream
-
 ```javasctipt
 import 'design-06k4/lib/index.css'
 ```
 
-=======
 🚀 依赖安装快更：采用 pnpm 替换 npm 进行包管理，依赖安装速度更快，更安全，且支持 monorepo。
-
-> > > > > > > Stashed changes
 
 ### 按需加载
 
-默认支持 tree shaking
+默认支持 `tree shaking`
 
 ### 目前支持的组件
 
 🌟divider: 常用的内容分割线。
+
+🌟button: 常用的按钮。

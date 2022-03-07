@@ -1,6 +1,6 @@
 @mixin btn-size($height, $padding-x, $padding-y, $font-size, $border-radius) {
   height: $height;
-  padding: $padding-x $padding-y;
+  padding: $padding-y $padding-x;
   font-size: $font-size;
   border-radius: $border-radius;
 }
