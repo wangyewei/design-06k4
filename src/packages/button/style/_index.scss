@@ -1,4 +1,15 @@
 @import "./mixins";
 .#{$prefix-cls}button {
   @include btn();
+
+  line-height: $btn-line-height;
+
+  &-primary {
+    @include btn-primary();
+  }
+  // &:not([disabled]):hover {
+  //   text-decoration: none;
+  // }
+
+  // &:not([disabled])
 }

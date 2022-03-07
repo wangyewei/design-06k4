@@ -10,7 +10,8 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black: #000 !default;
 
-$blue: #0d6efd !default;
+$blue: #6899e2 !default;
+$blue-2: #4f81cc !default;
 $indigo: #6610f2 !default;
 $purple: #6f42c1 !default;
 $pink: #d63384 !default;
@@ -22,6 +23,7 @@ $teal: #20c997 !default;
 $cyan: #17a2b8 !default;
 
 $primary: $blue !default;
+$primary-2: $blue-2 !default;
 $secondary: $gray-600 !default;
 $success: $green !default;
 $info: $cyan !default;
@@ -191,6 +193,9 @@ $btn-font-size: $font-size-base !default;
 $btn-line-height: $line-height-base !default;
 $btn-height-base: $height-base !default;
 
+// btn颜色
+$btn-primary-color: $primary;
+$btn-primary-active-color: $primary-2;
 //不同大小按钮的 padding 和 font size
 $btn-padding-y-sm: 0.25rem !default;
 $btn-padding-x-sm: 0.5rem !default;
