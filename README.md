@@ -4,7 +4,7 @@
  * @WeChat: wj826036
  * @Motto: 求知若渴，虚心若愚
  * @Description:
- * @LastEditTime: 2022-03-07 16:02:29
+ * @LastEditTime: 2022-03-07 16:05:22
  * @Version: 1.0
  * @FilePath: \design-06k4\README.md
 -->
@@ -13,7 +13,7 @@
 
 `Design 06k4`是基于 typescript 编写的 React UI 组件库，用于快速构建 React Web 应用。
 
-<div style="display:flex; margin: 0 auto;">
+<div style="display:flex;" align="center">
 <img src="https://user-images.githubusercontent.com/49926816/156933931-d590e663-b5b4-48d1-b774-8424e55b97bf.png" width="120px"/>
   <span> </span>
 <img src="https://user-images.githubusercontent.com/49926816/156934122-e92cd24a-93ef-4c16-a9cc-25c7a54cd1e3.png" width="120px" />
@@ -24,7 +24,7 @@
 - 📦 开箱即用的 React 组件。
 - 🔒 基于 typescript 开发，提供完整的类型定义文件。
 - 🎪 提炼自企业级产品的交互语言和设计风格。
-- # ⚡ 小巧而精干的设计体系。
+- ⚡ 小巧而精干的设计体系。
 
 文档地址：https://design.06k4.com(暂未部署，敬请期待)
 
