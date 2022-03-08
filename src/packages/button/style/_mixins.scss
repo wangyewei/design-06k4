@@ -1,6 +1,6 @@
 @mixin btn-size($height, $padding-x, $padding-y, $font-size, $border-radius) {
   height: $height;
-  padding: $padding-y $padding-x;
+  padding: calc($padding-y * 0.4) calc($padding-x * 2.3);
   font-size: $font-size;
   border-radius: $border-radius;
 }
@@ -47,7 +47,7 @@
   border: $btn-border-width $btn-border-style transparent;
   box-shadow: $btn-box-shadow;
   cursor: pointer;
-  transition: all 0.3s all;
+  transition: all 0.3s ease-in-out;
   user-select: none;
   touch-action: manipulation;
   @include btn-size(

@@ -4,7 +4,7 @@
  * @WeChat: wj826036
  * @Motto: 求知若渴，虚心若愚
  * @Description: 按钮
- * @LastEditTime: 2022-03-07 16:02:26
+ * @LastEditTime: 2022-03-08 14:03:25
  * @Version: 1.0
  * @FilePath: \design-06k4\src\packages\button\Button.tsx
  */
@@ -25,7 +25,7 @@ export const KButton: FC<ButtonBaseProps> = (props) => {
     className,
     children,
     btnType,
-    ...rest
+    ...restProps
   } = props
 
   const prefixCls = getPrefixCls('button')
@@ -35,15 +35,15 @@ export const KButton: FC<ButtonBaseProps> = (props) => {
     switch (type) {
       case 'link':
         return (
-          <a href="" className={cname}>{children}</a>
+          <a href="" className={cname} {...restProps}>{children}</a>
         )
       case 'text':
         return (
-          <span className={cname}>{children}</span>
+          <span className={cname} {...restProps}>{children}</span>
         )
       default:
         return (
-          <button className={cname}>{children}</button>
+          <button className={cname} {...restProps}>{children}</button>
         )
     }
 

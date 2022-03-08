@@ -4,11 +4,13 @@
  * @WeChat: wj826036
  * @Motto: 求知若渴，虚心若愚
  * @Description: 类型相关工具
- * @LastEditTime: 2022-03-06 21:36:01
+ * @LastEditTime: 2022-03-07 23:02:27
  * @Version: 1.0
- * @FilePath: \design-06k4-2\src\shared\typeUtils.ts
+ * @FilePath: \design-06k4\src\utils\typeUtils.ts
  */
 
+import { ReactNode } from 'react'
 export type BasedProps = {
-  className?: string
+  className?: string,
+  children?: ReactNode
 }

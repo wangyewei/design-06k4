@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "rootDir": ".",
-    "declaration": true,
-    "declarationDir": "./lib/types",
+    // "declaration": true,
+    // "declarationDir": "lib",
     "target": "esnext",
     "module": "esnext",
     "lib": [

@@ -4,7 +4,7 @@
  * @WeChat: wj826036
  * @Motto: 求知若渴，虚心若愚
  * @Description: rollup配置
- * @LastEditTime: 2022-03-07 14:54:47
+ * @LastEditTime: 2022-03-07 23:01:13
  * @Version: 1.0
  * @FilePath: \design-06k4\rollup.config.js
  */
@@ -17,8 +17,8 @@ import postcss from 'rollup-plugin-postcss'
 import json from '@rollup/plugin-json'
 import babel from '@rollup/plugin-babel'
 import packageJson from './package.json'
+import dts from 'rollup-plugin-dts'
 import sass from 'sass'
-import path from 'path'
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -28,7 +28,7 @@ const babelOptions = {
   exclude: "**/node_modules/**"
 }
 
-const processScss = function (context, payload) {
+const processScss = function (context) {
   return new Promise((resolve, reject) => {
     sass.compile(
       {
@@ -57,22 +57,15 @@ const processScss = function (context, payload) {
   })
 }
 
-const aliasRootDir = path.resolve(__dirname)
-
-export default {
+const baseHandler = {
   input: 'src/index.ts',
   output: {
     file: packageJson.main,
     format: "es"
   },
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, '.', 'src'),
-    }
-  },
   external: id => /\/__expample__|main.js/.test(id),
   plugins: [
-    peerDepsExternal({ includeDependencies: !isProd }),
+    peerDepsExternal(),
     resolve(),
     commonjs({ sourceMap: !isProd }),
     typescript({ useTsconfigDeclarationDir: true }),
@@ -81,6 +74,22 @@ export default {
       process: processScss
     }),
     babel(babelOptions),
-    json()
+    json(),
+    // dts()
   ]
 }
+
+const typeHandler = {
+  input: 'src/typesexit.ts',
+  output: {
+    file: packageJson.typings,
+    format: "es"
+  },
+  plugins: [
+    typescript(),
+    dts()
+  ]
+}
+
+
+export default [baseHandler, typeHandler]

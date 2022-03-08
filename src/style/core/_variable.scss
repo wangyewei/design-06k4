@@ -220,7 +220,7 @@ $btn-link-hover-color: $link-hover-color !default;
 $btn-link-disabled-color: $gray-600 !default;
 
 // 按钮 radius
-$btn-border-radius: $border-radius !default;
+$btn-border-radius: calc($border-radius * 0.6) !default;
 $btn-border-radius-lg: $border-radius-lg !default;
 $btn-border-radius-sm: $border-radius-sm !default;
 
