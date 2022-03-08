@@ -4,7 +4,7 @@
  * @WeChat: wj826036
  * @Motto: 求知若渴，虚心若愚
  * @Description: rollup配置
- * @LastEditTime: 2022-03-07 23:01:13
+ * @LastEditTime: 2022-03-08 14:31:51
  * @Version: 1.0
  * @FilePath: \design-06k4\rollup.config.js
  */
@@ -61,7 +61,8 @@ const baseHandler = {
   input: 'src/index.ts',
   output: {
     file: packageJson.main,
-    format: "es"
+    format: "umd",
+    name: packageJson.name
   },
   external: id => /\/__expample__|main.js/.test(id),
   plugins: [
@@ -75,17 +76,18 @@ const baseHandler = {
     }),
     babel(babelOptions),
     json(),
-    // dts()
   ]
 }
 
 const typeHandler = {
-  input: 'src/typesexit.ts',
+  input: 'src/types.ts',
   output: {
     file: packageJson.typings,
-    format: "es"
+    format: "umd",
+    name: `${packageJson.name}-types`
   },
   plugins: [
+    // resolve(),
     typescript(),
     dts()
   ]
