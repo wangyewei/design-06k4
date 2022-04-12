@@ -33,6 +33,7 @@ const KRow = forwardRef<HTMLDivElement, RowProps>((props, ref) => {
     {
       [`${prefixCls}-no-wrap`]: wrap === false,
       [`${prefixCls}-${justify}`]: justify,
+      [`${prefixCls}-${align}`]: align,
     }
   )
   return (
