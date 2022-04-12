@@ -10,7 +10,10 @@
  */
 
 import { ReactNode } from 'react'
+
 export type BasedProps = {
   className?: string,
   children?: ReactNode
 }
+// 深度不可变且类似 Array 的结构
+export const tupleStr = <T extends string[]>(...args: T) => args

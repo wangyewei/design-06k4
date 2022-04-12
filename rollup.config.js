@@ -61,7 +61,7 @@ const baseHandler = {
   input: 'src/index.ts',
   output: {
     file: packageJson.main,
-    format: "umd",
+    format: "es",
     name: packageJson.name
   },
   external: id => /\/__expample__|main.js/.test(id),
@@ -83,7 +83,7 @@ const typeHandler = {
   input: 'src/types.ts',
   output: {
     file: packageJson.typings,
-    format: "umd",
+    format: "es",
     name: `${packageJson.name}-types`
   },
   plugins: [

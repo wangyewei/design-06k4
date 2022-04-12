@@ -10,11 +10,12 @@
  */
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ButtonDemo from '@/packages/button/__example__/example'
+// import ButtonDemo from '@/packages/button/__example__/example'
+import { RowDemo } from './packages/grid/__example__/temp'
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <ButtonDemo />
+    <RowDemo />
   </>,
   document.getElementById('root')
 )

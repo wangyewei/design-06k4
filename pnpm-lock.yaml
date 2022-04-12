@@ -14,6 +14,7 @@ specifiers:
   '@types/react-dom': ^17.0.10
   '@vitejs/plugin-react': ^1.0.7
   classnames: ^2.3.1
+  module-alias: ^2.2.2
   react: ^17.0.2
   react-dom: ^17.0.2
   rimraf: ^3.0.2
@@ -30,6 +31,7 @@ dependencies:
   '@types/node': 17.0.21
   '@types/react': 17.0.39
   classnames: 2.3.1
+  module-alias: 2.2.2
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   typescript: 4.6.2
@@ -2380,6 +2382,10 @@ packages:
   /minimist/1.2.5:
     resolution: {integrity: sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==}
     dev: true
+
+  /module-alias/2.2.2:
+    resolution: {integrity: sha512-A/78XjoX2EmNvppVWEhM2oGk3x4lLxnkEA4jTbaK97QKSDjkIoOsKQlfylt/d3kKKi596Qy3NP5XrXJ6fZIC9Q==}
+    dev: false
 
   /ms/2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}

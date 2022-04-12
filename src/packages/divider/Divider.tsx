@@ -15,7 +15,12 @@ import { getPrefixCls } from '@/utils/index'
 import classNames from "classnames";
 
 export interface BasedDividerProps extends BasedProps {
-  /**是否虚线 */
+  /**
+  * 可以这样写属性描述
+  * @description       也可以显式加上描述名
+  * @description.zh-CN 还支持不同的 locale 后缀来实现多语言描述，使用 description 兜底
+  * @default           支持定义默认值
+  */
   dashbord: boolean,
   type: 'horizontal' | 'vertical',
   /**分割线标题的位置 */

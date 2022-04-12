@@ -11,3 +11,4 @@
 
 export type { BasedProps } from './typeUtils'
 export { getPrefixCls } from './prefixCls'
+export { tupleStr } from './typeUtils'

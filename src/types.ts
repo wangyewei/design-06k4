@@ -10,3 +10,4 @@
  */
 export type { BasedDividerProps } from '@/packages/divider/Divider'
 export type { ButtonBaseProps } from '@/packages/button/index'
+export type { RowProps } from '@/packages/grid/KRow'
