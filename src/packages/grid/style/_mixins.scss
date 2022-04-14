@@ -1,19 +1,17 @@
 $grid-columns: 24;
 
-@mixin loop-grid-colums($index, $class) {
-  @if $index > 0 {
-    .#{$prefix-cls}col#{class}-#{index} {
-      display: flex;
-      flex: 0 0 percentage(calc($index / $grid-columns));
-      max-width: percentage(calc($index / $grid-columns));
-    }
-  } @else {
-    .#{$prefix-cls}col#{class}-#{index} {
-      display: none;
+@mixin make-grid() {
+  @for $i from 0 through 24 {
+    @if $i > 0 {
+      .#{$prefix-cls}col-#{$i} {
+        display: flex;
+        flex: 0 0 percentage(calc($i / $grid-columns));
+        max-width: percentage(calc($i / $grid-columns));
+      }
+    } @else if $i == 0 {
+      .#{$prefix-cls}col-#{$i} {
+        display: none;
+      }
     }
   }
-}
-
-@mixin make-grid($class: "") {
-  @include loop-grid-colums($grid-columns, $class);
 }

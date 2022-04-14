@@ -44,22 +44,3 @@
 }
 
 @include make-grid();
-
-.#{$prefix-cls}col-24 {
-  display: flex;
-  flex: 0 0 percentage(calc(24 / $grid-columns));
-  max-width: percentage(calc(24 / $grid-columns));
-}
-
-.#{$prefix-cls}col-12 {
-  // text-align: left;
-  display: flex;
-  flex: 0 0 percentage(calc(12 / $grid-columns));
-  max-width: percentage(calc(12 / $grid-columns));
-}
-
-.#{$prefix-cls}col-8 {
-  display: flex;
-  flex: 0 0 percentage(calc(8 / $grid-columns));
-  max-width: percentage(calc(8 / $grid-columns));
-}
