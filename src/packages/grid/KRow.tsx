@@ -25,7 +25,7 @@ const KRow = forwardRef<HTMLDivElement, RowProps>((props, ref) => {
   } = props
 
 
-  const prefixCls: string = getPrefixCls('divider')
+  const prefixCls: string = getPrefixCls('row')
 
   const cnames = classNames(
     className,

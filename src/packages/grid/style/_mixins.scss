@@ -1,0 +1,19 @@
+$grid-columns: 24;
+
+@mixin loop-grid-colums($index, $class) {
+  @if $index > 0 {
+    .#{$prefix-cls}col#{class}-#{index} {
+      display: flex;
+      flex: 0 0 percentage(calc($index / $grid-columns));
+      max-width: percentage(calc($index / $grid-columns));
+    }
+  } @else {
+    .#{$prefix-cls}col#{class}-#{index} {
+      display: none;
+    }
+  }
+}
+
+@mixin make-grid($class: "") {
+  @include loop-grid-colums($grid-columns, $class);
+}

@@ -1,0 +1,65 @@
+@import "./mixins";
+.#{$prefix-cls}row {
+  display: flex;
+  flex-flow: row wrap;
+
+  &::before,
+  &::after {
+    display: flex;
+  }
+
+  &-no-wrap {
+    flex-wrap: nowrap;
+  }
+}
+
+.#{$prefix-cls}row-start {
+  justify-content: flex-start;
+}
+
+.#{$prefix-cls}row-center {
+  justify-content: center;
+}
+
+.#{$prefix-cls}row-end {
+  justify-content: flex-end;
+}
+
+.#{$prefix-cls}row-space-between {
+  justify-content: space-between;
+}
+
+.#{$prefix-cls}row-space-around {
+  justify-content: space-around;
+}
+
+.#{$prefix-cls}row-space-evenly {
+  justify-content: space-evenly;
+}
+
+.#{$prefix-cls}col {
+  position: relative;
+  max-width: 100%;
+  min-height: 1px;
+}
+
+@include make-grid();
+
+.#{$prefix-cls}col-24 {
+  display: flex;
+  flex: 0 0 percentage(calc(24 / $grid-columns));
+  max-width: percentage(calc(24 / $grid-columns));
+}
+
+.#{$prefix-cls}col-12 {
+  // text-align: left;
+  display: flex;
+  flex: 0 0 percentage(calc(12 / $grid-columns));
+  max-width: percentage(calc(12 / $grid-columns));
+}
+
+.#{$prefix-cls}col-8 {
+  display: flex;
+  flex: 0 0 percentage(calc(8 / $grid-columns));
+  max-width: percentage(calc(8 / $grid-columns));
+}
