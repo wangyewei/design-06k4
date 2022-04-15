@@ -14,3 +14,4 @@ import './style/index.scss'
 
 export { default as KDivider } from '@/packages/divider/'
 export { default as KButton } from '@/packages/button/'
+export { KRow, KCol } from '@/packages/grid/'
