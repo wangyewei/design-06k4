@@ -1,0 +1,38 @@
+.#{$prefix-cls}layout {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  min-height: 0;
+  background: $layout-body-background;
+  // border: 1px solid red;
+
+  &,
+  * {
+    box-sizing: border-box;
+  }
+
+  &-header,
+  &-footer {
+    flex: 0 0 auto;
+  }
+
+  &-header {
+    height: $layout-header-height;
+    padding: $layout-header-padding;
+    color: $layout-body-background;
+    line-height: $layout-header-height;
+    background: $layout-header-background;
+  }
+
+  &-footer {
+    padding: $layout-footer-padding;
+    color: $text-color;
+    font-size: $font-size-base;
+    background: $layout-footer-background;
+  }
+
+  &-content {
+    float: auto;
+    min-height: 0;
+  }
+}

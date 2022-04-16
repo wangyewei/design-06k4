@@ -53,6 +53,10 @@ $font-family-base: $font-family-sans-serif !default;
 // 高度规则
 $height-base: 32x !default;
 
+// 字体颜色
+
+$text-color: rgba(0, 0, 0, 80%);
+
 // 字体大小
 $font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
 $font-size-lg: $font-size-base * 1.25 !default;
@@ -303,3 +307,19 @@ $progress-bar-transition: width 0.6s ease !default;
 
 // divider
 $divider-orientation-margin: 5%;
+
+// layout
+
+$layout-body-background: #f0f2f5;
+$layout-header-background: #001529;
+$layout-header-height: 64px;
+$layout-header-padding: 0 50px;
+$layout-header-color: $text-color;
+$layout-footer-padding: 24px 50px;
+$layout-footer-background: $layout-body-background;
+$layout-sider-background: $layout-header-background;
+$layout-trigger-height: 48px;
+$layout-trigger-background: #002140;
+$layout-trigger-color: #fff;
+$layout-zero-trigger-width: 36px;
+$layout-zero-trigger-height: 42px;

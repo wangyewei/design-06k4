@@ -10,11 +10,11 @@
  */
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { RowDemo } from './packages/grid/__example__/base'
+import { LayoutBasic } from './packages/layout/__example__/basic'
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <RowDemo />
+    <LayoutBasic />
   </>,
   document.getElementById('root')
 )
