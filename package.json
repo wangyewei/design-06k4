@@ -1,6 +1,6 @@
 {
   "name": "design-06k4",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "React components library with Typescript",
   "author": "Yewei Wang<wangyewei1@foxmail.com>",
   "motto": "求知若渴 虚心若愚",
@@ -11,7 +11,7 @@
     "React",
     "TypeScript"
   ],
-  "homepage": "https://github.com/WangYeWei",
+  "homepage": "https://design.06k4.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/WangYeWei/design-06k4"
@@ -37,6 +37,7 @@
     "module-alias": "^2.2.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-is": "^18.0.0",
     "typescript": "^4.5.4"
   },
   "devDependencies": {

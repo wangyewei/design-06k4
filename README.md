@@ -26,7 +26,7 @@
 - 🎪 提炼自企业级产品的交互语言和设计风格。
 - ⚡ 小巧而精干的设计体系。
 
-文档地址：https://design.06k4.com(暂未部署，敬请期待)
+文档地址：https://design.06k4.com
 
 ### v0 到 v1
 
@@ -61,9 +61,3 @@ import 'design-06k4/lib/index.css'
 ### 按需加载
 
 默认支持 `tree shaking`
-
-### 目前支持的组件
-
-🌟divider: 常用的内容分割线。
-
-🌟button: 常用的按钮。

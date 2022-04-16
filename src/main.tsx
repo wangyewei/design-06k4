@@ -10,11 +10,11 @@
  */
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { LayoutBasic } from './packages/layout/__example__/basic'
+import { SpaceBasic } from './packages/space/__example__/basic'
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <LayoutBasic />
+    <SpaceBasic />
   </>,
   document.getElementById('root')
 )

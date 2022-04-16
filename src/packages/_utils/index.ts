@@ -1,0 +1,1 @@
+export { detectFlexGapSupported } from './styleChecker'
