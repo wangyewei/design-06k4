@@ -11,4 +11,8 @@
   &-primary {
     @include btn-primary();
   }
+
+  &-dashed {
+    @include btn-dashed();
+  }
 }

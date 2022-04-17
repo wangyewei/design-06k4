@@ -28,7 +28,7 @@
   }
 }
 
-@mixin btn-variant($color, $background, $border) {
+@mixin btn-variabel($color, $background, $border) {
   @include btn-color($color, $background, $border);
 
   &:hover,
@@ -59,10 +59,51 @@
   );
 }
 
-@mixin btn-primary() {
-  @include btn-variant(white, $primary, transparent);
+@mixin btn-disabled(
+  $color: $btn-disabled-color,
+  $background: $btn-disabled-bg,
+  $border: $btn-border-color
+) {
+  &[disabled] {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      @include btn-color($color, $background, $border);
+      text-shadow: none;
+      box-shadow: none;
+    }
+  }
 }
 
-// @mixin btn-ghost() {
-//   @include
-// }
+@mixin btn-primary() {
+  @include btn-variabel(white, $primary, transparent);
+}
+
+@mixin btn-variabel-other($color, $background, $border) {
+  @include btn-color($color, $background, $border);
+
+  &:hover,
+  &:focus {
+    @include btn-color($primary-5, $background, $primary-5);
+  }
+
+  &:active {
+    @include btn-color($primary-7, $background, $primary-7);
+  }
+
+  @include btn-disabled();
+}
+
+@mixin btn-ghost() {
+  @include btn-variabel-other();
+}
+
+@mixin btn-dashed() {
+  @include btn-variabel-other(
+    $btn-default-color,
+    $btn-default-bg,
+    $btn-default-border
+  );
+  border-style: dashed;
+}

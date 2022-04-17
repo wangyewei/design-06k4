@@ -12,6 +12,12 @@ $black: #000 !default;
 
 $blue: #6899e2 !default;
 $blue-2: #4f81cc !default;
+$blue-3: #3d6cb3 !default;
+$blue-4: #295493 !default;
+$blue-5: #1f4c91 !default;
+$blue-6: #103978 !default;
+$blue-7: #072d66 !default;
+
 $indigo: #6610f2 !default;
 $purple: #6f42c1 !default;
 $pink: #d63384 !default;
@@ -24,6 +30,22 @@ $cyan: #17a2b8 !default;
 
 $primary: $blue !default;
 $primary-2: $blue-2 !default;
+$primary-3: $blue-3 !default;
+$primary-4: $blue-4 !default;
+$primary-5: $blue-5 !default;
+$primary-6: $blue-5 !default;
+$primary-7: $blue-5 !default;
+
+$disabled-color: rgba(0, 0, 0, 25%);
+$disabled-bg: rgba(0, 0, 0, 50%);
+$disabled-active-bg: rgba(0, 0, 0, 90%);
+
+$component-background: #fff;
+
+// Border Color
+$border-color-base: rgba(0, 0, 0, 85%);
+// $disabled-active-bg: hsv;
+
 $secondary: $gray-600 !default;
 $success: $green !default;
 $info: $cyan !default;
@@ -198,8 +220,18 @@ $btn-line-height: $line-height-base !default;
 $btn-height-base: $height-base !default;
 
 // btn颜色
+
+$btn-default-color: $text-color;
+$btn-default-bg: $component-background;
+$btn-default-border: $border-color-base;
+
 $btn-primary-color: $primary;
 $btn-primary-active-color: $primary-2;
+
+$btn-disabled-color: $disabled-color;
+$btn-disabled-bg: $disabled-bg;
+$btn-border-color: $border-color-base;
+
 //不同大小按钮的 padding 和 font size
 $btn-padding-y-sm: 0.25rem !default;
 $btn-padding-x-sm: 0.5rem !default;
