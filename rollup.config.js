@@ -62,9 +62,10 @@ const baseHandler = {
   output: {
     file: packageJson.main,
     format: "es",
-    name: packageJson.name
+    name: packageJson.name,
+    // sourcemap: true
   },
-  external: id => /\/__expample__|main.js/.test(id),
+  external: [id => /\/__expample__|main.js/.test(id), 'react', 'react-dom'],
   plugins: [
     peerDepsExternal(),
     resolve(),

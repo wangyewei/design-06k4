@@ -1,4 +1,4 @@
-import { canUseDom, isStyleSupport } from "@/utils"
+import { canUseDom } from "@/utils"
 
 export const canUseDocElement = () => canUseDom() && window.document.documentElement;
 

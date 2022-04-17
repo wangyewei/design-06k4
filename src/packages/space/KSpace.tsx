@@ -64,7 +64,7 @@ const KSpace: FC<SpaceProps> = props => {
         getNumberSize(item),
       ),
     [size],
-  );
+  )
 
 
   const childNodes = childrenToArray(children, { keepEmpty: true })
@@ -112,12 +112,12 @@ const KSpace: FC<SpaceProps> = props => {
   const spaceContext = useMemo(
     () => ({ horizontalSize, verticalSize, latesIndex, supportFlexGap }),
     [horizontalSize, verticalSize, latesIndex, supportFlexGap],
-  );
+  )
   //
 
   // render
   if (childNodes.length === 0) return null
-  const gapStyle: CSSProperties = {}
+  const gapStyle: CSSProperties | any = {}
   if (wrap) {
     gapStyle.flexWrap = 'wrap'
     if (!supportFlexGap) {
