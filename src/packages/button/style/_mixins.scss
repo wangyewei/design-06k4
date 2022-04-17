@@ -62,3 +62,7 @@
 @mixin btn-primary() {
   @include btn-variant(white, $primary, transparent);
 }
+
+// @mixin btn-ghost() {
+//   @include
+// }

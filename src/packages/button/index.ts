@@ -10,6 +10,6 @@
  */
 
 import KButton from './Button'
-export type { ButtonBaseProps } from './Button'
+export type { ButtonProps } from './Button'
 
 export default KButton

@@ -11,7 +11,7 @@
  * @FilePath: \design-06k4\src\typesexit.ts
  */
 export type { BasedDividerProps } from '@/packages/divider'
-export type { ButtonBaseProps } from '@/packages/button'
+export type { ButtonProps } from '@/packages/button'
 export type { RowProps } from '@/packages/grid/KRow'
 export type { LayoutProps } from '@/packages/layout'
 export type { SpaceProps } from '@/packages/space'
