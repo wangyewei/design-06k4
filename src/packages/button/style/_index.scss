@@ -15,4 +15,8 @@
   &-dashed {
     @include btn-dashed();
   }
+
+  &-link {
+    @include btn-link();
+  }
 }

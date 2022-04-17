@@ -28,7 +28,7 @@
 
 文档地址：https://design.06k4.com
 
-### v0 到 v1
+### v0 到 v2
 
 🚀 启动更快：采用 vite 替换 webpack cli，项目启动速度提升十倍。
 

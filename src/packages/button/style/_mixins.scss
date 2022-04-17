@@ -107,3 +107,20 @@
   );
   border-style: dashed;
 }
+
+@mixin btn-link() {
+  @include btn-variabel-other($link-color, transparent, transparent);
+  box-shadow: none;
+
+  &:hover {
+    background: $btn-link-hover-bg;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: transparent;
+  }
+
+  @include btn-disabled($disabled-color, transparent, transparent);
+}
