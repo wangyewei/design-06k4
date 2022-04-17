@@ -223,6 +223,7 @@ $btn-link-color: $link-color !default;
 $btn-link-hover-color: $link-hover-color !default;
 $btn-link-disabled-color: $gray-600 !default;
 $btn-link-hover-bg: transparent;
+$btn-text-hover-bg: rgba(0, 0, 0, 0.018);
 
 // 按钮 radius
 $btn-border-radius: calc($border-radius * 0.6) !default;

@@ -124,3 +124,17 @@
 
   @include btn-disabled($disabled-color, transparent, transparent);
 }
+
+@mixin btn-text() {
+  @include btn-variabel-other($text-color, transparent, transparent);
+  box-shadow: none;
+
+  &:hover,
+  &:focus {
+    color: $text-color;
+    background: $btn-text-hover-bg;
+    border-color: transparent;
+  }
+
+  @include btn-disabled($disabled-color, transparent, transparent);
+}
