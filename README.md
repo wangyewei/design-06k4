@@ -53,7 +53,7 @@ ReactDOM.render(<KDivider />, mountNode)
 ##### 引入样式文件
 
 ```javasctipt
-import 'design-06k4/lib/index.css'
+import 'design-06k4/dist/index.css'
 ```
 
 🚀 依赖安装快更：采用 pnpm 替换 npm 进行包管理，依赖安装速度更快，更安全，且支持 monorepo。
