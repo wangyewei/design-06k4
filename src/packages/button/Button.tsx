@@ -9,52 +9,59 @@
  * @FilePath: \design-06k4\src\packages\button\Button.tsx
  */
 
-import React, { FC, ReactNode } from "react"
-import type { BasedProps } from "@/utils"
-import classnames from 'classnames'
+import React, { AnchorHTMLAttributes, FC, forwardRef, ForwardRefRenderFunction, MouseEventHandler, ReactNode } from "react"
+import { tupleStr } from "@/utils"
 import { getPrefixCls } from '@/utils/index'
+import classNames from "classnames"
 
-type ButtonBasedType = 'primary' | 'default' | 'dashed' | 'link' | 'text'
+const ButtonTypes = tupleStr('default', 'primary', 'ghost', 'dashed', 'link', 'text')
+export type ButtonType = typeof ButtonTypes[number]
 
-export interface ButtonBaseProps extends BasedProps {
-  btnType: ButtonBasedType
+export type AnchorButtonProps = {
+  href: string,
+  target?: string;
+  onClick?: MouseEventHandler<HTMLElement>
+} & BaseButtonProps &
+  // 去除AnchorHTMLAttributes<any>中的type和onClick
+  Omit<AnchorHTMLAttributes<any>, 'type' | 'onClick'>
+
+
+export interface BaseButtonProps {
+  type?: ButtonType,
+  className?: string,
+  children?: ReactNode
 }
 
-export const KButton: FC<ButtonBaseProps> = (props) => {
+export type ButtonProps = Partial<AnchorButtonProps>
+
+// 定义为该类型的函数可以放进React.forwardRef函数中作为参数
+const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
+
   const {
+    type = 'default',
     className,
     children,
-    btnType,
-    ...restProps
+    onClick
   } = props
 
-  const prefixCls = getPrefixCls('button')
-
-  const cname = classnames(prefixCls, className, `${prefixCls}-${btnType}`)
-  const currentBtnType = (type: string): ReactNode => {
-    switch (type) {
-      case 'link':
-        return (
-          <a href="" className={cname} {...restProps}>{children}</a>
-        )
-      case 'text':
-        return (
-          <span className={cname} {...restProps}>{children}</span>
-        )
-      default:
-        return (
-          <button className={cname} {...restProps}>{children}</button>
-        )
-    }
-
-  }
-
-  return (
-    <>
-      {currentBtnType(btnType)}
-    </>
+  const prefixCls: string = getPrefixCls('btn')
+  const cnmaes = classNames(
+    prefixCls,
+    {
+      [`${prefixCls}-${type}`]: type
+    },
+    className
   )
+
+  const buttonNode: ReactNode = (
+    <button className={cnmaes}
+      onClick={onClick}>
+      <span>{children}</span>
+    </button>
+  )
+  return <>{buttonNode}</>
 }
 
+const KButton = forwardRef<unknown, ButtonProps>(RowButton)
 
 export default KButton

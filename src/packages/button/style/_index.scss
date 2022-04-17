@@ -1,8 +1,12 @@
 @import "./mixins";
-.#{$prefix-cls}button {
+.#{$prefix-cls}btn {
   @include btn();
 
   line-height: $btn-line-height;
+
+  > span {
+    display: inline-block;
+  }
 
   &-primary {
     @include btn-primary();
