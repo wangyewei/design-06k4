@@ -8,12 +8,12 @@
  * @Version: 1.0
  * @FilePath: \design-06k4\src\index.ts
  */
-// import Kdivider from '@/packages/divider/index'
-
 import './style/index.scss'
 
 export { default as KDivider } from '@/packages/divider/'
+export type { BasedDividerProps } from '@/packages/divider'
+
 export { default as KButton } from '@/packages/button/'
-export { KRow, KCol } from '@/packages/grid/'
+export { KRow, KCol } from '@/packages/grid'
 export { default as KLayout } from '@/packages/layout'
 export { default as KSpace } from '@/packages/space'

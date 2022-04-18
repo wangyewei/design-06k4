@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
     "rootDir": ".",
-    // "declaration": true,
-    // "declarationDir": "lib",
+    "declaration": false,
+    "noEmit": true,
+    "emitDeclarationOnly": false,
+    "outDir": "dist",
     "target": "esnext",
     "module": "esnext",
     "lib": [

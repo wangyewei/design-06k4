@@ -1,14 +1,5 @@
-/*
- * @Author: YeWei Wang
- * @Date: 2022-03-06 23:05:59
- * @WeChat: wj826036
- * @Motto: 求知若渴，虚心若愚
- * @Description: rollup配置
- * @LastEditTime: 2022-03-08 14:31:51
- * @Version: 1.0
- * @FilePath: \design-06k4\rollup.config.js
- */
-//提示宿主环境(项目)去安装满足插件peerDependencies所指定依赖的包
+import * as path from 'path'
+import * as fs from 'fs'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
@@ -16,18 +7,52 @@ import typescript from 'rollup-plugin-typescript2'
 import postcss from 'rollup-plugin-postcss'
 import json from '@rollup/plugin-json'
 import babel from '@rollup/plugin-babel'
-import packageJson from './package.json'
+// import packageJson from './package.json'
 import dts from 'rollup-plugin-dts'
 import sass from 'sass'
 
-const isProd = process.env.NODE_ENV === 'production'
+// 入口
 
+const entry = 'src/index.ts'
+const componentsDir = 'src/packages'
+const componentsName = fs.readdirSync(path.resolve(componentsDir))
+const componentsEntry = componentsName.map(
+  (name) => `${componentsDir}/${name}/index.ts`
+)
+
+// 环境变量
+const isProd = process.env.NODE_ENV === 'production'
+const BABEL_ENV = process.env.BABEL_ENV
+
+// Babel配置
 const babelOptions = {
   presets: ["@babel/preset-env"],
   extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
   exclude: "**/node_modules/**"
 }
 
+// 通用插件
+const commonPlugins = [
+  peerDepsExternal(),
+  resolve(),
+  commonjs({ sourceMap: !isProd }),
+  typescript(),
+  babel(babelOptions),
+  json(),
+  // dts()
+]
+
+// 忽略文件
+const externalConfig = [
+  id => /\/__expample__|main.tsx/.test(id),
+  'react',
+  'react-dom',
+  'classname',
+  'react-is',
+  '**/node_modules/**'
+]
+
+// sass打包
 const processScss = function (context) {
   return new Promise((resolve, reject) => {
     sass.compile(
@@ -57,42 +82,41 @@ const processScss = function (context) {
   })
 }
 
-const baseHandler = {
-  input: 'src/index.ts',
-  output: {
-    file: packageJson.main,
-    format: "es",
-    name: packageJson.name,
-    // sourcemap: true
-  },
-  external: [id => /\/__expample__|main.js/.test(id), 'react', 'react-dom'],
-  plugins: [
-    peerDepsExternal(),
-    resolve(),
-    commonjs({ sourceMap: !isProd }),
-    typescript({ useTsconfigDeclarationDir: true }),
-    postcss({
-      extract: true,
-      process: processScss
-    }),
-    babel(babelOptions),
-    json(),
-  ]
+// ES Module打包输出
+const esmOutput = {
+  preserveModules: true,
+  // preserveModulesRoot: 'src',
+  // exports: 'named',
+  assetFileNames: ({ name }) => {
+    const { ext, dir, base } = path.parse(name);
+    if (ext !== '.css') return '[name].[ext]';
+    // 规范 style 的输出格式
+    return path.join(dir, 'style', base);
+  }
 }
 
-const typeHandler = {
-  input: 'src/types.ts',
-  output: {
-    file: packageJson.typings,
-    format: "es",
-    name: `${packageJson.name}-types`
-  },
-  plugins: [
-    // resolve(),
-    typescript(),
-    dts()
-  ]
+export default () => {
+  switch (BABEL_ENV) {
+    case 'esm':
+      return [
+        {
+          input: [entry, ...componentsEntry],
+          output: { ...esmOutput, dir: 'dist/', format: 'es' },
+          external: externalConfig,
+          plugins: [postcss({
+            extract: true,
+            process: processScss
+          }), ...commonPlugins]
+        },
+        {
+          input: [entry, ...componentsEntry],
+          output: { ...esmOutput, dir: 'dist/type', format: 'es' },
+          external: externalConfig,
+          plugins: [postcss({
+            extract: true,
+            process: processScss
+          }), ...commonPlugins, dts()]
+        }
+      ]
+  }
 }
-
-
-export default [baseHandler, typeHandler]

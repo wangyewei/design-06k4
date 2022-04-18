@@ -19,29 +19,32 @@
   "type": "module",
   "module": "dist/index.js",
   "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "typings": "dist/type/src/index.d.ts",
   "files": [
     "dist/"
   ],
   "scripts": {
     "dev": "vite",
     "build": "pnpm run clean && rollup -c",
-    "clean": "rimraf .dist/*",
-    "build-ts": "tsc -p tsconfig.build.json",
+    "clean": "rimraf ./dist",
+    "build:esm": "pnpm run clean && cross-env BABEL_ENV=esm rollup -c",
+    "build:typed": "tsc --declaration --emitDeclarationOnly --noEmit false --outDir dist/types",
     "build-css": "sass ./src/style/index.scss ./dist/index.css"
   },
   "peerDependencies": {
     "react": "^17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "classnames": "^2.3.1",
+    "react-is": "^18.0.0"
   },
   "dependencies": {
     "@types/node": "^17.0.21",
     "@types/react": "^17.0.33",
     "classnames": "^2.3.1",
-    "react-is": "^18.0.0",
-    "typescript": "^4.5.4",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-is": "^18.0.0",
+    "typescript": "^4.5.4"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.16.11",
@@ -54,6 +57,8 @@
     "@types/classnames": "^2.3.1",
     "@types/react-dom": "^17.0.10",
     "@vitejs/plugin-react": "^1.0.7",
+    "cross-env": "^7.0.3",
+    "fs": "^0.0.1-security",
     "rimraf": "^3.0.2",
     "rollup": "^2.69.2",
     "rollup-plugin-dts": "^4.2.0",
