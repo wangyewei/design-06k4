@@ -25,7 +25,6 @@ export type AnchorButtonProps = {
   // 去除AnchorHTMLAttributes<any>中的type和onClick
   Omit<AnchorHTMLAttributes<any>, 'type' | 'onClick'>
 
-
 export interface BaseButtonProps {
   type?: ButtonType,
   className?: string,
@@ -41,7 +40,9 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
     type = 'default',
     className,
     children,
-    onClick
+    onClick,
+    href,
+    ...rest
   } = props
 
   const prefixCls: string = getPrefixCls('btn')
@@ -53,9 +54,22 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
     className
   )
 
+  // anchor button
+
+  if (type === 'link' && href !== undefined) {
+    return <a
+      href={href}
+      className={cnmaes}
+      onClick={onClick}
+      {...rest}>
+      {children}
+    </a>
+  }
+
   const buttonNode: ReactNode = (
     <button className={cnmaes}
-      onClick={onClick}>
+      onClick={onClick}
+      {...rest}>
       <span>{children}</span>
     </button>
   )
