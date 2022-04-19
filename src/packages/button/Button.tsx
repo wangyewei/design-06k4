@@ -17,6 +17,9 @@ import classNames from "classnames"
 const ButtonTypes = tupleStr('default', 'primary', 'ghost', 'dashed', 'link', 'text')
 export type ButtonType = typeof ButtonTypes[number]
 
+const ButtonSizes = tupleStr('small', 'middle', 'large')
+export type ButtonSize = typeof ButtonSizes[number]
+
 export type AnchorButtonProps = {
   href: string,
   target?: string;
@@ -27,8 +30,9 @@ export type AnchorButtonProps = {
 
 export interface BaseButtonProps {
   type?: ButtonType,
+  size?: ButtonSize,
   className?: string,
-  children?: ReactNode
+  children?: ReactNode,
 }
 
 export type ButtonProps = Partial<AnchorButtonProps>
@@ -38,10 +42,12 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
 
   const {
     type = 'default',
+    size = 'middle',
     className,
     children,
     onClick,
     href,
+    style,
     ...rest
   } = props
 
@@ -49,18 +55,19 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
   const cnmaes = classNames(
     prefixCls,
     {
-      [`${prefixCls}-${type}`]: type
+      [`${prefixCls}-${type}`]: type,
+      [`${prefixCls}-${size}`]: size !== 'middle' && size
     },
     className
   )
 
   // anchor button
-
   if (type === 'link' && href !== undefined) {
     return <a
       href={href}
       className={cnmaes}
       onClick={onClick}
+      style={{ ...style }}
       {...rest}>
       {children}
     </a>
@@ -69,6 +76,7 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
   const buttonNode: ReactNode = (
     <button className={cnmaes}
       onClick={onClick}
+      style={{ ...style }}
       {...rest}>
       <span>{children}</span>
     </button>

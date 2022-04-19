@@ -50,6 +50,12 @@
   transition: all 0.3s ease-in-out;
   user-select: none;
   touch-action: manipulation;
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
+
   @include btn-size(
     $btn-height-base,
     $btn-padding-x,
@@ -57,6 +63,26 @@
     $font-size-base,
     $btn-border-radius
   );
+
+  &-small {
+    @include btn-size(
+      $btn-height-sm,
+      $btn-padding-x-sm,
+      $btn-padding-y-sm,
+      $btn-font-size-sm,
+      $btn-border-radius-sm
+    );
+  }
+
+  &-large {
+    @include btn-size(
+      $btn-height-lg,
+      $btn-padding-x-lg,
+      $btn-padding-y-lg,
+      $btn-font-size-lg,
+      $btn-border-radius-lg
+    );
+  }
 }
 
 @mixin btn-disabled(

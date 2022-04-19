@@ -45,7 +45,9 @@ $font-family-base: $font-family-sans-serif !default;
 // Error
 
 // 高度规则
-$height-base: 32x !default;
+$height-base: 32px !default;
+$height-lg: 40px !default;
+$height-sm: 24px !default;
 
 // 字体颜色
 $text-color: rgba(0, 0, 0, 80%);
@@ -189,8 +191,8 @@ $btn-font-family: $font-family-base !default;
 $btn-font-size: $font-size-base !default;
 $btn-line-height: $line-height-base !default;
 $btn-height-base: $height-base !default;
-
-// btn颜色
+$btn-height-sm: $height-sm !default;
+$btn-height-lg: $height-lg !default;
 
 $btn-default-color: $text-color;
 $btn-default-bg: $component-background;
