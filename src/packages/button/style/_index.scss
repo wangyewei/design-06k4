@@ -23,4 +23,8 @@
   &-text {
     @include btn-text();
   }
+
+  &-ghost {
+    @include btn-ghost();
+  }
 }

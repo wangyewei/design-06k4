@@ -1,3 +1,6 @@
+$btn-ghost-color: $text-color;
+$btn-ghost-bg: transparent;
+$btn-ghost-border: $border-color-base;
 @mixin btn-size($height, $padding-x, $padding-y, $font-size, $border-radius) {
   height: $height;
   padding: calc($padding-y * 0.4) calc($padding-x * 2.3);
@@ -122,7 +125,11 @@
 }
 
 @mixin btn-ghost() {
-  @include btn-variabel-other();
+  @include btn-variabel-other(
+    $btn-ghost-color,
+    $btn-ghost-bg,
+    $btn-ghost-border
+  );
 }
 
 @mixin btn-dashed() {

@@ -33,6 +33,7 @@ export interface BaseButtonProps {
   size?: ButtonSize,
   className?: string,
   children?: ReactNode,
+  ghost?: boolean,
 }
 
 export type ButtonProps = Partial<AnchorButtonProps>
@@ -43,6 +44,7 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
   const {
     type = 'default',
     size = 'middle',
+    ghost = false,
     className,
     children,
     onClick,
@@ -56,7 +58,8 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
     prefixCls,
     {
       [`${prefixCls}-${type}`]: type,
-      [`${prefixCls}-${size}`]: size !== 'middle' && size
+      [`${prefixCls}-${size}`]: size !== 'middle' && size,
+      [`${prefixCls}-ghost`]: ghost
     },
     className
   )
