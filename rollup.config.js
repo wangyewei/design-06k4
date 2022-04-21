@@ -49,6 +49,9 @@ const externalConfig = [
   'react-dom',
   'classname',
   'react-is',
+  "@fortawesome/fontawesome-svg-core",
+  "@fortawesome/free-solid-svg-icons",
+  "@fortawesome/react-fontawesome",
   '**/node_modules/**'
 ]
 

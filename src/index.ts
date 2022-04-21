@@ -9,11 +9,24 @@
  * @FilePath: \design-06k4\src\index.ts
  */
 import './style/index.scss'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+library.add(fas)
 
-export { default as KDivider } from '@/packages/divider/'
+export { default as KDivider } from '@/packages/divider'
 export type { BasedDividerProps } from '@/packages/divider'
 
-export { default as KButton } from '@/packages/button/'
+export { default as KButton } from '@/packages/button'
+export type { ButtonProps } from '@/packages/button'
+
 export { KRow, KCol } from '@/packages/grid'
+export type { RowProps } from '@/packages/grid'
+
 export { default as KLayout } from '@/packages/layout'
+export type { LayoutProps } from '@/packages/layout'
+
 export { default as KSpace } from '@/packages/space'
+export type { SpaceProps } from '@/packages/space'
+
+export { default as KIcon } from '@/packages/icon'
+export type { IconProps } from '@/packages/icon'

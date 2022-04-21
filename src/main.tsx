@@ -10,11 +10,15 @@
  */
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { ButtonDemo } from './packages/button/__example__/example'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+
+library.add(fas)
+import { BasicIcon } from './packages/icon/__example__/basic'
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <ButtonDemo />
+    <BasicIcon />
   </>,
   document.getElementById('root')
 )

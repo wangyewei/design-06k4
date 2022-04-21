@@ -1,6 +1,6 @@
 {
   "name": "design-06k4",
-  "version": "2.4.9",
+  "version": "2.5.0",
   "description": "React components library with Typescript",
   "author": "Yewei Wang<wangyewei1@foxmail.com>",
   "motto": "求知若渴 虚心若愚",
@@ -33,12 +33,18 @@
     "build-css": "sass ./src/style/index.scss ./dist/index.css"
   },
   "peerDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
+    "classnames": "^2.3.1",
     "react": "^17.0.2",
     "react-dom": "17.0.2",
-    "classnames": "^2.3.1",
     "react-is": "^18.0.0"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
     "@types/node": "^17.0.21",
     "@types/react": "^17.0.33",
     "classnames": "^2.3.1",
