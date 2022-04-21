@@ -31,11 +31,11 @@
     @include btn-ghost();
   }
 
-  &-circle {
+  &-shape-circle {
     @include btn-shape("circle");
   }
 
-  &-round {
+  &-shape-round {
     @include btn-shape("round");
   }
 }
