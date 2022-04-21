@@ -31,7 +31,11 @@
     @include btn-ghost();
   }
 
-  // &-danger {
-  //   @include btn-danger();
-  // }
+  &-circle {
+    @include btn-shape("circle");
+  }
+
+  &-round {
+    @include btn-shape("round");
+  }
 }

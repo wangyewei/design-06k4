@@ -123,6 +123,20 @@ $btn-ghost-border: $border-color-base;
   }
 }
 
+@mixin btn-shape($shape) {
+  @if $shape == circle {
+    border-radius: 100%;
+    width: 45px;
+    height: 45px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    justify-content: center;
+  } @else if $shape == round {
+    border-radius: 32px;
+  }
+}
+
 @mixin btn-default {
   @include btn-variabel-other(
     $btn-default-color,

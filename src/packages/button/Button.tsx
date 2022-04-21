@@ -20,6 +20,9 @@ export type ButtonType = typeof ButtonTypes[number]
 const ButtonSizes = tupleStr('small', 'middle', 'large')
 export type ButtonSize = typeof ButtonSizes[number]
 
+const ButtonShapes = tupleStr('default', 'round', 'circle')
+export type ButtonShape = typeof ButtonShapes[number]
+
 export type AnchorButtonProps = {
   href: string,
   target?: string;
@@ -35,7 +38,8 @@ export interface BaseButtonProps {
   children?: ReactNode,
   ghost?: boolean,
   danger?: boolean,
-  disabled?: boolean
+  disabled?: boolean,
+  shape?: ButtonShape,
 }
 
 export type ButtonProps = Partial<AnchorButtonProps>
@@ -49,6 +53,7 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
     ghost = false,
     danger = false,
     disabled = false,
+    shape = 'default',
     className,
     children,
     onClick,
@@ -65,6 +70,7 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
       [`${prefixCls}-${type}-danger`]: type && danger,
       [`${prefixCls}-${size}`]: size !== 'middle' && size,
       [`${prefixCls}-link-disabled`]: type === 'link' && disabled,
+      [`${prefixCls}-${shape}`]: shape !== 'default' && shape,
       [`${prefixCls}-ghost`]: !!ghost,
       [`${prefixCls}-ghost-danger`]: !!ghost && !!danger,
     },
