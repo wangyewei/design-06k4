@@ -1,6 +1,6 @@
 {
   "name": "design-06k4",
-  "version": "2.4.8",
+  "version": "2.4.9",
   "description": "React components library with Typescript",
   "author": "Yewei Wang<wangyewei1@foxmail.com>",
   "motto": "求知若渴 虚心若愚",
@@ -27,6 +27,7 @@
     "dev": "vite",
     "build": "pnpm run clean && rollup -c",
     "clean": "rimraf ./dist",
+    "update": "pnpm run build:esm && npm publish",
     "build:esm": "pnpm run clean && cross-env BABEL_ENV=esm rollup -c",
     "build:typed": "tsc --declaration --emitDeclarationOnly --noEmit false --outDir dist/types",
     "build-css": "sass ./src/style/index.scss ./dist/index.css"
