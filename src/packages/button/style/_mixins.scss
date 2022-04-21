@@ -130,6 +130,10 @@ $btn-ghost-border: $border-color-base;
     $btn-ghost-bg,
     $btn-ghost-border
   );
+
+  &-danger {
+    @include btn-variabel-other($error-color, transparent, $btn-danger-border);
+  }
 }
 
 @mixin btn-dashed() {
@@ -171,4 +175,8 @@ $btn-ghost-border: $border-color-base;
   }
 
   @include btn-disabled($disabled-color, transparent, transparent);
+}
+
+@mixin btn-danger {
+  @include btn-variabel($btn-danger-color, $btn-danger-bg, $btn-danger-border);
 }

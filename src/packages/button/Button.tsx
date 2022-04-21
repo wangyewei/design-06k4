@@ -34,6 +34,7 @@ export interface BaseButtonProps {
   className?: string,
   children?: ReactNode,
   ghost?: boolean,
+  danger?: boolean,
 }
 
 export type ButtonProps = Partial<AnchorButtonProps>
@@ -45,6 +46,7 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
     type = 'default',
     size = 'middle',
     ghost = false,
+    danger = false,
     className,
     children,
     onClick,
@@ -59,7 +61,9 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
     {
       [`${prefixCls}-${type}`]: type,
       [`${prefixCls}-${size}`]: size !== 'middle' && size,
-      [`${prefixCls}-ghost`]: ghost
+      [`${prefixCls}-ghost`]: !!ghost,
+      [`${prefixCls}-danger`]: !!danger && !!!ghost,
+      [`${prefixCls}-ghost-danger`]: !!ghost && !!danger
     },
     className
   )
