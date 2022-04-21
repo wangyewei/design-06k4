@@ -60,6 +60,7 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
     prefixCls,
     {
       [`${prefixCls}-${type}`]: type,
+      [`${prefixCls}-${type}-danger`]: type && danger,
       [`${prefixCls}-${size}`]: size !== 'middle' && size,
       [`${prefixCls}-ghost`]: !!ghost,
       [`${prefixCls}-danger`]: !!danger && !!!ghost,

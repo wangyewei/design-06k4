@@ -41,6 +41,23 @@ $btn-ghost-border: $border-color-base;
   }
 }
 
+@mixin btn-variabel-danger(
+  $color,
+  $background,
+  $border,
+  $hover-color,
+  $hover-bg,
+  $hover-border
+) {
+  @include btn-color($color, $background, $border);
+
+  &:hover,
+  &:focus,
+  &:active {
+    @include btn-color($hover-color, $hover-bg, $hover-border);
+  }
+}
+
 @mixin btn() {
   position: relative;
   display: inline-block;
@@ -105,8 +122,38 @@ $btn-ghost-border: $border-color-base;
   }
 }
 
+@mixin btn-default {
+  @include btn-variabel-other(
+    $btn-default-color,
+    $btn-default-bg,
+    $btn-default-border
+  );
+
+  &-danger {
+    @include btn-variabel-danger(
+      $error-color,
+      $btn-default-bg,
+      $error-color,
+      $error-color-hover,
+      $btn-default-bg,
+      $error-color-hover
+    );
+  }
+}
+
 @mixin btn-primary() {
-  @include btn-variabel(white, $primary, transparent);
+  @include btn-variabel(#fff, $primary, transparent);
+
+  &-danger {
+    @include btn-variabel-danger(
+      #fff,
+      $btn-danger-bg,
+      $btn-danger-border,
+      #fff,
+      $error-color-hover,
+      $error-color-hover
+    );
+  }
 }
 
 @mixin btn-variabel-other($color, $background, $border) {
@@ -114,7 +161,7 @@ $btn-ghost-border: $border-color-base;
 
   &:hover,
   &:focus {
-    @include btn-color($primary-5, $background, $primary-5);
+    @include btn-color($primary, $background, $primary);
   }
 
   &:active {
@@ -132,7 +179,14 @@ $btn-ghost-border: $border-color-base;
   );
 
   &-danger {
-    @include btn-variabel-other($error-color, transparent, $btn-danger-border);
+    @include btn-variabel-danger(
+      $error-color,
+      transparent,
+      $btn-danger-border,
+      $error-color-hover,
+      transparent,
+      $error-color-hover
+    );
   }
 }
 
@@ -143,6 +197,17 @@ $btn-ghost-border: $border-color-base;
     $btn-default-border
   );
   border-style: dashed;
+
+  &-danger {
+    @include btn-variabel-danger(
+      $error-color,
+      transparent,
+      $btn-danger-border,
+      $error-color-hover,
+      transparent,
+      $error-color-hover
+    );
+  }
 }
 
 @mixin btn-link() {
@@ -160,6 +225,16 @@ $btn-ghost-border: $border-color-base;
     border-color: transparent;
   }
 
+  &-danger {
+    @include btn-variabel-danger(
+      $error-color,
+      transparent,
+      transparent,
+      $error-color-hover,
+      $btn-link-hover-bg,
+      transparent
+    );
+  }
   @include btn-disabled($disabled-color, transparent, transparent);
 }
 
@@ -175,6 +250,16 @@ $btn-ghost-border: $border-color-base;
   }
 
   @include btn-disabled($disabled-color, transparent, transparent);
+  &-danger {
+    @include btn-variabel-danger(
+      $error-color,
+      transparent,
+      transparent,
+      $error-color-hover,
+      $btn-text-hover-bg,
+      transparent
+    );
+  }
 }
 
 @mixin btn-danger {
