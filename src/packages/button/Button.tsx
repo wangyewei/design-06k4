@@ -35,7 +35,7 @@ export interface BaseButtonProps {
   children?: ReactNode,
   ghost?: boolean,
   danger?: boolean,
-  disabeld?: boolean
+  disabled?: boolean
 }
 
 export type ButtonProps = Partial<AnchorButtonProps>
@@ -48,7 +48,7 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
     size = 'middle',
     ghost = false,
     danger = false,
-    disabeld = false,
+    disabled = false,
     className,
     children,
     onClick,
@@ -64,7 +64,7 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
       [`${prefixCls}-${type}`]: type,
       [`${prefixCls}-${type}-danger`]: type && danger,
       [`${prefixCls}-${size}`]: size !== 'middle' && size,
-      [`${prefixCls}-link-disabeld`]: type === 'link' && disabeld,
+      [`${prefixCls}-link-disabled`]: type === 'link' && disabled,
       [`${prefixCls}-ghost`]: !!ghost,
       [`${prefixCls}-ghost-danger`]: !!ghost && !!danger,
     },
@@ -78,7 +78,8 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
       className={cnmaes}
       onClick={onClick}
       style={{ ...style }}
-      {...rest}>
+      {...rest}
+    >
       {children}
     </a>
   }
@@ -87,7 +88,7 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
     <button className={cnmaes}
       onClick={onClick}
       style={{ ...style }}
-      disabled={disabeld}
+      disabled={disabled}
       {...rest}>
       <span>{children}</span>
     </button>
