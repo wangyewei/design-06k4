@@ -39,3 +39,16 @@
     @include btn-shape("round");
   }
 }
+.#{$prefix-cls}loding-icon {
+  animation: loding 1s linear infinite;
+}
+
+@keyframes loding {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

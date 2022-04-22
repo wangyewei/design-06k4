@@ -12,6 +12,7 @@
 import React, { AnchorHTMLAttributes, FC, forwardRef, ForwardRefRenderFunction, MouseEventHandler, ReactNode } from "react"
 import { tupleStr } from "@/utils"
 import { getPrefixCls } from '@/utils/index'
+import LoadingIcon from "./LoadingIcon"
 import classNames from "classnames"
 
 const ButtonTypes = tupleStr('default', 'primary', 'ghost', 'dashed', 'link', 'text')
@@ -40,6 +41,7 @@ export interface BaseButtonProps {
   danger?: boolean,
   disabled?: boolean,
   shape?: ButtonShape,
+  loading?: boolean,
 }
 
 export type ButtonProps = Partial<AnchorButtonProps>
@@ -54,6 +56,7 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
     danger = false,
     disabled = false,
     shape = 'default',
+    loading = false,
     className,
     children,
     onClick,
@@ -77,6 +80,7 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
     className
   )
 
+
   // anchor button
   if (type === 'link' && href !== undefined) {
     return <a
@@ -86,7 +90,7 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
       style={{ ...style }}
       {...rest}
     >
-      {children}
+      <span>{children}</span>
     </a>
   }
 
@@ -96,7 +100,7 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
       style={{ ...style }}
       disabled={disabled}
       {...rest}>
-      <span>{children}</span>
+      {loading ? <LoadingIcon loading /> : <span>{children}</span>}
     </button>
   )
   return <>{buttonNode}</>
