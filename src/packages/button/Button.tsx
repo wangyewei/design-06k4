@@ -13,7 +13,10 @@ import React, { AnchorHTMLAttributes, FC, forwardRef, ForwardRefRenderFunction, 
 import { tupleStr } from "@/utils"
 import { getPrefixCls } from '@/utils/index'
 import LoadingIcon from "./LoadingIcon"
+import KIcon from "../icon"
 import classNames from "classnames"
+import type { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
+
 
 const ButtonTypes = tupleStr('default', 'primary', 'ghost', 'dashed', 'link', 'text')
 export type ButtonType = typeof ButtonTypes[number]
@@ -42,6 +45,7 @@ export interface BaseButtonProps {
   disabled?: boolean,
   shape?: ButtonShape,
   loading?: boolean,
+  iconName?: FontAwesomeIconProps['icon'],
 }
 
 export type ButtonProps = Partial<AnchorButtonProps>
@@ -57,6 +61,7 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
     disabled = false,
     shape = 'default',
     loading = false,
+    iconName,
     className,
     children,
     onClick,
@@ -80,6 +85,9 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
     className
   )
 
+  const iconNode = () => {
+    if (iconName) return (<KIcon icon={iconName} />)
+  }
 
   // anchor button
   if (type === 'link' && href !== undefined) {
@@ -90,7 +98,7 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
       style={{ ...style }}
       {...rest}
     >
-      <span>{children}</span>
+      {loading ? <LoadingIcon loading /> : <span>{iconNode()}{children}</span>}
     </a>
   }
 
@@ -100,7 +108,7 @@ const RowButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) =
       style={{ ...style }}
       disabled={disabled}
       {...rest}>
-      {loading ? <LoadingIcon loading /> : <span>{children}</span>}
+      {loading ? <LoadingIcon loading /> : <span>{iconNode()}{children}</span>}
     </button>
   )
   return <>{buttonNode}</>
