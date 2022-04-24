@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode, HTMLAttributes } from "react";
+import React, { forwardRef, ReactNode, HTMLAttributes, CSSProperties, MouseEventHandler } from "react";
 import classNames from "classnames";
 import { getPrefixCls, tupleStr } from "@/utils";
 
@@ -6,15 +6,17 @@ const TextType = tupleStr('default', 'secondary', 'success', 'warning', 'danger'
 export type TextTypes = typeof TextType[number]
 
 export interface TextProps extends HTMLAttributes<HTMLSpanElement> {
-  children?: ReactNode;
-  className?: string;
-  type?: TextTypes;
+  children?: ReactNode,
+  className?: string,
+  style?: CSSProperties,
+  type?: TextTypes,
   disabled?: boolean,
   mark?: boolean,
   underline?: boolean,
   isDelete?: boolean,
   strong?: boolean,
-  italic?: boolean
+  italic?: boolean,
+  onClick?: MouseEventHandler<HTMLSpanElement>
 }
 
 const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
@@ -29,6 +31,7 @@ const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
     isDelete = false,
     strong = false,
     italic = false,
+    onClick,
     ...restProps
   } = props
 
@@ -52,6 +55,7 @@ const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
     <span ref={ref}
       className={cname}
       style={{ ...style }}
+      onClick={onClick}
       {...restProps}
     >
       {children}
