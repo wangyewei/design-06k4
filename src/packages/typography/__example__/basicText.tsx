@@ -16,6 +16,18 @@ const BasicText = () => {
       <Text type="warning">design 06k4 (warning)</Text>
       <br />
       <Text type="danger">design 06k4 (danger)</Text>
+      <br />
+      <Text disabled>design 06k4 (disabled)</Text>
+      <br />
+      <Text mark>design 06k4 (mark)</Text>
+      <br />
+      <Text underline>design 06k4 (underline)</Text>
+      <br />
+      <Text isDelete>design 06k4 (delete)</Text>
+      <br />
+      <Text strong>design 06k4 (strong)</Text>
+      <br />
+      <Text italic>design 06k4 (italic)</Text>
     </>
   )
 }

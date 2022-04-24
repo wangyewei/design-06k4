@@ -8,7 +8,13 @@ export type TextTypes = typeof TextType[number]
 export interface TextProps extends HTMLAttributes<HTMLSpanElement> {
   children?: ReactNode;
   className?: string;
-  type?: TextTypes,
+  type?: TextTypes;
+  disabled?: boolean,
+  mark?: boolean,
+  underline?: boolean,
+  isDelete?: boolean,
+  strong?: boolean,
+  italic?: boolean
 }
 
 const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
@@ -17,6 +23,12 @@ const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
     className,
     style,
     type = "default",
+    disabled = false,
+    mark = false,
+    underline = false,
+    isDelete = false,
+    strong = false,
+    italic = false,
     ...restProps
   } = props
 
@@ -26,6 +38,12 @@ const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
     prefixCls,
     {
       [`${prefixCls}-${type}`]: type,
+      [`${prefixCls}-disabled`]: disabled,
+      [`${prefixCls}-mark`]: mark,
+      [`${prefixCls}-underline`]: underline,
+      [`${prefixCls}-delete`]: isDelete,
+      [`${prefixCls}-strong`]: strong,
+      [`${prefixCls}-italic`]: italic,
     },
     className
   )
