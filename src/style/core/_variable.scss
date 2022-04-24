@@ -49,7 +49,8 @@ $height-lg: 40px !default;
 $height-sm: 24px !default;
 
 // 字体颜色
-$text-color: rgba(0, 0, 0, 80%);
+$text-color: rgba(0, 0, 0, 85%);
+$text-color-secondary: rgba(0, 0, 0, 55%);
 
 // 字体大小
 $font-size-base: 1rem !default; // Assumes the browser default, typically `16px`

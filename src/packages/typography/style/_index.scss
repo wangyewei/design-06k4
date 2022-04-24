@@ -1,29 +1,36 @@
-.#{$prefix-cls}title-1 {
-  font-size: 34px;
-  font-weight: 600;
+@import "./mixins";
+$title-size: (
+  "title-1": 34px,
+  "title-2": 30px,
+  "title-3": 26px,
+  "title-4": 22px,
+  "title-5": 18px,
+  "title-6": 16px,
+);
+@each $key, $value in $title-size {
+  .#{$prefix-cls}#{$key} {
+    font-size: $value;
+    font-weight: 500;
+  }
 }
 
-.#{$prefix-cls}title-2 {
-  font-size: 30px;
-  font-weight: 500;
-}
+.#{$prefix-cls}text {
+  color: $text-color;
+  overflow-wrap: break-word;
 
-.#{$prefix-cls}title-3 {
-  font-size: 26px;
-  font-weight: 400;
-}
+  &-secondary {
+    color: $text-color-secondary;
+  }
 
-.#{$prefix-cls}title-4 {
-  font-size: 22px;
-  font-weight: 500;
-}
+  &-success {
+    color: $success-color;
+  }
 
-.#{$prefix-cls}title-5 {
-  font-size: 18px;
-  font-weight: 500;
-}
+  &-warning {
+    color: $warning-color;
+  }
 
-.#{$prefix-cls}title-6 {
-  font-size: 14px;
-  font-weight: 500;
+  &-danger {
+    color: $error-color;
+  }
 }

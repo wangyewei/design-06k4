@@ -30,3 +30,6 @@ export type { SpaceProps } from '@/packages/space'
 
 export { default as KIcon } from '@/packages/icon'
 export type { IconProps } from '@/packages/icon'
+
+export { default as KTypography } from '@/packages/typography'
+export type { TypographyType } from '@/packages/typography'

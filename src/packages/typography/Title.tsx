@@ -33,7 +33,7 @@ const Title = forwardRef<HTMLDivElement, TitleProps>((props, ref) => {
   )
 
   return (
-    <TagName ref={ref} className={cname}>
+    <TagName ref={ref}>
       {children}
     </TagName>
   )
