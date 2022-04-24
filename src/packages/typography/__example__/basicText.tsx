@@ -1,7 +1,7 @@
 import React from "react";
 import KTypography from "..";
 import KDivider from "@/packages/divider";
-const { Text, Link } = KTypography
+const { Text, Link, Blockquote } = KTypography
 
 const BasicText = () => {
   return (
@@ -30,6 +30,14 @@ const BasicText = () => {
       <Text italic>design 06k4 (italic)</Text>
       <br />
       <Link href="https://06k4.com">design 06k4 (Link)</Link>
+      <br />
+      <Blockquote>
+        Author: 王野未
+        <br />
+        Motto: 求知若渴，虚心若愚
+        <br />
+        Email: wangyewei1@foxmail.com
+      </Blockquote>
     </>
   )
 }
