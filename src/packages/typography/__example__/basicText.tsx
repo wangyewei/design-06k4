@@ -1,7 +1,7 @@
 import React from "react";
 import KTypography from "..";
 import KDivider from "@/packages/divider";
-const { Text } = KTypography
+const { Text, Link } = KTypography
 
 const BasicText = () => {
   return (
@@ -28,6 +28,8 @@ const BasicText = () => {
       <Text strong>design 06k4 (strong)</Text>
       <br />
       <Text italic>design 06k4 (italic)</Text>
+      <br />
+      <Link href="https://06k4.com">design 06k4 (Link)</Link>
     </>
   )
 }
