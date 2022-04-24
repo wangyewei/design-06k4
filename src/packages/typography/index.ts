@@ -1,10 +1,11 @@
-import Title from "./Title";
-// import KTypography from "./Typography";
+import React, { ForwardRefExoticComponent } from "react";
+import Title, { TitleProps } from "./Title";
 
-const KTypography: Record<string, any> = {}
+export interface TypographyType {
+  'Title': TitleProps
+}
 
-// KTypography.Title = Title
+const KTypography: Record<keyof TypographyType, ForwardRefExoticComponent<TypographyType[keyof TypographyType]>> = { Title }
 
-KTypography.Title = Title
 
 export default KTypography

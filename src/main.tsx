@@ -14,11 +14,12 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 
 library.add(fas)
-import ButtonDemo from './packages/button/__example__/example'
+// import ButtonDemo from './packages/button/__example__/example'
+import BasicTitle from './packages/typography/__example__/basicTitle'
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <ButtonDemo />
+    <BasicTitle />
   </>,
   document.getElementById('root')
 )
