@@ -33,3 +33,6 @@ export type { IconProps } from '@/packages/icon'
 
 export { default as KTypography } from '@/packages/typography'
 export type { TypographyType } from '@/packages/typography'
+
+export { default as KAffix } from '@/packages/affix'
+export type { AffixProps } from '@/packages/affix'
