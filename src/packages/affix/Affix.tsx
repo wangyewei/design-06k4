@@ -2,6 +2,7 @@ import { getPrefixCls } from "@/utils";
 import classNames from "classnames";
 import React, { CSSProperties, ReactNode, useState, useEffect, FC } from "react";
 
+//////////////////////         性能不佳，往后版本进行更新  -  wangyewei        ///////////////////////////
 export interface AffixProps {
   offsetTop?: number,
   offsetBottom?: number,

@@ -32,7 +32,7 @@
 
 🚀 启动更快：采用 vite 替换 webpack cli，项目启动速度提升十倍。
 
-🚀 打包更快： 采用 rollup 替换 webpack 打包，打包速度更快。
+🚀 打包更快：采用 rollup 替换 webpack 打包，打包速度更快，出产体积更小。
 
 🚀 依赖安装快更：采用 pnpm 替换 npm 进行包管理，依赖安装速度更快。
 
@@ -55,8 +55,6 @@ ReactDOM.render(<KDivider />, mountNode)
 ```javasctipt
 import 'design-06k4/dist/index.css'
 ```
-
-🚀 依赖安装快更：采用 pnpm 替换 npm 进行包管理，依赖安装速度更快，更安全，且支持 monorepo。
 
 ### 按需加载
 
