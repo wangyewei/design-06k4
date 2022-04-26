@@ -1,10 +1,11 @@
 import { getPrefixCls } from "@/utils";
 import classNames from "classnames";
-import React, { CSSProperties, FC, ReactNode } from "react";
+import React, { CSSProperties, FC, MouseEventHandler, ReactNode } from "react";
 
 export interface BreadcrumbItemProps {
   href?: string,
   sparator?: ReactNode,
+  onClick?: MouseEventHandler<HTMLAnchorElement | HTMLSpanElement>,
   children?: ReactNode,
   style?: CSSProperties,
   className?: string,
@@ -12,7 +13,7 @@ export interface BreadcrumbItemProps {
 
 const KBreadcrumbItem: FC<BreadcrumbItemProps> = (props) => {
 
-  const { children, style, sparator = '/', className, ...restprops } = props
+  const { children, style, sparator = '/', className, onClick, ...restprops } = props
 
   const prefixCls = getPrefixCls('breadcrumb-item')
 
@@ -23,15 +24,15 @@ const KBreadcrumbItem: FC<BreadcrumbItemProps> = (props) => {
   let link: ReactNode;
   if ('link' in props) {
     link = (
-      <a className={`${prefixCls}-link`} {...restprops}>{children}</a>
+      <a className={`${prefixCls}-link`} onClick={onClick} {...restprops}>{children}</a>
     )
   } else {
     link = (
-      <span className={`${prefixCls}-link`} {...restprops}>{children}</span>
+      <span className={`${prefixCls}-link`} onClick={onClick} {...restprops}>{children}</span>
     )
   }
   return (
-    <li>{link}{sparator && <span className={`${prefixCls}-sparator`}>{sparator}</span>}</li>
+    <li className={cname}>{link}{sparator && <span className={`${prefixCls}-sparator`}>{sparator}</span>}</li>
   )
 }
 
