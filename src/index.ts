@@ -36,3 +36,6 @@ export type { TypographyType } from '@/packages/typography'
 
 export { default as KAffix } from '@/packages/affix'
 export type { AffixProps } from '@/packages/affix'
+
+export { default as KBreadcrumb } from '@/packages/breadcrunmb'
+export type { BreadcrumbProps } from '@/packages/breadcrunmb'

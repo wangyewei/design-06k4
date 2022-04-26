@@ -17,11 +17,12 @@ library.add(fas)
 // import ButtonDemo from './packages/button/__example__/example'
 // import BasicTitle from './packages/typography/__example__/basicTitle'
 // import BasicText from './packages/typography/__example__/basicText'
-import BasicAffix from './packages/affix/__example__/basic'
+// import BasicAffix from './packages/affix/__example__/basic'
+import BasicBreadcrumb from './packages/breadcrunmb/__example__/basic'
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <BasicAffix />
+    <BasicBreadcrumb />
   </>,
   document.getElementById('root')
 )
