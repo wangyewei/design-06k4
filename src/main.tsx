@@ -18,11 +18,12 @@ library.add(fas)
 // import BasicTitle from './packages/typography/__example__/basicTitle'
 // import BasicText from './packages/typography/__example__/basicText'
 // import BasicAffix from './packages/affix/__example__/basic'
-import BasicBreadcrumb from './packages/breadcrunmb/__example__/basic'
+// import BasicBreadcrumb from './packages/breadcrunmb/__example__/basic'
+import WithRouter from './packages/breadcrunmb/__example__/WithRouter'
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <BasicBreadcrumb />
+    <WithRouter />
   </>,
   document.getElementById('root')
 )

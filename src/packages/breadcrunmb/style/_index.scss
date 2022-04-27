@@ -7,6 +7,11 @@
     flex-wrap: wrap;
   }
 
+  .#{$prefix-cls}icon {
+    margin: 0 4px;
+    font-size: $breadcrumb-icon-size;
+  }
+
   a {
     color: $breadcrumb-link-color;
     transition: color 0.3s;

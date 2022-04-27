@@ -1,0 +1,63 @@
+.container {
+  width: 80%;
+  margin: 20px auto;
+  border-radius: 3px 3px 0 0;
+  box-shadow: 0 0.1em 0.5em #00000047;
+  padding-bottom: 20px;
+
+  .nav {
+    height: 28px;
+    border-radius: 3px 3px 0 0;
+    background: rgba(0, 0, 0, 0.22);
+
+    .left {
+      display: inline-block;
+      width: 30%;
+    }
+    .left > span {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border-radius: 100%;
+      margin: 6px;
+
+      &:nth-child(1) {
+        background-color: rgba(255, 68, 68);
+      }
+
+      &:nth-child(2) {
+        background-color: rgba(153, 187, 51);
+      }
+
+      &:nth-child(3) {
+        background-color: rgba(255, 187, 85);
+      }
+    }
+
+    .searchbar {
+      display: inline-block;
+      width: 60%;
+      height: 20px;
+      margin: 3px;
+      background-color: #f8f8f8;
+      border-radius: 4px;
+    }
+  }
+}
+
+.demo {
+  margin: 16px;
+}
+.demo-nav {
+  height: 30px;
+  margin-bottom: 16px;
+  line-height: 30px;
+  background: #f8f8f8;
+}
+.demo-nav a {
+  padding: 0 8px;
+  line-height: 30px;
+}
+.app-list {
+  margin-top: 16px;
+}
