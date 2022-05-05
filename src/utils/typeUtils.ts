@@ -18,3 +18,5 @@ export type BasedProps = {
 // 在没有枚举开销的情况下获取字符串文字类型的数组值的方法
 export const tupleStr = <T extends string[]>(...args: T) => args
 export const tupleNum = <T extends number[]>(...args: T) => args
+
+

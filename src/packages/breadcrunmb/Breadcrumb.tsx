@@ -38,7 +38,7 @@ const KBreadcrumb: BreadcrumbPreProps = (props) => {
   }
   return (
     <nav className={cname} style={{ ...style }} {...restProps}>
-      <ol>{children}</ol>
+      <ol>{crumbs}</ol>
     </nav>
   )
 }
