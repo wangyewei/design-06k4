@@ -1,4 +1,4 @@
-import React, { FC, CSSProperties, ReactNode, createContext, useState } from "react";
+import React, { FC, CSSProperties, ReactNode, createContext, useState, SetStateAction, Dispatch } from "react";
 import { getPrefixCls } from "@/utils";
 import classNames from "classnames";
 import KDropDownMenu from "./DropdownMenu";
@@ -23,7 +23,13 @@ export interface DropdownPreProps extends FC<DropDownProps> {
   Item?: typeof KDropDownItem;
 }
 
-export const VisibleContext = createContext<boolean>(false)
+export const VisibleContext = createContext<{
+  visible: boolean,
+  setVisible: Dispatch<SetStateAction<boolean>>
+}>({
+  visible: false,
+  setVisible: () => 0
+})
 
 const KDropDown: DropdownPreProps = (props) => {
 
@@ -61,7 +67,7 @@ const KDropDown: DropdownPreProps = (props) => {
       onMouseLeave={() => mouseLeave()}
       onClick={() => onClick()}
     >
-      <VisibleContext.Provider value={menuvisible}>
+      <VisibleContext.Provider value={{ visible: menuvisible, setVisible: setMenuvisible }}>
         <div className={`${prefixCls}-title`}
         >
           {title}

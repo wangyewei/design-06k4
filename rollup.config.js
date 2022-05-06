@@ -108,7 +108,8 @@ export default () => {
           external: externalConfig,
           plugins: [postcss({
             extract: true,
-            process: processScss
+            process: processScss,
+
           }), ...commonPlugins]
         },
         {
@@ -117,7 +118,8 @@ export default () => {
           external: externalConfig,
           plugins: [postcss({
             extract: true,
-            process: processScss
+            process: processScss,
+
           }), ...commonPlugins, dts()]
         }
       ]

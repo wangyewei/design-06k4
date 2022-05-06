@@ -8,6 +8,7 @@
     box-shadow: $dropdown-menu-boxshadow;
     border-radius: $dropdown-menu-border-radius;
     padding: $padding-m 0;
+    z-index: 999;
     // animation
     opacity: 1;
     transition: 0.25s all ease-in-out;

@@ -15,7 +15,7 @@ export interface DropDwonItemProps {
 
 const KDropDwonItem: FC<DropDwonItemProps> = props => {
 
-  const visible = useContext(VisibleContext)
+  const { visible, setVisible } = useContext(VisibleContext)
 
   const { className, children, style, disabled = false, danger = false, changeVisible = true, onClick, ...restProps } = props
 
@@ -30,8 +30,7 @@ const KDropDwonItem: FC<DropDwonItemProps> = props => {
   )
 
   const liclick = (visible: boolean) => {
-    // visible = false
-    console.log(visible)
+    changeVisible && setVisible(false)
     onClick && onClick(visible)
   }
   return (

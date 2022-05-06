@@ -10,8 +10,8 @@ export interface DropDwonMenuProps {
 }
 const KDropDownMenu: FC<DropDwonMenuProps> = (props) => {
 
+  const { visible } = useContext(VisibleContext)
 
-  const visible = useContext(VisibleContext)
   const { className, children, ...restProps } = props
 
   const prefixCls = getPrefixCls('dropdown-menu')
