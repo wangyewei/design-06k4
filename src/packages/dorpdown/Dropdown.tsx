@@ -1,5 +1,6 @@
-import React, { FC, CSSProperties, ReactNode, createContext, useState, SetStateAction, Dispatch } from "react";
+import React, { FC, CSSProperties, ReactNode, createContext, useState, SetStateAction, Dispatch, useEffect } from "react";
 import { getPrefixCls } from "@/utils";
+import { findElement } from "../_utils";
 import classNames from "classnames";
 import KDropdownMenu from "./DropdownMenu";
 import KDropdownItem from './DropdownItem'
@@ -55,17 +56,43 @@ const KDropdown: DropdownPreProps = (props) => {
       onVisibleChange && onVisibleChange(!menuvisible)
     }
   }
-  const onClick = () => {
+  const onClick = (state?: boolean) => {
     if (trigger === 'click') {
-      setMenuvisible(true)
+      setMenuvisible(state)
       onVisibleChange && onVisibleChange(!menuvisible)
     }
   }
+
+
+  // BUG
+  const clickEvent = (ele: Element, className: string, end: string): boolean => {
+    if (ele?.className === className) {
+      return true
+    } else if (ele?.tagName === 'BODY' || ele?.tagName === 'HTML') {
+      return false
+    } else if (ele?.id === end) {
+      clickEvent(ele.parentElement, className, end)
+    }
+  }
+
+
+  useEffect(() => {
+    document.addEventListener('click', (e: MouseEvent) => {
+      if (clickEvent((e.target as Element), 'k_dropdown-title', 'root') === false) {
+        onClick(false)
+      }
+    })
+    return () => document.addEventListener('click', () => { })
+  }, [])
+
+
+
   return (
     <div className={cname}
       onMouseEnter={() => mouseEnter()}
       onMouseLeave={() => mouseLeave()}
-      onClick={() => onClick()}
+      onClick={() => onClick(true)}
+      style={{ ...style }}
     >
       <VisibleContext.Provider value={{ visible: menuvisible, setVisible: setMenuvisible }}>
         <div className={`${prefixCls}-title`}

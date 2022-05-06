@@ -1,9 +1,11 @@
 .#{$prefix-cls}dropdown {
   position: relative;
+  box-sizing: border-box;
+  width: fit-content;
 
   &-menu {
-    // base
     position: absolute;
+    width: max-content;
     background: $dropdown-menu-bg;
     box-shadow: $dropdown-menu-boxshadow;
     border-radius: $dropdown-menu-border-radius;
@@ -19,6 +21,22 @@
       transform: scale(0.8);
       opacity: 0;
       visibility: hidden;
+    }
+
+    &-arrow {
+      margin-top: $padding-l;
+      &::before {
+        position: absolute;
+        content: "";
+        width: 15px;
+        height: 10px;
+        display: block;
+        clip-path: polygon(50% 0, 0 100%, 100% 100%);
+        background-color: $component-background;
+        top: -9px;
+        // border: 1px solid red;
+        left: 10%;
+      }
     }
   }
 
