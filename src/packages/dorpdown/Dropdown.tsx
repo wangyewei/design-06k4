@@ -1,8 +1,8 @@
 import React, { FC, CSSProperties, ReactNode, createContext, useState, SetStateAction, Dispatch } from "react";
 import { getPrefixCls } from "@/utils";
 import classNames from "classnames";
-import KDropDownMenu from "./DropdownMenu";
-import KDropDownItem from './DropdownItem'
+import KDropdownMenu from "./DropdownMenu";
+import KDropdownItem from './DropdownItem'
 
 ////////////////////  该版本Dropdown表现可能较差，下个版本进行升级 - wangyewei /////////////////////////////
 
@@ -19,8 +19,8 @@ interface DropDownProps {
 
 
 export interface DropdownPreProps extends FC<DropDownProps> {
-  Menu?: typeof KDropDownMenu;
-  Item?: typeof KDropDownItem;
+  Menu?: typeof KDropdownMenu;
+  Item?: typeof KDropdownItem;
 }
 
 export const VisibleContext = createContext<{
@@ -31,7 +31,7 @@ export const VisibleContext = createContext<{
   setVisible: () => 0
 })
 
-const KDropDown: DropdownPreProps = (props) => {
+const KDropdown: DropdownPreProps = (props) => {
 
   const { title, className, style, children, trigger = 'hover', onVisibleChange, ...restProps } = props
 
@@ -79,7 +79,7 @@ const KDropDown: DropdownPreProps = (props) => {
 }
 
 
-KDropDown.Menu = KDropDownMenu
-KDropDown.Item = KDropDownItem
+KDropdown.Menu = KDropdownMenu
+KDropdown.Item = KDropdownItem
 
-export default KDropDown
+export default KDropdown

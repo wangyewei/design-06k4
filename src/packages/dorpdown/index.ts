@@ -1,4 +1,4 @@
-import KDropDown from "./Dropdown";
+import KDropdown from "./Dropdown";
 
 export type { DropdownPreProps } from './Dropdown'
-export default KDropDown
+export default KDropdown

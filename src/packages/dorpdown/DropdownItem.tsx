@@ -13,7 +13,7 @@ export interface DropDwonItemProps {
   style?: CSSProperties,
 }
 
-const KDropDwonItem: FC<DropDwonItemProps> = props => {
+const KDropdownItem: FC<DropDwonItemProps> = props => {
 
   const { visible, setVisible } = useContext(VisibleContext)
 
@@ -40,4 +40,4 @@ const KDropDwonItem: FC<DropDwonItemProps> = props => {
   )
 }
 
-export default KDropDwonItem
+export default KDropdownItem

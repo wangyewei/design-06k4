@@ -8,7 +8,7 @@ export interface DropDwonMenuProps {
   style?: CSSProperties,
   className?: string,
 }
-const KDropDownMenu: FC<DropDwonMenuProps> = (props) => {
+const KDropdownMenu: FC<DropDwonMenuProps> = (props) => {
 
   const { visible } = useContext(VisibleContext)
 
@@ -28,4 +28,4 @@ const KDropDownMenu: FC<DropDwonMenuProps> = (props) => {
   )
 }
 
-export default KDropDownMenu
+export default KDropdownMenu

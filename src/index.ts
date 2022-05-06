@@ -41,5 +41,5 @@ export { default as KBreadcrumb } from '@/packages/breadcrunmb'
 export type { BreadcrumbProps } from '@/packages/breadcrunmb'
 
 
-export { default as KDropDown } from '@/packages/dorpdown'
+export { default as KDropdown } from '@/packages/dorpdown'
 export type { DropdownPreProps } from '@/packages/dorpdown'
