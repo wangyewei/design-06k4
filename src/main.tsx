@@ -20,12 +20,14 @@ library.add(fas)
 // import BasicAffix from './packages/affix/__example__/basic'
 // import BasicBreadcrumb from './packages/breadcrunmb/__example__/basic'
 // import WithRouter from './packages/breadcrunmb/__example__/WithRouter'
+// import BasicDropDown from './packages/dorpdown/__example__/baisc'
 
-import BasicDropDown from './packages/dorpdown/__example__/baisc'
+import HoriMenu from './packages/menu/__example__/horizontal-base'
+
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <BasicDropDown />
+    <HoriMenu />
   </>,
   document.getElementById('root')
 )
