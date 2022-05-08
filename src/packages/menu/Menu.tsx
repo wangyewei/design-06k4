@@ -1,19 +1,28 @@
+import React, { forwardRef, CSSProperties, Component, createContext, ForwardRefExoticComponent, RefAttributes, ReactNode, ReactHTMLElement, useRef, ReactElement, Dispatch, SetStateAction, useState } from "react";
 import { getPrefixCls } from "@/utils";
 import classNames from "classnames";
-import React, { forwardRef, CSSProperties, Component, createContext } from "react";
+import MenuItem, { MenuItemProps } from './MenuItem'
 
 type Mode = 'horizontal' | 'vertical'
 
+type SelectedType = number | string | undefined
+
 export interface MenuProps {
+  defaultSelected?: SelectedType
   mode?: Mode
   style?: CSSProperties,
-  className?: string
+  className?: string,
+  children?: ReactNode
 }
 
-export const MenuContext = createContext(null)
+export const MenuContext = createContext<{
+  mode: Mode,
+  selected: SelectedType,
+  setSelected: Dispatch<SetStateAction<SelectedType>>
+}>(null)
 const RowMenu = forwardRef<HTMLUListElement, MenuProps>((props, ref) => {
 
-  const { mode = 'horizontal', children, className, style, ...restProps } = props
+  const { mode = 'horizontal', children, className, style, defaultSelected, ...restProps } = props
 
   const prefixCls = getPrefixCls('menu')
 
@@ -25,19 +34,33 @@ const RowMenu = forwardRef<HTMLUListElement, MenuProps>((props, ref) => {
     },
     className
   )
+
+  const [selected, setSelected] = useState<string | number>(defaultSelected)
   return (
-    <ul ref={ref} className={cnames} style={{ ...style }}  {...restProps}>
-      {children}
-    </ul>
+    <MenuContext.Provider value={{
+      mode,
+      selected,
+      setSelected
+    }}>
+      <ul ref={ref} className={cnames} style={{ ...style }}  {...restProps}>
+        {children}
+      </ul>
+    </MenuContext.Provider>
   )
 })
 
 class KMenu extends Component<MenuProps, {}> {
+
+  static Item: ForwardRefExoticComponent<MenuItemProps & RefAttributes<HTMLLIElement>> = MenuItem
+
+  menu: HTMLUListElement | null
+
   render() {
     return (
-      <MenuContext.Provider value="1">
-        <RowMenu />
-      </MenuContext.Provider>
+      <RowMenu ref={node => this.menu = node}
+      // mode={this.props.mode}
+      >{this.props.children}
+      </RowMenu>
     )
   }
 }

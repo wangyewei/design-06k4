@@ -1,0 +1,27 @@
+.#{$prefix-cls}menu-horizontal {
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid $disabled-color;
+  // padding: $padding-l;
+  box-sizing: border-box;
+
+  height: 42px;
+  line-height: 42px;
+
+  // border: 1px solid red;
+}
+
+.#{$prefix-cls}menu-item-horizontal-item {
+  // margin: 0 $padding-m;
+  // border: 1px solid blue;
+  height: calc(42px - 2px);
+  cursor: pointer;
+  transition: 0.4s all ease-in-out;
+  border-bottom: 2px solid transparent;
+  padding: 0 $padding-m;
+  &-selectd,
+  &:hover {
+    color: $primary;
+    border-bottom: 2px solid $primary;
+  }
+}

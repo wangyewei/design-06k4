@@ -23,6 +23,7 @@ library.add(fas)
 // import BasicDropDown from './packages/dorpdown/__example__/baisc'
 
 import HoriMenu from './packages/menu/__example__/horizontal-base'
+// import Demo from './packages/test/demo'
 
 import './style/index.scss'
 ReactDOM.render(
