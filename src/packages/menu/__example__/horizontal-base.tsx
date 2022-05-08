@@ -5,7 +5,7 @@ const HoriMenu = () => {
 
   const { Item } = KMenu
   return (
-    <KMenu>
+    <KMenu defaultSelected="one">
       <Item itemKey="one"> Navigation One</Item>
       <Item itemKey="two"> Navigation two</Item>
     </KMenu>

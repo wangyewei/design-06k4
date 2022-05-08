@@ -40,6 +40,8 @@ export type { AffixProps } from '@/packages/affix'
 export { default as KBreadcrumb } from '@/packages/breadcrunmb'
 export type { BreadcrumbProps } from '@/packages/breadcrunmb'
 
-
 export { default as KDropdown } from '@/packages/dorpdown'
 export type { DropdownPreProps } from '@/packages/dorpdown'
+
+export { default as KMenu } from '@/packages/menu'
+export type { MenuProps } from '@/packages/menu'

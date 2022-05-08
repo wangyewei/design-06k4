@@ -5,7 +5,7 @@ import MenuItem, { MenuItemProps } from './MenuItem'
 
 type Mode = 'horizontal' | 'vertical'
 
-type SelectedType = number | string | undefined
+type SelectedType = number | string
 
 export interface MenuProps {
   defaultSelected?: SelectedType
@@ -22,7 +22,7 @@ export const MenuContext = createContext<{
 }>(null)
 const RowMenu = forwardRef<HTMLUListElement, MenuProps>((props, ref) => {
 
-  const { mode = 'horizontal', children, className, style, defaultSelected, ...restProps } = props
+  const { mode = 'horizontal', defaultSelected, children, className, style, ...restProps } = props
 
   const prefixCls = getPrefixCls('menu')
 
@@ -57,7 +57,7 @@ class KMenu extends Component<MenuProps, {}> {
 
   render() {
     return (
-      <RowMenu ref={node => this.menu = node}
+      <RowMenu ref={node => this.menu = node} defaultSelected={this.props.defaultSelected}
       // mode={this.props.mode}
       >{this.props.children}
       </RowMenu>
