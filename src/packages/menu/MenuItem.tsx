@@ -1,18 +1,20 @@
-import { getPrefixCls, childrenToArray } from "@/utils";
+import React, { CSSProperties, forwardRef, ReactNode, useContext } from "react";
+import KIcon, { IconProps } from "../icon";
 import classNames from "classnames";
+import { getPrefixCls } from "@/utils";
 import { MenuContext } from "./Menu";
-import React, { CSSProperties, forwardRef, ReactNode, useContext, cloneElement, ReactElement, useState } from "react";
 
 export interface MenuItemProps {
   itemKey?: string | number,
   className?: string,
   style?: CSSProperties,
   children?: ReactNode,
+  icon?: IconProps['icon']
 }
 
 const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>((props, ref) => {
 
-  const { className, style, children, itemKey, ...restProps } = props
+  const { className, style, children, itemKey, icon, ...restProps } = props
 
   const { mode, selected, setSelected } = useContext(MenuContext)
 
@@ -36,7 +38,7 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>((props, ref) => {
         setSelected((e.target as HTMLElement).dataset.menuId)
       }}
       {...restProps} >
-      {children}
+      {icon && <KIcon icon={icon} className={`${prefixCls}-${mode}-item-icon`} />}{children}
     </li>
   )
 })

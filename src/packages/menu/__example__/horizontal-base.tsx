@@ -6,8 +6,8 @@ const HoriMenu = () => {
   const { Item } = KMenu
   return (
     <KMenu defaultSelected="one">
-      <Item itemKey="one"> Navigation One</Item>
-      <Item itemKey="two"> Navigation two</Item>
+      <Item itemKey="one" icon="cloud-bolt"> Navigation One</Item>
+      <Item itemKey="two" icon="coffee"> Navigation two</Item>
     </KMenu>
   )
 }
