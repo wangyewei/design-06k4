@@ -37,6 +37,11 @@
     visibility: visible;
     transform: scale(1);
   }
+
+  .#{$prefix-cls}menu-item-horizontal-item-selectd {
+    background: rgba($primary, 0.2);
+    color: $primary-2;
+  }
 }
 
 .#{$prefix-cls}menu-item-horizontal-item {

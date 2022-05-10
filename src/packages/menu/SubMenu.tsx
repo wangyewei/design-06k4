@@ -41,6 +41,7 @@ const SubMenu = forwardRef<HTMLLIElement, SubMenuProps>((props, ref) => {
 
   return (
     <MenuItem ref={ref}
+      level={1}
       className={cnames}
       icon={icon}
       itemKey={itemKey}

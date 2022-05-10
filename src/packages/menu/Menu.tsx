@@ -10,7 +10,7 @@ type Mode = 'horizontal' | 'vertical'
 type SelectedType = number | string
 
 export interface MenuProps {
-  defaultSelected?: SelectedType
+  defaultSelected?: SelectedType[]
   mode?: Mode
   style?: CSSProperties,
   className?: string,
@@ -19,8 +19,8 @@ export interface MenuProps {
 
 export const MenuContext = createContext<{
   mode: Mode,
-  selected: SelectedType,
-  setSelected: Dispatch<SetStateAction<SelectedType>>
+  selected: SelectedType[],
+  setSelected: Dispatch<SetStateAction<SelectedType[]>>
 }>(null)
 const RowMenu = forwardRef<HTMLUListElement, MenuProps>((props, ref) => {
 
@@ -37,7 +37,7 @@ const RowMenu = forwardRef<HTMLUListElement, MenuProps>((props, ref) => {
     className
   )
 
-  const [selected, setSelected] = useState<string | number>(defaultSelected)
+  const [selected, setSelected] = useState<Array<string | number>>(defaultSelected)
   return (
     <MenuContext.Provider value={{
       mode,

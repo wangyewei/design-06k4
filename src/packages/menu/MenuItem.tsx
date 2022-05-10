@@ -5,6 +5,7 @@ import { getPrefixCls } from "@/utils";
 import { MenuContext } from "./Menu";
 
 export interface MenuItemProps {
+  level?: number,
   itemKey?: string | number,
   className?: string,
   style?: CSSProperties,
@@ -12,11 +13,22 @@ export interface MenuItemProps {
   icon?: IconProps['icon'],
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
+  onClick?: () => void;
 }
 
 const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>((props, ref) => {
 
-  const { className, style, children, itemKey, icon, onMouseEnter, onMouseLeave, ...restProps } = props
+  const {
+    level = 0,
+    className,
+    style,
+    children,
+    itemKey,
+    icon,
+    onMouseEnter,
+    onMouseLeave,
+    onClick,
+    ...restProps } = props
 
   const { mode, selected, setSelected } = useContext(MenuContext)
 
@@ -25,7 +37,7 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>((props, ref) => {
     prefixCls,
     {
       [`${prefixCls}-${mode}-item`]: mode,
-      [`${prefixCls}-${mode}-item-selectd`]: itemKey === selected
+      [`${prefixCls}-${mode}-item-selectd`]: selected.includes(itemKey)
     },
     className
   )
@@ -37,7 +49,11 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>((props, ref) => {
       style={{ ...style }}
       data-menu-id={itemKey}
       onClick={e => {
-        setSelected((e.target as HTMLElement).dataset.menuId)
+        const arrCopy = level === 0 ?
+          [(e.target as HTMLElement).dataset.menuId] :
+          [(e.target as HTMLElement).parentElement.parentElement.dataset.menuId, (e.target as HTMLElement).dataset.menuId];
+        setSelected(arrCopy)
+        onClick && onClick()
       }}
       onMouseEnter={() => onMouseEnter && onMouseEnter()}
       onMouseLeave={() => onMouseLeave && onMouseLeave()}
