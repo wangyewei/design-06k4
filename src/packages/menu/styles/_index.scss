@@ -6,6 +6,39 @@
   line-height: $menu-horizontal-height;
 }
 
+.#{$prefix-cls}submenu-horizontal {
+  position: relative;
+}
+
+.#{$prefix-cls}menu-submenu-horizontal-submenu {
+  position: absolute;
+  width: max-content;
+  background: $dropdown-menu-bg;
+  box-shadow: $dropdown-menu-boxshadow;
+  border-radius: $dropdown-menu-border-radius;
+  padding: $padding-m 0;
+  z-index: 999;
+  // animation
+  opacity: 0;
+  transition: 0.05s all ease-in-out;
+  visibility: hidden;
+  transform: scale(0.8);
+
+  .#{$prefix-cls}menu-item {
+    border: none;
+    &:hover {
+      border: none;
+      color: $primary-2;
+    }
+  }
+
+  &-open {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+}
+
 .#{$prefix-cls}menu-item-horizontal-item {
   height: calc($menu-horizontal-height - 2px);
   cursor: pointer;

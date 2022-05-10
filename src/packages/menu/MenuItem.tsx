@@ -9,12 +9,14 @@ export interface MenuItemProps {
   className?: string,
   style?: CSSProperties,
   children?: ReactNode,
-  icon?: IconProps['icon']
+  icon?: IconProps['icon'],
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
 const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>((props, ref) => {
 
-  const { className, style, children, itemKey, icon, ...restProps } = props
+  const { className, style, children, itemKey, icon, onMouseEnter, onMouseLeave, ...restProps } = props
 
   const { mode, selected, setSelected } = useContext(MenuContext)
 
@@ -37,6 +39,8 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>((props, ref) => {
       onClick={e => {
         setSelected((e.target as HTMLElement).dataset.menuId)
       }}
+      onMouseEnter={() => onMouseEnter && onMouseEnter()}
+      onMouseLeave={() => onMouseLeave && onMouseLeave()}
       {...restProps} >
       {icon && <KIcon icon={icon} className={`${prefixCls}-${mode}-item-icon`} />}{children}
     </li>

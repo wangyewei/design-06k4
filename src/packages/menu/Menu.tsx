@@ -2,6 +2,8 @@ import React, { forwardRef, CSSProperties, Component, createContext, ForwardRefE
 import { getPrefixCls } from "@/utils";
 import classNames from "classnames";
 import MenuItem, { MenuItemProps } from './MenuItem'
+import SubMenu, { SubMenuProps } from './SubMenu'
+
 
 type Mode = 'horizontal' | 'vertical'
 
@@ -52,6 +54,8 @@ const RowMenu = forwardRef<HTMLUListElement, MenuProps>((props, ref) => {
 class KMenu extends Component<MenuProps, {}> {
 
   static Item: ForwardRefExoticComponent<MenuItemProps & RefAttributes<HTMLLIElement>> = MenuItem
+
+  static SubMenu: ForwardRefExoticComponent<SubMenuProps & RefAttributes<HTMLLIElement>> = SubMenu
 
   menu: HTMLUListElement | null
 

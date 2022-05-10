@@ -3,11 +3,14 @@ import KMenu from "../";
 
 const HoriMenu = () => {
 
-  const { Item } = KMenu
+  const { Item, SubMenu } = KMenu
   return (
     <KMenu defaultSelected="one">
       <Item itemKey="one" icon="cloud-bolt"> Navigation One</Item>
-      <Item itemKey="two" icon="coffee"> Navigation two</Item>
+      <SubMenu title={<span>Naigation Two - Submenu</span>} icon="coffee">
+        <Item itemKey="two">submenu item one</Item>
+        <Item itemKey="three">submenu item two</Item>
+      </SubMenu>
     </KMenu>
   )
 }
