@@ -1,0 +1,54 @@
+.#{$prefix-cls}menu-vertical {
+  display: flex;
+  flex-direction: column;
+  // flex-wrap: wrap;
+  box-sizing: border-box;
+  // width: fit-content;
+  min-width: 300px;
+  border-right: 1px solid rgba(#000, 0.1);
+  padding: $padding-l 0 $padding-l $padding-l;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.#{$prefix-cls}menu-submenu-vertical-submenu {
+  display: flex;
+  flex-direction: column;
+  max-height: 0;
+
+  visibility: hidden;
+  padding-left: $padding-l;
+  background-color: rgba(#ccc, 0.1);
+  transition: 0.6s max-height ease-in-out, 0.1s visibility ease-in-out;
+  // transition: 0.3s  ease-in-out;
+
+  .#{$prefix-cls}menu-item-vertical-item {
+    position: relative;
+  }
+}
+
+.#{$prefix-cls}menu-item-vertical-item {
+  min-height: $menu-horizontal-height;
+  line-height: $menu-horizontal-height;
+  cursor: pointer;
+  transition: 0.24s all ease-in-out;
+  color: $text-color;
+  &-selectd,
+  &:hover {
+    color: $primary;
+  }
+
+  &-icon {
+    display: inline-block;
+    margin: 0 $padding-l 0 0;
+    font-size: 14px;
+  }
+}
+
+.#{$prefix-cls}menu-item-vertical-item-selectd {
+  .#{$prefix-cls}menu-submenu-vertical-submenu {
+    max-height: 100vh;
+    visibility: visible;
+  }
+}

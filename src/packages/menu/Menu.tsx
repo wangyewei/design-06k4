@@ -31,8 +31,7 @@ const RowMenu = forwardRef<HTMLUListElement, MenuProps>((props, ref) => {
   const cnames = classNames(
     prefixCls,
     {
-      [`${prefixCls}-horizontal`]: mode === 'horizontal',
-      [`${prefixCls}-vertical`]: mode === 'vertical'
+      [`${prefixCls}-${mode}`]: mode
     },
     className
   )
@@ -61,9 +60,11 @@ class KMenu extends Component<MenuProps, {}> {
 
   render() {
     return (
-      <RowMenu ref={node => this.menu = node} defaultSelected={this.props.defaultSelected}
-      // mode={this.props.mode}
-      >{this.props.children}
+      <RowMenu ref={node => this.menu = node}
+        defaultSelected={this.props.defaultSelected}
+        mode={this.props.mode}
+      >
+        {this.props.children}
       </RowMenu>
     )
   }
