@@ -23,13 +23,12 @@ library.add(fas)
 // import BasicDropDown from './packages/dorpdown/__example__/baisc'
 
 // import HoriMenu from './packages/menu/__example__/horizontal-base'
-import VerticalBaseMenu from './packages/menu/__example__/vertical-base'
-// import Demo from './packages/test/demo'
-
+// import VerticalBaseMenu from './packages/menu/__example__/vertical-base'
+import VerticalCollapesdMenu from './packages/menu/__example__/vertical-collapesd'
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <VerticalBaseMenu />
+    <VerticalCollapesdMenu />
   </>,
   document.getElementById('root')
 )

@@ -10,6 +10,14 @@
   position: relative;
   margin-top: 0;
   margin-left: 0;
+  transition: 0.25s all ease-in-out;
+
+  &-collapesd {
+    min-width: 45px;
+    max-width: 45px;
+    width: min-content;
+    overflow: hidden;
+  }
 }
 
 .#{$prefix-cls}menu-submenu-vertical-submenu {

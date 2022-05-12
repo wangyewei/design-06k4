@@ -14,24 +14,27 @@ export interface MenuProps {
   mode?: Mode
   style?: CSSProperties,
   className?: string,
-  children?: ReactNode
+  children?: ReactNode,
+  collapsed?: boolean
 }
 
 export const MenuContext = createContext<{
   mode: Mode,
   selected: SelectedType[],
   setSelected: Dispatch<SetStateAction<SelectedType[]>>
+  collapsed: boolean
 }>(null)
 const RowMenu = forwardRef<HTMLUListElement, MenuProps>((props, ref) => {
 
-  const { mode = 'horizontal', defaultSelected, children, className, style, ...restProps } = props
+  const { mode = 'horizontal', defaultSelected, children, className, style, collapsed = false, ...restProps } = props
 
   const prefixCls = getPrefixCls('menu')
 
   const cnames = classNames(
     prefixCls,
     {
-      [`${prefixCls}-${mode}`]: mode
+      [`${prefixCls}-${mode}`]: mode,
+      [`${prefixCls}-${mode}-collapesd`]: mode === "vertical" && collapsed
     },
     className
   )
@@ -41,7 +44,8 @@ const RowMenu = forwardRef<HTMLUListElement, MenuProps>((props, ref) => {
     <MenuContext.Provider value={{
       mode,
       selected,
-      setSelected
+      setSelected,
+      collapsed
     }}>
       <ul ref={ref} className={cnames} style={{ ...style }}  {...restProps}>
         {children}
@@ -61,8 +65,7 @@ class KMenu extends Component<MenuProps, {}> {
   render() {
     return (
       <RowMenu ref={node => this.menu = node}
-        defaultSelected={this.props.defaultSelected}
-        mode={this.props.mode}
+        {...this.props}
       >
         {this.props.children}
       </RowMenu>

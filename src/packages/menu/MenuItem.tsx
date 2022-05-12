@@ -30,7 +30,7 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>((props, ref) => {
     onClick,
     ...restProps } = props
 
-  const { mode, selected, setSelected } = useContext(MenuContext)
+  const { collapsed, mode, selected, setSelected } = useContext(MenuContext)
 
   const prefixCls = getPrefixCls('menu-item')
   const cnames = classNames(
@@ -58,7 +58,7 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>((props, ref) => {
       onMouseEnter={() => onMouseEnter && onMouseEnter()}
       onMouseLeave={() => onMouseLeave && onMouseLeave()}
       {...restProps} >
-      {icon && <KIcon icon={icon} className={`${prefixCls}-${mode}-item-icon`} />}{children}
+      {icon && <KIcon icon={icon} className={`${prefixCls}-${mode}-item-icon`} />}{!collapsed && children}
     </li>
   )
 })

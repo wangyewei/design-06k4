@@ -10,14 +10,14 @@ export interface SubMenuProps {
   children?: ReactNode,
   title?: ReactNode,
   icon?: IconProps['icon'],
-  itemKey?: string | number,
+  itemKey?: string | number
 }
 
 const SubMenu = forwardRef<HTMLLIElement, SubMenuProps>((props, ref) => {
 
   const { className, children, title, icon, itemKey, ...restProps } = props
 
-  const { mode } = useContext(MenuContext)
+  const { mode, collapsed } = useContext(MenuContext)
 
   const [visible, setVisible] = useState<boolean>(false)
   const prefixCls = getPrefixCls('menu-submenu')
@@ -50,10 +50,10 @@ const SubMenu = forwardRef<HTMLLIElement, SubMenuProps>((props, ref) => {
       onMouseLeave={() => setVisible(false)}
     >
 
-      {title}
+      {!collapsed && title}
 
       <ul className={submenuCls}>
-        {children}
+        {!collapsed && children}
       </ul>
 
     </MenuItem>

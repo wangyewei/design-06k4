@@ -5,7 +5,7 @@ const VerticalBaseMenu = () => {
 
   const { Item, SubMenu } = KMenu
   return (
-    <KMenu defaultSelected={['submenu-one']} mode="vertical">
+    <KMenu defaultSelected={['submenu-one', 'one-Three']} mode="vertical">
       <SubMenu title="Navigation One" itemKey="submenu-one" icon="cab">
         <Item itemKey="one-one">Sub-Menu Item One</Item>
         <Item itemKey="one-Two">Sub-Menu Item Two</Item>
