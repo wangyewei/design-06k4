@@ -5,10 +5,11 @@
   box-sizing: border-box;
   // width: fit-content;
   min-width: 300px;
+  width: fit-content;
   border-right: 1px solid rgba(#000, 0.1);
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: relative;
+  margin-top: 0;
+  margin-left: 0;
 }
 
 .#{$prefix-cls}menu-submenu-vertical-submenu {
