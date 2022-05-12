@@ -34,7 +34,7 @@ const RowMenu = forwardRef<HTMLUListElement, MenuProps>((props, ref) => {
     prefixCls,
     {
       [`${prefixCls}-${mode}`]: mode,
-      [`${prefixCls}-${mode}-collapesd`]: mode === "vertical" && collapsed
+      [`${prefixCls}-${mode}-collapsed`]: mode === "vertical" && collapsed
     },
     className
   )

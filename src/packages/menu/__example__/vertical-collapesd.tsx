@@ -4,13 +4,13 @@ import KButton from "@/packages/button";
 
 const VerticalCollapesdMenu = () => {
 
-  const [collapesd, setCollapesd] = useState<boolean>(false)
+  const [collapsed, setCollapesd] = useState<boolean>(false)
   const { Item, SubMenu } = KMenu
   return (
     <div>
 
-      <KButton type="primary" onClick={() => setCollapesd(!collapesd)}>{collapesd ? '展开' : '收起'}</KButton>
-      <KMenu defaultSelected={['submenu-one', 'one-Three']} mode="vertical" collapsed={collapesd}>
+      <KButton type="primary" onClick={() => setCollapesd(!collapsed)}>{collapsed ? '展开' : '收起'}</KButton>
+      <KMenu defaultSelected={['submenu-one', 'one-Three']} mode="vertical" collapsed={collapsed}>
         <SubMenu title="Navigation One" itemKey="submenu-one" icon="cab">
           <Item itemKey="one-one">Sub-Menu Item One</Item>
           <Item itemKey="one-Two">Sub-Menu Item Two</Item>
