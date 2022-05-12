@@ -38,7 +38,7 @@
     transform: scale(1);
   }
 
-  .#{$prefix-cls}menu-item-horizontal-item-selectd {
+  .#{$prefix-cls}menu-item-horizontal-item-selected {
     background: rgba($primary, 0.2);
     color: $primary-2;
   }
@@ -51,7 +51,7 @@
   border-bottom: 2px solid transparent;
   padding: 0 $padding-m;
   color: $text-color;
-  &-selectd,
+  &-selected,
   &:hover {
     color: $primary;
     border-bottom: 2px solid $primary;

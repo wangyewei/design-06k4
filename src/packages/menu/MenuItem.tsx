@@ -37,7 +37,7 @@ const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>((props, ref) => {
     prefixCls,
     {
       [`${prefixCls}-${mode}-item`]: mode,
-      [`${prefixCls}-${mode}-item-selectd`]: selected.includes(itemKey)
+      [`${prefixCls}-${mode}-item-selected`]: selected.includes(itemKey)
     },
     className
   )
