@@ -1,9 +1,7 @@
 .#{$prefix-cls}menu-vertical {
   display: flex;
   flex-direction: column;
-  // flex-wrap: wrap;
   box-sizing: border-box;
-  // width: fit-content;
   min-width: 300px;
   width: fit-content;
   border-right: 1px solid rgba(#000, 0.1);

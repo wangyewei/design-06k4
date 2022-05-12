@@ -45,3 +45,6 @@ export type { DropdownPreProps } from '@/packages/dorpdown'
 
 export { default as KMenu } from '@/packages/menu'
 export type { MenuProps } from '@/packages/menu'
+
+export { default as KPageHeader } from '@/packages/page-header'
+export type { PageHeaderProps } from '@/packages/page-header'

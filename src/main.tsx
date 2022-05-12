@@ -24,11 +24,12 @@ library.add(fas)
 
 // import HoriMenu from './packages/menu/__example__/horizontal-base'
 // import VerticalBaseMenu from './packages/menu/__example__/vertical-base'
-import VerticalCollapesdMenu from './packages/menu/__example__/vertical-collapesd'
+// import VerticalCollapesdMenu from './packages/menu/__example__/vertical-collapesd'
+import BasicPageHeader from './packages/page-header/__example__/base-page-header'
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <VerticalCollapesdMenu />
+    <BasicPageHeader />
   </>,
   document.getElementById('root')
 )
