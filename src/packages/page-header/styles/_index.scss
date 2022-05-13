@@ -1,9 +1,10 @@
 .#{$prefix-cls}page-header {
+  padding: $padding-l;
+
   &-header {
     display: flex;
     height: $page-header-header-height;
     align-items: center;
-    padding: 0 $padding-l;
 
     &-icon {
       font-size: $page-header-font-size-m;
@@ -27,6 +28,12 @@
       font-size: $page-header-font-size-s;
       font-weight: $page-header-font-weight-s;
       color: $page-header-text-color-secondary;
+    }
+
+    &-extra {
+      display: flex;
+      flex: 1;
+      justify-content: right;
     }
   }
 }

@@ -10,11 +10,13 @@ interface PageHeaderHeadProps {
   title?: ReactNode,
   subTitle?: ReactNode,
   onBack?: () => void;
+  extra?: ReactNode | ReactNode[]
 }
 
 export interface PageHeaderProps extends PageHeaderHeadProps {
   className?: string,
   style?: CSSProperties,
+  children?: ReactNode
 }
 
 const headderRender = ({
@@ -22,6 +24,7 @@ const headderRender = ({
   backIcon,
   title,
   subTitle,
+  extra,
   onBack
 }: PageHeaderHeadProps): ReactNode => {
 
@@ -34,19 +37,24 @@ const headderRender = ({
       }} />
       {title && <div className={`${innerCls}-title`}>{title}</div>}
       {subTitle && <div className={`${innerCls}-sub-title`}>{subTitle}</div>}
+
+      <div className={`${innerCls}-extra`}>{
+        extra && Array.isArray(extra) ? extra.map((node) => node) : extra
+      }</div>
     </div>
   )
 }
 
 const KPageHeader: FC<PageHeaderProps> = props => {
-
   const {
     className,
     style,
     backIcon = 'arrow-left',
     title,
     subTitle,
+    extra,
     onBack,
+    children,
     ...restProps
   } = props
 
@@ -58,7 +66,8 @@ const KPageHeader: FC<PageHeaderProps> = props => {
   )
   return (
     <div className={cnames} style={{ ...style }} {...restProps}>
-      {headderRender({ prefixCls, backIcon, title, subTitle, onBack })}
+      {headderRender({ prefixCls, backIcon, title, subTitle, extra, onBack })}
+      {children}
     </div>
   )
 }

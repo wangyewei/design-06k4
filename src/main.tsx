@@ -25,11 +25,13 @@ library.add(fas)
 // import HoriMenu from './packages/menu/__example__/horizontal-base'
 // import VerticalBaseMenu from './packages/menu/__example__/vertical-base'
 // import VerticalCollapesdMenu from './packages/menu/__example__/vertical-collapesd'
-import BasicPageHeader from './packages/page-header/__example__/base-page-header'
+// import BasicPageHeader from './packages/page-header/__example__/base-page-header'
+import BgcolorPageHeaderPage from './packages/page-header/__example__/Bgcolor-page-header-page'
+
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <BasicPageHeader />
+    <BgcolorPageHeaderPage />
   </>,
   document.getElementById('root')
 )
