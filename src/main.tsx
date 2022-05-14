@@ -28,13 +28,14 @@ library.add(fas)
 // import BasicPageHeader from './packages/page-header/__example__/base-page-header'
 // import BgcolorPageHeaderPage from './packages/page-header/__example__/Bgcolor-page-header-page'
 // import RoutsBreadcrumb from './packages/breadcrunmb/__example__/routsBreadcrumb'
-import BreadcrumbPageHeader from './packages/page-header/__example__/Breadcrumb-page-header'
+// import BreadcrumbPageHeader from './packages/page-header/__example__/Breadcrumb-page-header'
+import AbilityPageHeader from './packages/page-header/__example__/Ability-page-header'
 
 
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <BreadcrumbPageHeader />
+    <AbilityPageHeader />
   </>,
   document.getElementById('root')
 )

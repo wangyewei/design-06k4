@@ -18,6 +18,13 @@
       }
     }
 
+    &-avator {
+      width: calc($page-header-font-size-l + $page-header-font-size-m);
+      height: calc($page-header-font-size-l + $page-header-font-size-m);
+      border-radius: 100%;
+      margin-right: $page-header-margin-l;
+    }
+
     &-title {
       font-size: $page-header-font-size-m;
       font-weight: $page-header-font-weight-l;
@@ -29,6 +36,7 @@
       font-size: $page-header-font-size-s;
       font-weight: $page-header-font-weight-s;
       color: $page-header-text-color-secondary;
+      margin-right: $page-header-margin-l;
     }
 
     &-extra {

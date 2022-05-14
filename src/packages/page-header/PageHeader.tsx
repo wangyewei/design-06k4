@@ -12,15 +12,17 @@ interface PageHeaderHeadProps {
   subTitle?: ReactNode,
   onBack?: () => void,
   extra?: ReactNode | ReactNode[],
-  breadcrumb?: BreadcrumbProps | ReactElement<typeof KBreadcrumb>,
-  // routs?: BreadcrumbProps['routes'],
-  breadcrumbRender?: (props: PageHeaderProps, defaultDom: ReactNode) => ReactNode;
+  tag?: ReactNode,
+  avator?: string,
 }
 
 export interface PageHeaderProps extends PageHeaderHeadProps {
   className?: string,
   style?: CSSProperties,
-  children?: ReactNode
+  children?: ReactNode,
+  breadcrumb?: BreadcrumbProps | ReactElement<typeof KBreadcrumb>,
+  // routs?: BreadcrumbProps['routes'],
+  breadcrumbRender?: (props: PageHeaderProps, defaultDom: ReactNode) => ReactNode;
 }
 
 const renderbreadcrumb = (crumb): ReactNode => <KBreadcrumb {...crumb} />
@@ -31,6 +33,8 @@ const headderRender = ({
   title,
   subTitle,
   extra,
+  tag,
+  avator,
   onBack
 }: PageHeaderHeadProps): ReactNode => {
 
@@ -39,15 +43,18 @@ const headderRender = ({
   return (
     <div className={innerCls}>
       {
-        backIcon !== false && (
+        backIcon !== false && !avator && (
           <KIcon icon={(backIcon as IconProps['icon'])} className={`${innerCls}-icon`} onClick={() => {
             onBack && onBack()
           }} />
         )
       }
+      {
+        avator && <img src={avator} className={`${innerCls}-avator`} />
+      }
       {title && <div className={`${innerCls}-title`}>{title}</div>}
       {subTitle && <div className={`${innerCls}-sub-title`}>{subTitle}</div>}
-
+      {tag && tag}
       <div className={`${innerCls}-extra`}>{
         extra && Array.isArray(extra) ? extra.map((node) => node) : extra
       }</div>
@@ -68,6 +75,8 @@ const KPageHeader: FC<PageHeaderProps> = props => {
     breadcrumb,
     children,
     breadcrumbRender,
+    tag,
+    avator,
     ...restProps
   } = props
 
@@ -79,7 +88,7 @@ const KPageHeader: FC<PageHeaderProps> = props => {
   )
 
   const getDefaultBreadcrumbDom = () => {
-    if ((breadcrumb as BreadcrumbProps).routes) {
+    if ((breadcrumb as BreadcrumbProps)?.routes) {
       return renderbreadcrumb(breadcrumb as BreadcrumbProps);
     }
     return null
@@ -96,7 +105,7 @@ const KPageHeader: FC<PageHeaderProps> = props => {
   return (
     <div className={cnames} style={{ ...style }} {...restProps}>
       {breadcrumbDom}
-      {headderRender({ prefixCls, backIcon, title, subTitle, extra, onBack })}
+      {headderRender({ prefixCls, backIcon, title, subTitle, extra, tag, avator, onBack })}
       {children}
     </div>
   )
