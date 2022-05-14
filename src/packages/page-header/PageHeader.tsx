@@ -1,7 +1,8 @@
+import React, { CSSProperties, FC, ReactElement, ReactNode } from "react";
 import { getPrefixCls } from "@/utils";
 import classNames from "classnames";
-import React, { CSSProperties, FC, ReactNode } from "react";
 import KIcon, { IconProps } from "../icon";
+import KBreadcrumb, { BreadcrumbProps } from '../breadcrunmb'
 
 
 interface PageHeaderHeadProps {
@@ -9,8 +10,9 @@ interface PageHeaderHeadProps {
   backIcon?: IconProps['icon']
   title?: ReactNode,
   subTitle?: ReactNode,
-  onBack?: () => void;
-  extra?: ReactNode | ReactNode[]
+  onBack?: () => void,
+  extra?: ReactNode | ReactNode[],
+  breadcrumb?: BreadcrumbProps | ReactElement<typeof KBreadcrumb>
 }
 
 export interface PageHeaderProps extends PageHeaderHeadProps {
@@ -18,6 +20,8 @@ export interface PageHeaderProps extends PageHeaderHeadProps {
   style?: CSSProperties,
   children?: ReactNode
 }
+
+const breadCrumbRender = (crumb): ReactNode => <KBreadcrumb {...crumb} />
 
 const headderRender = ({
   prefixCls,
@@ -45,6 +49,7 @@ const headderRender = ({
   )
 }
 
+
 const KPageHeader: FC<PageHeaderProps> = props => {
   const {
     className,
@@ -54,6 +59,7 @@ const KPageHeader: FC<PageHeaderProps> = props => {
     subTitle,
     extra,
     onBack,
+    breadcrumb,
     children,
     ...restProps
   } = props
@@ -64,6 +70,7 @@ const KPageHeader: FC<PageHeaderProps> = props => {
     prefixCls,
     className
   )
+
   return (
     <div className={cnames} style={{ ...style }} {...restProps}>
       {headderRender({ prefixCls, backIcon, title, subTitle, extra, onBack })}
