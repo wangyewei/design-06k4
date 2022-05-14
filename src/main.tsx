@@ -27,13 +27,14 @@ library.add(fas)
 // import VerticalCollapesdMenu from './packages/menu/__example__/vertical-collapesd'
 // import BasicPageHeader from './packages/page-header/__example__/base-page-header'
 // import BgcolorPageHeaderPage from './packages/page-header/__example__/Bgcolor-page-header-page'
-import RoutsBreadcrumb from './packages/breadcrunmb/__example__/routsBreadcrumb'
+// import RoutsBreadcrumb from './packages/breadcrunmb/__example__/routsBreadcrumb'
+import BreadcrumbPageHeader from './packages/page-header/__example__/Breadcrumb-page-header'
 
 
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <RoutsBreadcrumb />
+    <BreadcrumbPageHeader />
   </>,
   document.getElementById('root')
 )

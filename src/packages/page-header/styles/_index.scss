@@ -1,9 +1,10 @@
 .#{$prefix-cls}page-header {
   padding: $padding-l;
+  // margin: 0;
 
   &-header {
     display: flex;
-    height: $page-header-header-height;
+    // height: $page-header-header-height;
     align-items: center;
 
     &-icon {

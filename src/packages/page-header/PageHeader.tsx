@@ -12,7 +12,9 @@ interface PageHeaderHeadProps {
   subTitle?: ReactNode,
   onBack?: () => void,
   extra?: ReactNode | ReactNode[],
-  breadcrumb?: BreadcrumbProps | ReactElement<typeof KBreadcrumb>
+  breadcrumb?: BreadcrumbProps | ReactElement<typeof KBreadcrumb>,
+  // routs?: BreadcrumbProps['routes'],
+  breadcrumbRender?: (props: PageHeaderProps, defaultDom: React.ReactNode) => React.ReactNode;
 }
 
 export interface PageHeaderProps extends PageHeaderHeadProps {
@@ -21,7 +23,7 @@ export interface PageHeaderProps extends PageHeaderHeadProps {
   children?: ReactNode
 }
 
-const breadCrumbRender = (crumb): ReactNode => <KBreadcrumb {...crumb} />
+const renderbreadcrumb = (crumb): ReactNode => <KBreadcrumb {...crumb} />
 
 const headderRender = ({
   prefixCls,
@@ -61,6 +63,7 @@ const KPageHeader: FC<PageHeaderProps> = props => {
     onBack,
     breadcrumb,
     children,
+    breadcrumbRender,
     ...restProps
   } = props
 
@@ -71,8 +74,24 @@ const KPageHeader: FC<PageHeaderProps> = props => {
     className
   )
 
+  const getDefaultBreadcrumbDom = () => {
+    if ((breadcrumb as BreadcrumbProps).routes) {
+      return renderbreadcrumb(breadcrumb as BreadcrumbProps);
+    }
+    return null
+  }
+
+  const defaultBreadcrumbDom = getDefaultBreadcrumbDom()
+
+  const isBreadcrumbComponent = breadcrumb && 'props' in breadcrumb
+
+  const breadcrumbRenderDomFromProps =
+    breadcrumbRender?.(props, defaultBreadcrumbDom) ?? defaultBreadcrumbDom
+
+  const breadcrumbDom = isBreadcrumbComponent ? breadcrumb : breadcrumbRenderDomFromProps
   return (
     <div className={cnames} style={{ ...style }} {...restProps}>
+      {breadcrumbDom}
       {headderRender({ prefixCls, backIcon, title, subTitle, extra, onBack })}
       {children}
     </div>
