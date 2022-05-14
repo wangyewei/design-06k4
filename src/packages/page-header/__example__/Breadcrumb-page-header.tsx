@@ -27,6 +27,7 @@ export default () => (
     title="Title"
     breadcrumb={{ routes }}
     subTitle="This is a subtitle"
+    backIcon={false}
     style={{ ...style }}
   />
 );

@@ -7,14 +7,14 @@ import KBreadcrumb, { BreadcrumbProps } from '../breadcrunmb'
 
 interface PageHeaderHeadProps {
   prefixCls?: string,
-  backIcon?: IconProps['icon']
+  backIcon?: IconProps['icon'] | boolean
   title?: ReactNode,
   subTitle?: ReactNode,
   onBack?: () => void,
   extra?: ReactNode | ReactNode[],
   breadcrumb?: BreadcrumbProps | ReactElement<typeof KBreadcrumb>,
   // routs?: BreadcrumbProps['routes'],
-  breadcrumbRender?: (props: PageHeaderProps, defaultDom: React.ReactNode) => React.ReactNode;
+  breadcrumbRender?: (props: PageHeaderProps, defaultDom: ReactNode) => ReactNode;
 }
 
 export interface PageHeaderProps extends PageHeaderHeadProps {
@@ -38,9 +38,13 @@ const headderRender = ({
 
   return (
     <div className={innerCls}>
-      <KIcon icon={backIcon} className={`${innerCls}-icon`} onClick={() => {
-        onBack && onBack()
-      }} />
+      {
+        backIcon !== false && (
+          <KIcon icon={(backIcon as IconProps['icon'])} className={`${innerCls}-icon`} onClick={() => {
+            onBack && onBack()
+          }} />
+        )
+      }
       {title && <div className={`${innerCls}-title`}>{title}</div>}
       {subTitle && <div className={`${innerCls}-sub-title`}>{subTitle}</div>}
 
