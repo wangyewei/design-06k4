@@ -17,8 +17,8 @@
     margin: 0 $padding-s;
     &-selected,
     &:not(&-icon-disabled):hover {
-      color: $primary-color;
-      border: 1px solid $primary-color;
+      color: $primary-color-active;
+      border: 1px solid $primary-color-active;
       font-weight: 600;
     }
 

@@ -1,6 +1,6 @@
 import { getPrefixCls } from "@/utils";
 import classNames from "classnames";
-import React, { CSSProperties, FC, useState } from "react";
+import React, { CSSProperties, FC, MouseEvent, useState } from "react";
 import KIcon from "../icon";
 
 export interface PaginationProps {
@@ -62,11 +62,13 @@ const KPagination: FC<PaginationProps> = props => {
     setCurrentPage(index)
   }
 
-  const preClick = (): void => {
+  const preClick = (e: MouseEvent): void => {
+    e.preventDefault()
     currentPage !== (totolPage(total, defaultPageSize).at(0) + 1) && setCurrentPage(currentPage - 1)
   }
 
-  const nextClick = (): void => {
+  const nextClick = (e: MouseEvent): void => {
+    e.preventDefault()
     currentPage !== (totolPage(total, defaultPageSize).at(-1) + 1) && setCurrentPage(currentPage + 1)
   }
   const itemRender = () => {
@@ -76,9 +78,9 @@ const KPagination: FC<PaginationProps> = props => {
   return (
     <div className={cname} style={{ ...style }} {...restProps}>
 
-      <span className={iconCls('left')} onClick={() => preClick()}><KIcon icon="angle-left" /></span>
+      <span className={iconCls('left')} onClick={(e) => preClick(e)}><KIcon icon="angle-left" /></span>
       {itemRender()}
-      <span className={iconCls('right')} onClick={() => nextClick()}><KIcon icon="angle-right"></KIcon></span>
+      <span className={iconCls('right')} onClick={(e) => nextClick(e)}><KIcon icon="angle-right"></KIcon></span>
 
     </div>
   )
