@@ -29,13 +29,15 @@ library.add(fas)
 // import BgcolorPageHeaderPage from './packages/page-header/__example__/Bgcolor-page-header-page'
 // import RoutsBreadcrumb from './packages/breadcrunmb/__example__/routsBreadcrumb'
 // import BreadcrumbPageHeader from './packages/page-header/__example__/Breadcrumb-page-header'
-import AbilityPageHeader from './packages/page-header/__example__/Ability-page-header'
+// import AbilityPageHeader from './packages/page-header/__example__/Ability-page-header'
+
+import BasicPagination from './packages/pagination/__example__/Basic-pagination'
 
 
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <AbilityPageHeader />
+    <BasicPagination />
   </>,
   document.getElementById('root')
 )

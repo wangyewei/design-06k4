@@ -1,0 +1,34 @@
+.#{$prefix-cls}pagination {
+  display: flex;
+
+  &-item {
+    display: block;
+    font-size: $pagination-font-size;
+    text-align: center;
+    background-color: $pagination-bg-color;
+    border: 1px solid $pagination-border-color;
+    border-radius: 2px;
+    outline: none;
+    width: $pagination-item-size;
+    height: $pagination-item-size;
+    line-height: $pagination-item-size;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: 0 $padding-s;
+    &-selected,
+    &:not(&-icon-disabled):hover {
+      color: $primary-color;
+      border: 1px solid $primary-color;
+      font-weight: 600;
+    }
+
+    &-icon {
+      &-disabled {
+        cursor: not-allowed;
+        user-select: none;
+        color: $disabled-color;
+        border: 1px solid $disabled-color;
+      }
+    }
+  }
+}

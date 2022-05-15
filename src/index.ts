@@ -48,3 +48,6 @@ export type { MenuProps } from '@/packages/menu'
 
 export { default as KPageHeader } from '@/packages/page-header'
 export type { PageHeaderProps } from '@/packages/page-header'
+
+export { default as KPagination } from '@/packages/pagination'
+export type { PaginationProps } from '@/packages/pagination'
