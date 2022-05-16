@@ -1,6 +1,6 @@
 import { getPrefixCls } from "@/utils";
 import classNames from "classnames";
-import React, { CSSProperties, FC, MouseEvent, useState } from "react";
+import React, { CSSProperties, FC, MouseEvent, ReactNode, useMemo, useState } from "react";
 import KIcon from "../icon";
 
 export interface PaginationProps {
@@ -31,16 +31,30 @@ const KPagination: FC<PaginationProps> = props => {
     className
   )
 
-  const totolPage = (totle: number, defaultPageSize: number): number[] => {
-    const _totolPage = Math.round(totle / defaultPageSize)
-    return Array.from({ length: _totolPage }, (v, i) => i)
+  const getTotalPage = (totle: number, defaultPageSize: number): number[] => {
+    const _totalPage = Math.round(totle / defaultPageSize)
+    return Array.from({ length: _totalPage }, (v, i) => i + 1)
   }
+
+  const getRenderStack = (list: number[]): number[] => {
+    const [...stack]: number[] = list;
+    if (stack.length <= 2) return;
+
+    stack.pop()
+    stack.shift()
+
+    return stack
+  }
+
+  const totalPage = getTotalPage(total, defaultPageSize)
+  const renderStack = getRenderStack(totalPage)
+
 
   const itemCls = (index) => {
     return classNames(
       `${prefixCls}-item`,
       {
-        [`${prefixCls}-item-selected`]: currentPage === index + 1
+        [`${prefixCls}-item-selected`]: currentPage === index
       }
     )
   }
@@ -51,28 +65,59 @@ const KPagination: FC<PaginationProps> = props => {
       {
         [`${prefixCls}-item-${oritation}-icon`]: oritation,
         [`${prefixCls}-item-icon-disabled`]:
-          (oritation === 'left' && currentPage === totolPage(total, defaultPageSize).at(0) + 1) ||
-          (oritation === 'right' && currentPage === totolPage(total, defaultPageSize).at(-1) + 1)
+          (oritation === 'left' && currentPage === totalPage.at(0)) ||
+          (oritation === 'right' && currentPage === totalPage.at(-1))
       },
       `${prefixCls}-item-icon`
     )
   }
 
   const itemClick = (index: number): void => {
+    console.log(totalPage)
+    console.log(renderStack)
     setCurrentPage(index)
   }
 
   const preClick = (e: MouseEvent): void => {
     e.preventDefault()
-    currentPage !== (totolPage(total, defaultPageSize).at(0) + 1) && setCurrentPage(currentPage - 1)
+    currentPage !== (totalPage.at(0)) && setCurrentPage(currentPage - 1)
   }
 
   const nextClick = (e: MouseEvent): void => {
     e.preventDefault()
-    currentPage !== (totolPage(total, defaultPageSize).at(-1) + 1) && setCurrentPage(currentPage + 1)
+    currentPage !== (totalPage.at(-1)) && setCurrentPage(currentPage + 1)
   }
-  const itemRender = () => {
-    return totolPage(total, defaultPageSize).map(index => <span className={`${itemCls(index)}`} key={index} onClick={() => itemClick(index + 1)}>{index + 1}</span>)
+
+  const itemRender = (): ReactNode => {
+    return (
+      <>
+        {
+          // 第一页
+          totalPage.length && (
+            <>
+              <span className={`${itemCls(1)}`} onClick={() => itemClick(1)}>1</span>
+            </>
+          )
+        }
+        {
+          renderStack.map(item => (
+            <span className={`${itemCls(item)}`}
+              onClick={() => itemClick(item)}
+              key={item}>
+              {item}
+            </span>
+          ))
+        }
+        {
+          // 最后一页
+          totalPage.length > 2 && (
+            <>
+              <span className={`${itemCls(totalPage.at(-1))}`} onClick={() => itemClick(totalPage.length)}>{totalPage.length}</span>
+            </>
+          )
+        }
+      </>
+    )
   }
 
   return (
