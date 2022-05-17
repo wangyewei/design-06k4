@@ -72,7 +72,7 @@ const KPagination: FC<PaginationProps> = props => {
     }
 
     // last 4 pages
-    if (endBit - currentPage < 4) {
+    if (endBit > 6 && endBit - currentPage < 4) {
       setRightEll(false)
       setRightEllIn(false)
       stack = [endBit - 3, endBit - 2, endBit - 1, endBit]
@@ -146,7 +146,6 @@ const KPagination: FC<PaginationProps> = props => {
     onPageChange && onPageChange(currentPage, totalPage.length)
   }, [currentPage])
   const itemRender = (): ReactNode => {
-
     return (
       <>
         {
