@@ -16,10 +16,19 @@
     // transition: all 0.3s;
     margin: 0 $padding-s;
     &-selected,
-    &:not(&-icon-disabled):hover {
+    &:not(&-icon-disabled, &-ellipsis-icon):hover {
       color: $primary-color-active;
       border: 1px solid $primary-color-active;
       font-weight: 600;
+    }
+
+    &-ellipsis-icon {
+      border: none;
+      color: $gray-600;
+
+      &:hover {
+        color: $primary-color-hover;
+      }
     }
 
     &-icon {

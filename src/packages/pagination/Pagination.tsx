@@ -10,6 +10,7 @@ export interface PaginationProps {
   defaultCurrent?: number,
   defaultPageSize?: number,
   total?: number,
+  onPageChange?: (page?: number, pageSize?: number) => void;
 }
 
 const KPagination: FC<PaginationProps> = props => {
@@ -20,11 +21,16 @@ const KPagination: FC<PaginationProps> = props => {
     defaultCurrent = 1,
     defaultPageSize = 10,
     total,
+    onPageChange,
     ...restProps } = props
 
+  /// Core State
   const [currentPage, setCurrentPage] = useState<number>(defaultCurrent)
+  /// UI Render State
   const [leftEll, setLeftEll] = useState<boolean>(false)
   const [rightEll, setRightEll] = useState<boolean>(false)
+  const [leftEllIn, setLeftEllIn] = useState<boolean>(false)
+  const [rightEllIn, setRightEllIn] = useState<boolean>(false)
 
   const prefixCls = getPrefixCls('pagination')
 
@@ -33,10 +39,12 @@ const KPagination: FC<PaginationProps> = props => {
     className
   )
 
-  const getTotalPage = (totle: number, defaultPageSize: number): number[] => {
-    const _totalPage = Math.round(totle / defaultPageSize)
+  const getTotalPage = (_totle: number, _defaultPageSize: number): number[] => useMemo(() => {
+    const _totalPage = Math.round(_totle / _defaultPageSize)
+    onPageChange && onPageChange(currentPage, _totalPage)
     return Array.from({ length: _totalPage }, (v, i) => i + 1)
-  }
+  }, [total, defaultPageSize])
+
 
   const getRenderStack = (list: number[]): number[] => useMemo(() => {
     let [...stack]: number[] = list;
@@ -50,6 +58,7 @@ const KPagination: FC<PaginationProps> = props => {
 
     if (stack.length < 4 || currentPage < 5) {
       setLeftEll(false)
+      setLeftEllIn(false)
     }
     // pre 4 pages
     if (stack.length > 4 && currentPage < 5) {
@@ -66,6 +75,7 @@ const KPagination: FC<PaginationProps> = props => {
     // last 4 pages
     if (endBit - currentPage < 4) {
       setRightEll(false)
+      setRightEllIn(false)
       stack = [endBit - 3, endBit - 2, endBit - 1, endBit]
     }
 
@@ -85,36 +95,59 @@ const KPagination: FC<PaginationProps> = props => {
     )
   }
 
-  const iconCls = (oritation: 'left' | 'right') => {
+  const iconCls = (oritation: 'left' | 'right' | 'ellipsis') => {
     return classNames(
       `${prefixCls}-item`,
       {
         [`${prefixCls}-item-${oritation}-icon`]: oritation,
         [`${prefixCls}-item-icon-disabled`]:
           (oritation === 'left' && currentPage === totalPage.at(0)) ||
-          (oritation === 'right' && currentPage === totalPage.at(-1))
+          (oritation === 'right' && currentPage === totalPage.at(-1)),
       },
       `${prefixCls}-item-icon`
     )
   }
 
   const itemClick = (index: number): void => {
-    console.log(totalPage)
-    console.log(renderStack)
     setCurrentPage(index)
+    onPageChange && onPageChange(currentPage, totalPage.length)
   }
 
   const preClick = (e: MouseEvent): void => {
     e.preventDefault()
     currentPage !== (totalPage.at(0)) && setCurrentPage(currentPage - 1)
+    onPageChange && onPageChange(currentPage, totalPage.length)
   }
 
   const nextClick = (e: MouseEvent): void => {
     e.preventDefault()
     currentPage !== (totalPage.at(-1)) && setCurrentPage(currentPage + 1)
+    onPageChange && onPageChange(currentPage, totalPage.length)
+  }
+
+  const preFivePage = (e: MouseEvent): void => {
+    e.preventDefault()
+    if (currentPage <= 5) {
+      setCurrentPage(1)
+    } else {
+      setCurrentPage(currentPage - 5)
+    }
+    onPageChange && onPageChange(currentPage, totalPage.length)
+  }
+
+  const nextFivePage = (e: MouseEvent): void => {
+    e.preventDefault()
+    if (totalPage.at(-1) - currentPage < 5) {
+      setCurrentPage(totalPage.at(-1))
+    } else {
+      setCurrentPage(currentPage + 5)
+    }
+    onPageChange && onPageChange(currentPage, totalPage.length)
+
   }
 
   const itemRender = (): ReactNode => {
+
     return (
       <>
         {
@@ -126,8 +159,12 @@ const KPagination: FC<PaginationProps> = props => {
           )
         }
         {
-          leftEll && (<span className={`${itemCls('')}`}>
-            ...
+          leftEll && (<span
+            className={`${iconCls('ellipsis')}`}
+            onMouseEnter={() => setLeftEllIn(true)}
+            onMouseLeave={() => setLeftEllIn(false)}
+            onClick={e => preFivePage(e)}>
+            {leftEllIn ? <KIcon icon="angles-left"></KIcon> : <KIcon icon="ellipsis" />}
           </span>)
         }
         {
@@ -140,11 +177,13 @@ const KPagination: FC<PaginationProps> = props => {
           ))
         }
         {
-          rightEll && (
-            <span className={`${itemCls('')}`}>
-              ...
-            </span>
-          )
+          rightEll && (<span
+            className={`${iconCls('ellipsis')}`}
+            onMouseEnter={() => setRightEllIn(true)}
+            onMouseLeave={() => setRightEllIn(false)}
+            onClick={e => nextFivePage(e)}>
+            {rightEllIn ? <KIcon icon="angles-right"></KIcon> : <KIcon icon="ellipsis" />}
+          </span>)
         }
         {
           // 最后一页
@@ -160,7 +199,6 @@ const KPagination: FC<PaginationProps> = props => {
 
   return (
     <div className={cname} style={{ ...style }} {...restProps}>
-
       <span className={iconCls('left')} onClick={(e) => preClick(e)}><KIcon icon="angle-left" /></span>
       {itemRender()}
       <span className={iconCls('right')} onClick={(e) => nextClick(e)}><KIcon icon="angle-right"></KIcon></span>
