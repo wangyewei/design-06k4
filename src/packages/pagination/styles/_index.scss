@@ -13,7 +13,7 @@
     height: $pagination-item-size;
     line-height: $pagination-item-size;
     cursor: pointer;
-    transition: all 0.3s;
+    // transition: all 0.3s;
     margin: 0 $padding-s;
     &-selected,
     &:not(&-icon-disabled):hover {
