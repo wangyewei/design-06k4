@@ -1,6 +1,6 @@
+import React, { CSSProperties, FC, memo, MouseEvent, ReactNode, useEffect, useMemo, useState } from "react";
 import { getPrefixCls } from "@/utils";
 import classNames from "classnames";
-import React, { CSSProperties, FC, memo, MouseEvent, ReactNode, useMemo, useState } from "react";
 import KIcon from "../icon";
 
 export interface PaginationProps {
@@ -41,7 +41,6 @@ const KPagination: FC<PaginationProps> = props => {
 
   const getTotalPage = (_totle: number, _defaultPageSize: number): number[] => useMemo(() => {
     const _totalPage = Math.round(_totle / _defaultPageSize)
-    onPageChange && onPageChange(currentPage, _totalPage)
     return Array.from({ length: _totalPage }, (v, i) => i + 1)
   }, [total, defaultPageSize])
 
@@ -110,19 +109,18 @@ const KPagination: FC<PaginationProps> = props => {
 
   const itemClick = (index: number): void => {
     setCurrentPage(index)
-    onPageChange && onPageChange(currentPage, totalPage.length)
+
   }
 
   const preClick = (e: MouseEvent): void => {
     e.preventDefault()
     currentPage !== (totalPage.at(0)) && setCurrentPage(currentPage - 1)
-    onPageChange && onPageChange(currentPage, totalPage.length)
+
   }
 
   const nextClick = (e: MouseEvent): void => {
     e.preventDefault()
     currentPage !== (totalPage.at(-1)) && setCurrentPage(currentPage + 1)
-    onPageChange && onPageChange(currentPage, totalPage.length)
   }
 
   const preFivePage = (e: MouseEvent): void => {
@@ -132,7 +130,7 @@ const KPagination: FC<PaginationProps> = props => {
     } else {
       setCurrentPage(currentPage - 5)
     }
-    onPageChange && onPageChange(currentPage, totalPage.length)
+
   }
 
   const nextFivePage = (e: MouseEvent): void => {
@@ -142,10 +140,11 @@ const KPagination: FC<PaginationProps> = props => {
     } else {
       setCurrentPage(currentPage + 5)
     }
-    onPageChange && onPageChange(currentPage, totalPage.length)
-
   }
 
+  useEffect(() => {
+    onPageChange && onPageChange(currentPage, totalPage.length)
+  }, [currentPage])
   const itemRender = (): ReactNode => {
 
     return (
