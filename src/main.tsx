@@ -31,13 +31,14 @@ library.add(fas)
 // import BreadcrumbPageHeader from './packages/page-header/__example__/Breadcrumb-page-header'
 // import AbilityPageHeader from './packages/page-header/__example__/Ability-page-header'
 
-import BasicPagination from './packages/pagination/__example__/Basic-pagination'
+// import BasicPagination from './packages/pagination/__example__/Basic-pagination'
 
+import BasicSteps from './packages/stpes/__example__/Basic-steps'
 
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <BasicPagination />
+    <BasicSteps />
   </>,
   document.getElementById('root')
 )

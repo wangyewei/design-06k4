@@ -1,0 +1,7 @@
+.#{$prefix-cls}steps {
+  display: flex;
+  justify-content: space-around;
+  // justify-content: left;
+}
+
+@import "./step";

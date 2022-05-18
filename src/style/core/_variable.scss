@@ -377,3 +377,18 @@ $pagination-font-size: $font-size-sm;
 $pagination-bg-color: #ffffff;
 $pagination-border-color: #d9d9d9;
 $pagination-item-size: 30px;
+
+// steps
+$steps-font-size-s: $font-size-sm;
+$steps-font-size-m: $font-size-base;
+$steps-font-size-l: $font-size-lg;
+
+$step-tag-size-s: 20px;
+$step-tag-size-m: 24px;
+
+$step-base-color: $text-color;
+$step-secondary-color: $secondary;
+$step-current-color: $primary-color;
+$step-undo-color: rgba($step-secondary-color, 0.45);
+
+$step-margin-m: 12px;
