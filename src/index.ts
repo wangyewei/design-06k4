@@ -51,3 +51,6 @@ export type { PageHeaderProps } from '@/packages/page-header'
 
 export { default as KPagination } from '@/packages/pagination'
 export type { PaginationProps } from '@/packages/pagination'
+
+export { default as KSteps } from '@/packages/stpes'
+export type { StepsProps } from '@/packages/stpes'

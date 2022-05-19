@@ -1,0 +1,50 @@
+@mixin step-size($margin, $width-height, $font-size, $padding, $dot-size) {
+  .#{$step-prefix-cls} {
+    &-tag {
+      margin: 0 $step-margin-s;
+      &-inner {
+        width: $width-height;
+        height: $width-height;
+        line-height: $width-height;
+        padding: calc($margin / 4);
+        size: $font-size;
+      }
+    }
+    &-title {
+      font-size: $font-size;
+    }
+    &-subtitle {
+      margin-left: $padding;
+    }
+    &-dot {
+      padding: 0 $margin;
+      &-inner {
+        border-bottom: $dot-size solid $step-undo-color;
+
+        &-finished {
+          border-bottom: $dot-size solid $step-current-color;
+        }
+      }
+    }
+  }
+}
+
+@mixin steps-default-size {
+  @include step-size(
+    $step-margin-m,
+    $step-tag-size-m,
+    $steps-font-size-m,
+    $padding-l,
+    2px
+  );
+}
+
+@mixin steps-small-size {
+  @include step-size(
+    $step-margin-s,
+    $step-tag-size-s,
+    $steps-font-size-s,
+    $padding-s,
+    1px
+  );
+}

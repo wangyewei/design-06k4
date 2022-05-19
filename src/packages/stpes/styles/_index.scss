@@ -1,7 +1,102 @@
-.#{$prefix-cls}steps {
+@import "./mixins";
+
+$step-prefix-cls: #{$prefix-cls}step;
+$stpes-prefix-cls: #{$prefix-cls}steps;
+
+.#{$stpes-prefix-cls} {
   display: flex;
   justify-content: space-around;
-  // justify-content: left;
-}
 
-@import "./step";
+  @include steps-default-size();
+  .#{$step-prefix-cls} {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    transition: all 0.35s;
+
+    &-tag {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &-inner {
+        text-align: center;
+        border: 1px solid $step-undo-color;
+        color: $step-undo-color;
+        border-radius: 100%;
+      }
+    }
+    &-content {
+      display: flex;
+      flex-direction: column;
+    }
+    &-title {
+      color: $step-undo-color;
+    }
+
+    &-subtitle {
+      font-size: $steps-font-size-s;
+      color: $step-undo-color;
+    }
+
+    &-description {
+      color: $step-undo-color;
+      font-size: $steps-font-size-s;
+    }
+
+    &-dot {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      padding: 0 calc($step-margin-m);
+      &-inner {
+        flex: 1;
+      }
+    }
+
+    &-current {
+      .#{$step-prefix-cls}-tag {
+        &-inner {
+          color: #fff;
+          background: $step-current-color;
+          border: 1px solid $step-current-color;
+        }
+      }
+
+      .#{$step-prefix-cls}-title {
+        color: $step-base-color;
+      }
+
+      .#{$step-prefix-cls}-subtitle {
+        color: $step-secondary-color;
+      }
+      .#{$step-prefix-cls}-description {
+        color: $step-secondary-color;
+      }
+    }
+
+    &-finished {
+      .#{$step-prefix-cls}-tag {
+        &-inner {
+          color: $step-current-color;
+          border: 1px solid $step-current-color;
+        }
+      }
+
+      .#{$step-prefix-cls}-title {
+        color: $step-base-color;
+      }
+
+      .#{$step-prefix-cls}-subtitle {
+        color: $step-secondary-color;
+      }
+      .#{$step-prefix-cls}-description {
+        color: $step-secondary-color;
+      }
+    }
+  }
+
+  &-small {
+    @include steps-small-size();
+  }
+}

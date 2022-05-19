@@ -7,7 +7,8 @@ export interface StepsProps {
   className?: string,
   style?: CSSProperties,
   children?: ReactElement<StepProps>[],
-  current?: number
+  current?: number,
+  size?: 'small' | 'default'
 }
 
 interface StepState {
@@ -18,12 +19,15 @@ export const StepContext = createContext<StepState>(null)
 
 const RowSteps: FC<StepsProps> = props => {
 
-  const { current = 1, className, style, children, ...restProps } = props
+  const { current = 1, className, style, children, size = "default", ...restProps } = props
 
   const prefixCls = getPrefixCls('steps')
 
   const cname = classNames(
     prefixCls,
+    {
+      [`${prefixCls}-small`]: size === 'small'
+    },
     className
   )
 
@@ -50,7 +54,7 @@ const RowSteps: FC<StepsProps> = props => {
 
 class KSteps extends Component<StepsProps, {}> {
 
-  static Step: FC<StepProps> = KStep;
+  static Step = KStep;
 
   render() {
     return (

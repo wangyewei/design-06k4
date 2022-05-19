@@ -24,7 +24,7 @@ const KStep: FC<StepProps> = props => {
   const cname = classNames(
     prefixCls,
     {
-      [`${prefixCls}-finised`]: current > index,
+      [`${prefixCls}-finished`]: current > index,
       [`${prefixCls}-current`]: current === index
     },
     className
@@ -33,7 +33,7 @@ const KStep: FC<StepProps> = props => {
   const dotInnerCls = classNames(
     `${prefixCls}-dot-inner`,
     {
-      [`${prefixCls}-dot-inner-finnised`]: current > index
+      [`${prefixCls}-dot-inner-finished`]: current > index
     }
   )
   return (
