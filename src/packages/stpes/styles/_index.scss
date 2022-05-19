@@ -23,6 +23,10 @@ $stpes-prefix-cls: #{$prefix-cls}steps;
         border: 1px solid $step-undo-color;
         color: $step-undo-color;
         border-radius: 100%;
+
+        &-icon {
+          border: none !important;
+        }
       }
     }
     &-content {

@@ -1,3 +1,4 @@
+// size
 @mixin step-size($margin, $width-height, $font-size, $padding, $dot-size) {
   .#{$step-prefix-cls} {
     &-tag {

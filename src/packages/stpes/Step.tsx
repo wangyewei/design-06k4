@@ -2,8 +2,7 @@ import React, { CSSProperties, FC, ReactNode, useContext } from "react";
 import { getPrefixCls } from "@/utils";
 import classNames from "classnames";
 import { StepContext } from './Steps'
-import KIcon from "../icon";
-
+import KIcon, { IconProps } from "../icon";
 
 
 export interface StepProps {
@@ -14,11 +13,12 @@ export interface StepProps {
   description?: ReactNode
   dot?: boolean,
   index?: number,
+  icon?: IconProps['icon']
 }
 
 const KStep: FC<StepProps> = props => {
   const { current } = useContext(StepContext)
-  const { title, subTitle, className, style, description, dot, index, ...restProps } = props
+  const { title, subTitle, className, style, description, dot, index, icon = null, ...restProps } = props
   const prefixCls = getPrefixCls('step')
 
   const cname = classNames(
@@ -40,11 +40,14 @@ const KStep: FC<StepProps> = props => {
     <>
       <div className={cname} style={{ ...style }} {...restProps}>
         <div className={`${prefixCls}-tag`}>
-          <span className={`${prefixCls}-tag-inner`}>
+          <span className={`${prefixCls}-tag-inner ${icon === null ? '' : `${prefixCls}-tag-inner-icon`}`}>
             {
-              current > index ?
-                <KIcon icon="check" /> :
-                <span>{index}</span>
+              icon === null ?
+                current > index ?
+                  <KIcon icon="check" /> :
+                  <span>{index}</span>
+                :
+                <KIcon icon={icon} />
             }
           </span>
         </div>

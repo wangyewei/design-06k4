@@ -17,5 +17,14 @@ export default () => (
       <Step title="In Progress" />
       <Step title="Waiting" />
     </KSteps>
+
+    <div>带Icon的</div>
+
+    <KSteps current={3} >
+      <Step title="Login" icon="user" />
+      <Step title="Verification" icon="barcode" />
+      <Step title="Pay" icon="circle-notch" />
+      <Step title="Done" icon="book-bookmark" />
+    </KSteps>
   </>
 )
