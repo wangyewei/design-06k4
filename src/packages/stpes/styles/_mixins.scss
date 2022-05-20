@@ -3,7 +3,10 @@
   .#{$step-prefix-cls} {
     &-tag {
       margin: 0 $step-margin-s;
+      transition: 0.25s all ease-in-out;
+
       &-inner {
+        transition: 0.25s all ease-in-out;
         width: $width-height;
         height: $width-height;
         line-height: $width-height;
@@ -12,14 +15,20 @@
       }
     }
     &-title {
+      transition: 0.25s all ease-in-out;
       font-size: $font-size;
     }
     &-subtitle {
+      transition: 0.25s all ease-in-out;
       margin-left: $padding;
     }
     &-dot {
       padding: 0 $margin;
+      transition: 0.25s all ease-in-out;
+
       &-inner {
+        transition: 0.25s all ease-in-out;
+
         border-bottom: $dot-size solid $step-undo-color;
 
         &-finished {

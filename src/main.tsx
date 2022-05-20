@@ -33,12 +33,13 @@ library.add(fas)
 
 // import BasicPagination from './packages/pagination/__example__/Basic-pagination'
 
-import BasicSteps from './packages/stpes/__example__/Basic-steps'
+// import BasicSteps from './packages/stpes/__example__/Basic-steps'
+import ControSteps from './packages/stpes/__example__/Control-strps'
 
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <BasicSteps />
+    <ControSteps />
   </>,
   document.getElementById('root')
 )
