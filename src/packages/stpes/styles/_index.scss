@@ -6,14 +6,12 @@ $stpes-prefix-cls: #{$prefix-cls}steps;
 .#{$stpes-prefix-cls} {
   display: flex;
   justify-content: space-around;
-
   @include steps-default-size();
+
   .#{$step-prefix-cls} {
     display: flex;
     align-items: center;
     text-align: left;
-    transition: all 0.35s;
-
     &-tag {
       display: flex;
       align-items: center;
@@ -23,7 +21,6 @@ $stpes-prefix-cls: #{$prefix-cls}steps;
         border: 1px solid $step-undo-color;
         color: $step-undo-color;
         border-radius: 100%;
-
         &-icon {
           border: none !important;
         }
@@ -49,10 +46,7 @@ $stpes-prefix-cls: #{$prefix-cls}steps;
 
     &-dot {
       display: flex;
-      flex: 1;
       justify-content: center;
-      align-items: center;
-      padding: 0 calc($step-margin-m);
       &-inner {
         flex: 1;
       }
@@ -102,5 +96,13 @@ $stpes-prefix-cls: #{$prefix-cls}steps;
 
   &-small {
     @include steps-small-size();
+  }
+
+  &-horizontal {
+    @include steps-horizontal();
+  }
+
+  &-vertical {
+    @include steps-vertical();
   }
 }

@@ -29,10 +29,49 @@
       &-inner {
         transition: 0.25s all ease-in-out;
 
-        border-bottom: $dot-size solid $step-undo-color;
+        border-width: $dot-size;
 
         &-finished {
-          border-bottom: $dot-size solid $step-current-color;
+          border-width: $dot-size;
+        }
+      }
+    }
+  }
+}
+
+// direction
+@mixin step-direction(
+  $flex-direction,
+  $flex-size,
+  $align-items,
+  $padding,
+  $height,
+  $dot-direction
+) {
+  flex-direction: $flex-direction;
+  .#{$step-prefix-cls} {
+    &-dot {
+      flex: $flex-size;
+      align-items: $align-items;
+      padding: $padding;
+      height: $height;
+
+      &-inner {
+        @if $dot-direction == horizontal {
+          border-bottom-color: $step-undo-color;
+          border-bottom-style: solid;
+          &-finised {
+            border-bottom-style: solid $step-current-color;
+            border-bottom-color: $step-current-color;
+          }
+        }
+        @if $dot-direction == vertical {
+          border-left-color: $step-undo-color;
+          border-left-style: solid;
+          &-finised {
+            border-left-style: solid $step-current-color;
+            border-left-color: $step-current-color;
+          }
         }
       }
     }
@@ -56,5 +95,30 @@
     $steps-font-size-s,
     $padding-s,
     1px
+  );
+}
+
+$steps-horizontal-padding: 0 calc($step-margin-m);
+$steps-vertical-padding: 0 calc($step-margin-m * 2 - 2px);
+
+@mixin steps-horizontal {
+  @include step-direction(
+    row,
+    1,
+    center,
+    $steps-horizontal-padding,
+    auto,
+    horizontal
+  );
+}
+
+@mixin steps-vertical {
+  @include step-direction(
+    column,
+    auto,
+    none,
+    $steps-vertical-padding,
+    24px,
+    vertical
   );
 }
