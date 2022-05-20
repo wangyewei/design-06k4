@@ -32,7 +32,7 @@ const ControSteps = () => {
 
   return (
     <>
-      <KSteps current={current}>
+      <KSteps current={current} onStepChange={e => console.log(e)}>
         {steps.map(item => (
           <Step key={item.title} title={item.title} />
         ))}

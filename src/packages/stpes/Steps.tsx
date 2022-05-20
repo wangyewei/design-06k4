@@ -1,4 +1,4 @@
-import React, { cloneElement, Component, CSSProperties, FC, ReactElement, createContext, ContextType } from "react";
+import React, { cloneElement, Component, CSSProperties, FC, ReactElement, createContext, ContextType, useEffect } from "react";
 import { childrenToArray, getPrefixCls } from "@/utils";
 import classNames from "classnames";
 import KStep, { StepProps } from "./Step";
@@ -10,7 +10,8 @@ export interface StepsProps {
   current?: number,
   size?: 'small' | 'default',
   direction?: 'horizontal' | 'vertical',
-  danger?: boolean
+  danger?: boolean,
+  onStepChange?: (current?: number) => void
 }
 
 interface StepState {
@@ -21,6 +22,7 @@ export const StepContext = createContext<StepState>(null)
 
 const RowSteps: FC<StepsProps> = props => {
 
+
   const {
     current = 1,
     className,
@@ -29,8 +31,13 @@ const RowSteps: FC<StepsProps> = props => {
     size = "default",
     direction = "horizontal",
     danger = false,
+    onStepChange,
     ...restProps
   } = props
+
+  useEffect(() => {
+    onStepChange && onStepChange(current)
+  }, [current])
 
   const prefixCls = getPrefixCls('steps')
 
