@@ -8,6 +8,11 @@ $stpes-prefix-cls: #{$prefix-cls}steps;
   justify-content: space-around;
   @include steps-default-size();
 
+  @include steps-status-default();
+
+  &-danger {
+    @include steps-status-danger();
+  }
   .#{$step-prefix-cls} {
     display: flex;
     align-items: center;
@@ -18,8 +23,6 @@ $stpes-prefix-cls: #{$prefix-cls}steps;
       justify-content: center;
       &-inner {
         text-align: center;
-        border: 1px solid $step-undo-color;
-        color: $step-undo-color;
         border-radius: 100%;
         &-icon {
           border: none !important;
@@ -30,17 +33,12 @@ $stpes-prefix-cls: #{$prefix-cls}steps;
       display: flex;
       flex-direction: column;
     }
-    &-title {
-      color: $step-undo-color;
-    }
 
     &-subtitle {
       font-size: $steps-font-size-s;
-      color: $step-undo-color;
     }
 
     &-description {
-      color: $step-undo-color;
       font-size: $steps-font-size-s;
     }
 
@@ -49,27 +47,6 @@ $stpes-prefix-cls: #{$prefix-cls}steps;
       justify-content: center;
       &-inner {
         flex: 1;
-      }
-    }
-
-    &-current {
-      .#{$step-prefix-cls}-tag {
-        &-inner {
-          color: #fff;
-          background: $step-current-color;
-          border: 1px solid $step-current-color;
-        }
-      }
-
-      .#{$step-prefix-cls}-title {
-        color: $step-base-color;
-      }
-
-      .#{$step-prefix-cls}-subtitle {
-        color: $step-secondary-color;
-      }
-      .#{$step-prefix-cls}-description {
-        color: $step-secondary-color;
       }
     }
 

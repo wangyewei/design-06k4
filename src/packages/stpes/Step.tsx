@@ -13,12 +13,13 @@ export interface StepProps {
   description?: ReactNode
   dot?: boolean,
   index?: number,
-  icon?: IconProps['icon']
+  icon?: IconProps['icon'],
+  danger?: boolean,
 }
 
 const KStep: FC<StepProps> = props => {
   const { current } = useContext(StepContext)
-  const { title, subTitle, className, style, description, dot, index, icon = null, ...restProps } = props
+  const { title, subTitle, className, style, description, dot, index, icon = null, danger = false, ...restProps } = props
   const prefixCls = getPrefixCls('step')
 
   const cname = classNames(
@@ -43,9 +44,11 @@ const KStep: FC<StepProps> = props => {
           <span className={`${prefixCls}-tag-inner ${icon === null ? '' : `${prefixCls}-tag-inner-icon`}`}>
             {
               icon === null ?
-                current > index ?
-                  <KIcon icon="check" /> :
-                  <span>{index}</span>
+                current === index ?
+                  danger ? <KIcon icon="xmark" /> : <span>{index}</span> :
+                  current > index ?
+                    <KIcon icon="check" /> :
+                    <span>{index}</span>
                 :
                 <KIcon icon={icon} />
             }

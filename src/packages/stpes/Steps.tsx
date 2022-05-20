@@ -9,7 +9,8 @@ export interface StepsProps {
   children?: ReactElement<StepProps>[],
   current?: number,
   size?: 'small' | 'default',
-  direction?: 'horizontal' | 'vertical'
+  direction?: 'horizontal' | 'vertical',
+  danger?: boolean
 }
 
 interface StepState {
@@ -20,7 +21,16 @@ export const StepContext = createContext<StepState>(null)
 
 const RowSteps: FC<StepsProps> = props => {
 
-  const { current = 1, className, style, children, size = "default", direction = "horizontal", ...restProps } = props
+  const {
+    current = 1,
+    className,
+    style,
+    children,
+    size = "default",
+    direction = "horizontal",
+    danger = false,
+    ...restProps
+  } = props
 
   const prefixCls = getPrefixCls('steps')
 
@@ -28,7 +38,8 @@ const RowSteps: FC<StepsProps> = props => {
     prefixCls,
     {
       [`${prefixCls}-small`]: size === 'small',
-      [`${prefixCls}-${direction}`]: direction
+      [`${prefixCls}-${direction}`]: direction,
+      [`${prefixCls}-danger`]: danger
     },
     className
   )
@@ -40,7 +51,8 @@ const RowSteps: FC<StepsProps> = props => {
     return cloneElement(ele, {
       dot: index !== children.length,
       key: index,
-      index
+      index,
+      danger
     })
 
   })

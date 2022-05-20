@@ -25,6 +25,14 @@ export default () => (
       <Step title="In Progress" description="This is a description." />
       <Step title="Waiting" description="This is a description." />
     </KSteps>
+    <br />
+    <div>danger</div>
+    <br />
+    <KSteps current={2} danger>
+      <Step title="Finished" description="This is a description." />
+      <Step title="In Progress" description="This is a description." />
+      <Step title="Waiting" description="This is a description." />
+    </KSteps>
   </>
 
 );

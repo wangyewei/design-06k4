@@ -78,6 +78,54 @@
   }
 }
 
+// status
+
+@mixin step-status(
+  $color,
+  $current-color,
+  $current-bg,
+  $base-color,
+  $secondary-color
+) {
+  .#{$step-prefix-cls} {
+    &-tag {
+      &-inner {
+        border: 1px solid $color;
+        color: $color;
+      }
+    }
+    &-title {
+      color: $color;
+    }
+    &-subtitle {
+      color: $color;
+    }
+    &-description {
+      color: $color;
+    }
+    &-current {
+      .#{$step-prefix-cls}-tag {
+        &-inner {
+          color: $current-color;
+          background: $current-bg;
+          border: 1px solid $current-color;
+        }
+      }
+
+      .#{$step-prefix-cls}-title {
+        color: $base-color;
+      }
+
+      .#{$step-prefix-cls}-subtitle {
+        color: $secondary-color;
+      }
+      .#{$step-prefix-cls}-description {
+        color: $secondary-color;
+      }
+    }
+  }
+}
+
 @mixin steps-default-size {
   @include step-size(
     $step-margin-m,
@@ -120,5 +168,25 @@ $steps-vertical-padding: 0 calc($step-margin-m * 2 - 2px);
     $steps-vertical-padding,
     24px,
     vertical
+  );
+}
+
+@mixin steps-status-default {
+  @include step-status(
+    $step-undo-color,
+    #fff,
+    $step-current-color,
+    $step-base-color,
+    $step-secondary-color
+  );
+}
+
+@mixin steps-status-danger {
+  @include step-status(
+    $step-undo-color,
+    $step-danger-color,
+    transparent,
+    $step-danger-color,
+    $step-danger-color
   );
 }
