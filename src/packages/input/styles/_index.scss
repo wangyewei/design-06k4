@@ -1,0 +1,21 @@
+@import "./mixins";
+
+.#{$prefix-cls}input {
+  @include input-reset();
+
+  &-inner {
+    padding: $input-padding-y $input-padding-x;
+    border-color: $input-border-color;
+
+    &:hover {
+      border-color: $input-border-color-hover;
+    }
+
+    &:active,
+    &:focus {
+      border-color: $input-border-color-hover;
+      box-shadow: $input-outline-offset $input-ouline-blur $input-outline-width
+        $input-ouline-color;
+    }
+  }
+}

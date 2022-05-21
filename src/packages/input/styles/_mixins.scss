@@ -1,0 +1,15 @@
+@mixin input-reset() {
+  .#{$prefix-cls}input {
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+
+    &-inner {
+      width: 100%;
+      border-width: 1px;
+      border-style: solid;
+      outline: none;
+      transition: 0.35s all ease-in-out;
+    }
+  }
+}

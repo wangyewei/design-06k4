@@ -34,13 +34,14 @@ library.add(fas)
 // import BasicPagination from './packages/pagination/__example__/Basic-pagination'
 
 // import BasicSteps from './packages/stpes/__example__/Basic-steps'
-import ControSteps from './packages/stpes/__example__/Control-strps'
+// import ControSteps from './packages/stpes/__example__/Control-strps'
 // import DirectionSteps from './packages/stpes/__example__/Direction-steps'
 
+import BaiscInput from './packages/input/__example__/Baisc-input'
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <ControSteps />
+    <BaiscInput />
   </>,
   document.getElementById('root')
 )
