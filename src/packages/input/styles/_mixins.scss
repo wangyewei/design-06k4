@@ -1,15 +1,65 @@
 @mixin input-reset() {
-  .#{$prefix-cls}input {
-    box-sizing: border-box;
-    position: relative;
-    display: flex;
+  display: flex;
+  box-sizing: border-box;
+  position: relative;
+  align-items: center;
 
-    &-inner {
-      width: 100%;
-      border-width: 1px;
-      border-style: solid;
-      outline: none;
-      transition: 0.35s all ease-in-out;
+  &-inner {
+    width: 100%;
+    border-width: 1px;
+    border-style: solid;
+    outline: none;
+    transition: 0.35s all ease-in-out;
+  }
+  &-inner {
+    border-color: $input-border-color;
+    height: 100%;
+    &:hover {
+      border-color: $input-border-color-hover;
+    }
+
+    &:active,
+    &:focus {
+      border-color: $input-border-color-hover;
+      box-shadow: $input-outline-offset $input-ouline-blur $input-outline-width
+        $input-ouline-color;
     }
   }
+  &-with-prefix {
+    .#{$input-prefix-cls}-prefix {
+      position: absolute;
+      left: 10px;
+      font-size: 14px;
+    }
+    .#{$input-prefix-cls}-inner {
+      padding-left: 28px !important;
+    }
+  }
+}
+
+@mixin input-size($padding-y, $padding-x, $font-size) {
+  .#{$input-prefix-cls}-inner {
+    padding: $padding-y $padding-x;
+    font-size: $font-size;
+  }
+}
+
+@mixin input-size-small() {
+  @include input-size(
+    $input-padding-y-s,
+    $input-padding-x-s,
+    $input-font-size-s
+  );
+}
+
+@mixin input-size-middle() {
+  @include input-size($input-padding-y, $input-padding-x, $input-font-size-s);
+}
+
+@mixin input-size-large {
+  @include input-size(
+    $input-padding-y-l,
+    $input-padding-x-l,
+    $input-font-size-m
+  );
 }

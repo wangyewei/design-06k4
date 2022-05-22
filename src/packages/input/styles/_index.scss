@@ -1,21 +1,18 @@
 @import "./mixins";
+$input-prefix-cls: #{$prefix-cls}input;
 
-.#{$prefix-cls}input {
+.#{$input-prefix-cls} {
   @include input-reset();
 
-  &-inner {
-    padding: $input-padding-y $input-padding-x;
-    border-color: $input-border-color;
+  &-middle {
+    @include input-size-middle();
+  }
 
-    &:hover {
-      border-color: $input-border-color-hover;
-    }
+  &-small {
+    @include input-size-small();
+  }
 
-    &:active,
-    &:focus {
-      border-color: $input-border-color-hover;
-      box-shadow: $input-outline-offset $input-ouline-blur $input-outline-width
-        $input-ouline-color;
-    }
+  &-large {
+    @include input-size-large();
   }
 }

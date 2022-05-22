@@ -350,8 +350,12 @@ $step-margin-m: 12px;
 
 // input
 //input
-$input-padding-y: 3px !default;
-$input-padding-x: 12px !default;
+$input-padding-y: 6px !default;
+$input-padding-x: 10px !default;
+$input-padding-y-s: 2px !default;
+$input-padding-x-s: 5px !default;
+$input-padding-y-l: 10px !default;
+$input-padding-x-l: 14px !default;
 
 $input-border-color-hover: $primary !default;
 $input-border-color: $gray-600;
@@ -360,6 +364,10 @@ $input-outline-offset: 0 0 !default;
 $input-ouline-blur: 0 !default;
 $input-outline-width: 1px !default;
 $input-ouline-color: rgba($input-border-color-hover, 40%) !default;
+
+$input-font-size-s: 14px !default;
+$input-font-size-m: 16px !default;
+$input-font-size-l: 18px !default;
 
 // $input-padding-y-sm: $btn-padding-y-sm !default;
 // $input-padding-x-sm: $btn-padding-x-sm !default;
