@@ -1,4 +1,4 @@
-import React, { Component, CSSProperties, FC, InputHTMLAttributes } from "react";
+import React, { Component, CSSProperties, FC, InputHTMLAttributes, ReactNode } from "react";
 import { getPrefixCls } from "@/utils";
 import classNames from "classnames";
 import KIcon, { IconProps } from "../icon";
@@ -7,12 +7,13 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
   className?: string,
   style?: CSSProperties,
   prefixIcon?: IconProps['icon'],
-  size?: 'small' | 'middle' | 'large'
+  size?: 'small' | 'middle' | 'large',
+  addonBefore?: ReactNode,
 }
 
 const RowInput: FC<InputProps> = props => {
 
-  const { className, style, prefixIcon, size = 'middle', ...restProps } = props
+  const { className, style, prefixIcon, size = 'middle', addonBefore, ...restProps } = props
 
   const prefixCls = getPrefixCls('input')
 
@@ -26,6 +27,7 @@ const RowInput: FC<InputProps> = props => {
   )
   return (
     <div className={cnames} style={{ ...style }} >
+      {addonBefore && <div className={`${prefixCls}-addonbefore`}>{addonBefore}</div>}
       {prefixCls && <KIcon icon={prefixIcon} className={`${prefixCls}-prefix`} />}
       <input type="text" className={`${prefixCls}-inner`} {...restProps} />
     </div>

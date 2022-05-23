@@ -20,5 +20,19 @@ export default () => (
       prefixIcon="user"
       size="small"
       style={{ width: '350px', margin: '12px' }} />
+    <KInput
+      placeholder="small input"
+      addonBefore="https://"
+      style={{ width: '350px', margin: '12px' }} />
+    <KInput
+      size="small"
+      placeholder="small input"
+      addonBefore="https://"
+      style={{ width: '350px', margin: '12px' }} />
+    <KInput
+      size="large"
+      placeholder="small input"
+      addonBefore="https://"
+      style={{ width: '350px', margin: '12px' }} />
   </>
 )

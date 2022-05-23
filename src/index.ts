@@ -54,3 +54,6 @@ export type { PaginationProps } from '@/packages/pagination'
 
 export { default as KSteps } from '@/packages/stpes'
 export type { StepsProps } from '@/packages/stpes'
+
+export { default as KInput } from '@/packages/input'
+export type { InputProps } from '@/packages/input'
