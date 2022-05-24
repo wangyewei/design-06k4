@@ -9,11 +9,12 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
   prefixIcon?: IconProps['icon'],
   size?: 'small' | 'middle' | 'large',
   addonBefore?: ReactNode,
+  addonAfter?: ReactNode,
 }
 
 const RowInput: FC<InputProps> = props => {
 
-  const { className, style, prefixIcon, size = 'middle', addonBefore, ...restProps } = props
+  const { className, style, prefixIcon, size = 'middle', addonBefore, addonAfter, ...restProps } = props
 
   const prefixCls = getPrefixCls('input')
 
@@ -27,9 +28,10 @@ const RowInput: FC<InputProps> = props => {
   )
   return (
     <div className={cnames} style={{ ...style }} >
-      {addonBefore && <div className={`${prefixCls}-addonbefore`}>{addonBefore}</div>}
+      {addonBefore && <div className={`${prefixCls}-addon-before ${prefixCls}-addon`}>{addonBefore}</div>}
       {prefixCls && <KIcon icon={prefixIcon} className={`${prefixCls}-prefix`} />}
       <input type="text" className={`${prefixCls}-inner`} {...restProps} />
+      {addonAfter && <div className={`${prefixCls}-addon-after ${prefixCls}-addon`}>{addonAfter}</div>}
     </div>
   )
 }

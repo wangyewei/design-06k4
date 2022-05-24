@@ -21,18 +21,22 @@ export default () => (
       size="small"
       style={{ width: '350px', margin: '12px' }} />
     <KInput
-      placeholder="small input"
+      size="large"
+      placeholder="large input"
       addonBefore="https://"
+      addonAfter=".com"
+      style={{ width: '350px', margin: '12px' }} />
+    <KInput
+      placeholder="middl input"
+      addonBefore="https://"
+      addonAfter=".com"
       style={{ width: '350px', margin: '12px' }} />
     <KInput
       size="small"
       placeholder="small input"
       addonBefore="https://"
+      addonAfter=".com"
       style={{ width: '350px', margin: '12px' }} />
-    <KInput
-      size="large"
-      placeholder="small input"
-      addonBefore="https://"
-      style={{ width: '350px', margin: '12px' }} />
+
   </>
 )

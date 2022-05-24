@@ -3,6 +3,7 @@
   box-sizing: border-box;
   position: relative;
   align-items: center;
+  justify-content: center;
 
   &-inner {
     width: 100%;
@@ -44,16 +45,43 @@
   }
 }
 
+@mixin input-addon-size($padding, $font-size, $bg-color: $input-addon-bg) {
+  .#{$input-prefix-cls}-addon {
+    padding: $padding;
+    font-size: $font-size;
+    background-color: $bg-color;
+    // height: fit-content;
+    min-height: 100%;
+
+    border-top: 1px solid $input-border-color;
+    border-bottom: 1px solid $input-border-color;
+
+    &-before {
+      border-left: 1px solid $input-border-color;
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+    }
+
+    &-after {
+      border-right: 1px solid $input-border-color;
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
+  }
+}
+
 @mixin input-size-small() {
   @include input-size(
     $input-padding-y-s,
     $input-padding-x-s,
     $input-font-size-s
   );
+  @include input-addon-size($input-addon-padding-s, $input-addon-font-size-s);
 }
 
 @mixin input-size-middle() {
   @include input-size($input-padding-y, $input-padding-x, $input-font-size-s);
+  @include input-addon-size($input-addon-padding-m, $input-addon-font-size-m);
 }
 
 @mixin input-size-large {
@@ -62,4 +90,5 @@
     $input-padding-x-l,
     $input-font-size-m
   );
+  @include input-addon-size($input-addong-padding-l, $input-addon-font-size-l);
 }

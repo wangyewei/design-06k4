@@ -349,7 +349,6 @@ $step-margin-s: 8px;
 $step-margin-m: 12px;
 
 // input
-//input
 $input-padding-y: 6px !default;
 $input-padding-x: 10px !default;
 $input-padding-y-s: 2px !default;
@@ -358,7 +357,7 @@ $input-padding-y-l: 10px !default;
 $input-padding-x-l: 14px !default;
 
 $input-border-color-hover: $primary !default;
-$input-border-color: $gray-600;
+$input-border-color: rgba($gray-600, 35%) !default;
 
 $input-outline-offset: 0 0 !default;
 $input-ouline-blur: 0 !default;
@@ -368,6 +367,14 @@ $input-ouline-color: rgba($input-border-color-hover, 40%) !default;
 $input-font-size-s: 14px !default;
 $input-font-size-m: 16px !default;
 $input-font-size-l: 18px !default;
+
+$input-addon-bg: rgba($input-border-color, 13%) !default;
+$input-addon-font-size-s: 15px !default;
+$input-addon-font-size-m: 14px !default;
+$input-addon-font-size-l: 14px !default;
+$input-addon-padding-s: 0 $input-padding-x-s !default;
+$input-addon-padding-m: calc($input-padding-y - 1px) $input-padding-x-s !default;
+$input-addong-padding-l: calc($input-padding-y-l + 0.5px) $input-padding-x-l !default;
 
 // $input-padding-y-sm: $btn-padding-y-sm !default;
 // $input-padding-x-sm: $btn-padding-x-sm !default;
