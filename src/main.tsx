@@ -37,11 +37,12 @@ library.add(fas)
 // import ControSteps from './packages/stpes/__example__/Control-strps'
 // import DirectionSteps from './packages/stpes/__example__/Direction-steps'
 
-import BaiscInput from './packages/input/__example__/Baisc-input'
+// import BaiscInput from './packages/input/__example__/Baisc-input'
+import AddonInput from './packages/input/__example__/Addon-input'
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <BaiscInput />
+    <AddonInput />
   </>,
   document.getElementById('root')
 )

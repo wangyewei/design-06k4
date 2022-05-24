@@ -38,20 +38,22 @@
   }
 }
 
-@mixin input-size($padding-y, $padding-x, $font-size) {
+@mixin input-size($height, $padding-y, $padding-x, $font-size) {
+  height: $height;
   .#{$input-prefix-cls}-inner {
-    padding: $padding-y $padding-x;
     font-size: $font-size;
+    height: 100%;
   }
 }
 
-@mixin input-addon-size($padding, $font-size, $bg-color: $input-addon-bg) {
+@mixin input-addon-size($height, $font-size, $bg-color: $input-addon-bg) {
   .#{$input-prefix-cls}-addon {
-    padding: $padding;
+    padding: 1px 5px;
     font-size: $font-size;
     background-color: $bg-color;
-    // height: fit-content;
-    min-height: 100%;
+    height: $height;
+    line-height: $height;
+    min-width: fit-content;
 
     border-top: 1px solid $input-border-color;
     border-bottom: 1px solid $input-border-color;
@@ -72,23 +74,30 @@
 
 @mixin input-size-small() {
   @include input-size(
+    $input-height-s,
     $input-padding-y-s,
     $input-padding-x-s,
     $input-font-size-s
   );
-  @include input-addon-size($input-addon-padding-s, $input-addon-font-size-s);
+  @include input-addon-size($input-height-s, $input-addon-font-size-s);
 }
 
 @mixin input-size-middle() {
-  @include input-size($input-padding-y, $input-padding-x, $input-font-size-s);
-  @include input-addon-size($input-addon-padding-m, $input-addon-font-size-m);
+  @include input-size(
+    $input-height-m,
+    $input-padding-y,
+    $input-padding-x,
+    $input-font-size-s
+  );
+  @include input-addon-size($input-height-m, $input-addon-font-size-m);
 }
 
 @mixin input-size-large {
   @include input-size(
+    $input-height-l,
     $input-padding-y-l,
     $input-padding-x-l,
     $input-font-size-m
   );
-  @include input-addon-size($input-addong-padding-l, $input-addon-font-size-l);
+  @include input-addon-size($input-height-l, $input-addon-font-size-l);
 }

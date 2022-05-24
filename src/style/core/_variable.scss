@@ -376,6 +376,10 @@ $input-addon-padding-s: 0 $input-padding-x-s !default;
 $input-addon-padding-m: calc($input-padding-y - 1px) $input-padding-x-s !default;
 $input-addong-padding-l: calc($input-padding-y-l + 0.5px) $input-padding-x-l !default;
 
+$input-height-s: 24px !default;
+$input-height-m: 32px !default;
+$input-height-l: 40px !default;
+
 // $input-padding-y-sm: $btn-padding-y-sm !default;
 // $input-padding-x-sm: $btn-padding-x-sm !default;
 // $input-font-size-sm: $btn-font-size-sm !default;
