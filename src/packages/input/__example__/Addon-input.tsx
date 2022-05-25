@@ -25,7 +25,7 @@ export default () => (
       addonBefore="https://"
       addonAfter=".com"
       style={{ width: '350px', margin: '12px' }}
-      onInput={e => console.log(e)}
+      onChange={e => console.log(e)}
     />
     <KInput
       placeholder="My Site"
@@ -37,5 +37,6 @@ export default () => (
       addonBefore={<Dropdown />}
       style={{ width: '350px', margin: '12px' }}
     />
+
   </>
 );

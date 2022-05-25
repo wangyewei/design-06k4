@@ -40,13 +40,20 @@
 
 @mixin input-size($height, $padding-y, $padding-x, $font-size) {
   height: $height;
+
   .#{$input-prefix-cls}-inner {
     font-size: $font-size;
     height: 100%;
+    padding-left: $padding-x;
   }
 }
 
-@mixin input-addon-size($height, $font-size, $bg-color: $input-addon-bg) {
+@mixin input-addon-size(
+  $height,
+  $font-size,
+  $btn-add-height: 4px,
+  $bg-color: $input-addon-bg
+) {
   .#{$input-prefix-cls}-addon {
     padding: 1px 5px;
     font-size: $font-size;
@@ -68,6 +75,12 @@
       border-right: 1px solid $input-border-color;
       border-top-right-radius: 2px;
       border-bottom-right-radius: 2px;
+    }
+
+    &-button {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      height: calc($height + $btn-add-height);
     }
   }
 }

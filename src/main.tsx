@@ -38,11 +38,13 @@ library.add(fas)
 // import DirectionSteps from './packages/stpes/__example__/Direction-steps'
 
 // import BaiscInput from './packages/input/__example__/Baisc-input'
-import AddonInput from './packages/input/__example__/Addon-input'
+// import AddonInput from './packages/input/__example__/Addon-input'
+import SearchInput from './packages/input/__example__/Search-input'
+
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <AddonInput />
+    <SearchInput />
   </>,
   document.getElementById('root')
 )
