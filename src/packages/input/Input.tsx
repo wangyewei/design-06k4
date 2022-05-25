@@ -34,7 +34,11 @@ interface SearchProps extends RowInputProps {
   loading?: boolean
 }
 
-export type InputProps = SearchProps
+interface PasswordProps extends RowInputProps {
+  visibilityToggle?: boolean
+}
+
+export type InputProps = SearchProps & PasswordProps
 
 const RowInput: FC<InputProps> = props => {
 
@@ -42,6 +46,7 @@ const RowInput: FC<InputProps> = props => {
     className,
     style,
     prefixIcon,
+    suffixIcon,
     size = 'middle',
     addonBefore,
     addonAfter,
@@ -53,12 +58,17 @@ const RowInput: FC<InputProps> = props => {
     onKeyDown: propsOnKeyDown,
     onPressEnter,
     loading = false,
+    visibilityToggle = true,
     ...restProps
   } = props
 
   const [_type, _setType] = useState<'text' | 'password' | 'search'>('text')
+  const [pwdVis, setPwdVis] = useState<boolean>(false)
 
 
+  useEffect(() => {
+    rowType === 'password' ? _setType('password') : _setType('text')
+  }, [])
 
   const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const val = e.target.value
@@ -80,14 +90,24 @@ const RowInput: FC<InputProps> = props => {
   const cnames = classNames(
     prefixCls,
     {
-      [`${prefixCls}-with-prefix`]: prefixIcon,
+      [`${prefixCls}-with-prefix`]: prefixIcon || suffixIcon || rowType === 'password',
       [`${prefixCls}-${size}`]: size
     },
     className
   )
 
+  const pwdIconClick = () => {
+    setPwdVis(!pwdVis)
+    pwdVis ? _setType('password') : _setType('text')
+  }
 
-  const RowInputNode: FC<InputProps> = () => (
+  const suffix: ReactNode = (
+    <span className={`${prefixCls}-suffix`}>
+      {rowType === 'password' && visibilityToggle ? pwdVis ? <KIcon icon="eye-slash" onClick={() => pwdIconClick()} /> : <KIcon icon="eye" onClick={() => pwdIconClick()} /> : ''}
+    </span>
+  )
+
+  const RowInputNode: ReactNode = (
     <div className={cnames} style={{ ...style }} >
       {addonBefore && <div className={`${prefixCls}-addon-before ${prefixCls}-addon`}>{addonBefore}</div>}
       {prefixIcon && <KIcon icon={prefixIcon} className={`${prefixCls}-prefix`} />}
@@ -98,6 +118,7 @@ const RowInput: FC<InputProps> = props => {
         onChange={onChange}
         {...restProps}
       />
+      {suffix}
       {rowType === 'search'
         && !enterButton
         &&
@@ -118,26 +139,31 @@ const RowInput: FC<InputProps> = props => {
     </div>
   )
 
-  let InputFunctionComponent: FC<InputProps> = null;
+  let InputNode: ReactNode = null;
   switch (rowType) {
     case 'default':
-      InputFunctionComponent = RowInputNode
+      InputNode = RowInputNode
     case 'search':
-      InputFunctionComponent = RowInputNode
+      InputNode = RowInputNode
     default:
-      InputFunctionComponent = RowInputNode
+      InputNode = RowInputNode
   }
   return (
-    <InputFunctionComponent />
+    <>
+      {InputNode}
+    </>
   )
 
 }
 
-const KSearch: FC<SearchProps> = (props) => <RowInput rowType="search" {...props} />
+const KSearch: FC<SearchProps> = props => <RowInput rowType="search" {...props} />
+const KPassword: FC<SearchProps> = props => <RowInput rowType="password" {...props} />
 
 class KInput extends Component<InputProps, {}> {
 
   static Search: FC<SearchProps> = KSearch
+
+  static Password: FC<PasswordProps> = KPassword
 
   render() {
     return (

@@ -39,12 +39,13 @@ library.add(fas)
 
 // import BaiscInput from './packages/input/__example__/Baisc-input'
 // import AddonInput from './packages/input/__example__/Addon-input'
-import SearchInput from './packages/input/__example__/Search-input'
+// import SearchInput from './packages/input/__example__/Search-input'
+import PwdInput from './packages/input/__example__/Pwd-input'
 
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <SearchInput />
+    <PwdInput />
   </>,
   document.getElementById('root')
 )

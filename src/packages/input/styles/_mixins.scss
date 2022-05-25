@@ -31,6 +31,17 @@
       position: absolute;
       left: 10px;
       font-size: 14px;
+      color: $input-fix-color;
+    }
+    .#{$input-prefix-cls}-suffix {
+      position: absolute;
+      right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      font-size: 14px;
+      color: $input-fix-color;
     }
     .#{$input-prefix-cls}-inner {
       padding-left: 28px !important;
