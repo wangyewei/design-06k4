@@ -42,12 +42,13 @@ library.add(fas)
 // import SearchInput from './packages/input/__example__/Search-input'
 // import PwdInput from './packages/input/__example__/Pwd-input'
 // import MaxLength from './packages/input/__example__/Max-length'
-import StatusInput from '@/packages/input/__example__/Status-input'
+// import StatusInput from '@/packages/input/__example__/Status-input'
+import TextAreaInput from '@/packages/input/__example__/Textarea-input'
 
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <StatusInput />
+    <TextAreaInput />
   </>,
   document.getElementById('root')
 )

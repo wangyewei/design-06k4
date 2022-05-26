@@ -7,7 +7,8 @@ import React, {
   useState,
   KeyboardEvent,
   ChangeEventHandler,
-  useEffect
+  useEffect,
+  TextareaHTMLAttributes
 } from "react";
 import { getPrefixCls } from "@/utils";
 import classNames from "classnames";
@@ -27,7 +28,7 @@ interface RowInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'siz
   onPressEnter?: () => void,
   showCount?: boolean,
   status?: 'warning' | 'error',
-  rowType?: 'default' | 'search' | 'password',
+  rowType?: 'default' | 'search' | 'password' | 'textarea',
 }
 
 interface SearchProps extends RowInputProps {
@@ -40,7 +41,15 @@ interface PasswordProps extends RowInputProps {
   visibilityToggle?: boolean
 }
 
-export type InputProps = SearchProps & PasswordProps
+type TextAreaProps = RowInputProps & Omit<
+  TextareaHTMLAttributes<HTMLTextAreaElement>,
+  keyof InputHTMLAttributes<HTMLInputElement>
+> & {
+}
+
+
+
+export type InputProps = SearchProps & PasswordProps & TextAreaProps
 
 const RowInput: FC<InputProps> = props => {
 
@@ -77,7 +86,7 @@ const RowInput: FC<InputProps> = props => {
     rowType === 'password' ? _setType('password') : _setType('text')
   }, [])
 
-  const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+  const onChange: ChangeEventHandler<HTMLInputElement> | ChangeEventHandler<HTMLTextAreaElement> = (e) => {
     const val = e.target.value
     setValue(val)
     propsOnChange && propsOnChange(val)
@@ -87,7 +96,7 @@ const RowInput: FC<InputProps> = props => {
     onSearch && onSearch()
   }
 
-  const rowPressEnter = (e: KeyboardEvent<HTMLInputElement>) => {
+  const rowPressEnter = (e: KeyboardEvent<HTMLInputElement> | KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter') {
       onPressEnter && onPressEnter()
     }
@@ -117,19 +126,33 @@ const RowInput: FC<InputProps> = props => {
     </span>
   )
 
+
   const RowInputNode: ReactNode = (
     <div className={cnames} style={{ ...style }} >
       {addonBefore && <div className={`${prefixCls}-addon-before ${prefixCls}-addon`}>{addonBefore}</div>}
       {prefixIcon && <KIcon icon={prefixIcon} className={`${prefixCls}-prefix`} />}
-      <input
-        type={_type}
-        value={value}
-        className={`${prefixCls}-inner`}
-        onKeyDown={e => rowPressEnter(e)}
-        onChange={onChange}
-        maxLength={maxLength}
-        {...restProps}
-      />
+      {
+        rowType !== 'textarea' &&
+        <input
+          type={_type}
+          value={value}
+          className={`${prefixCls}-inner`}
+          onKeyDown={e => rowPressEnter(e)}
+          onChange={(onChange as ChangeEventHandler<HTMLInputElement>)}
+          maxLength={maxLength}
+          {...restProps}
+        />
+      }
+      {
+        rowType === 'textarea' &&
+        <textarea
+          className={`${prefixCls}-inner`}
+          value={value}
+          onChange={(onChange as ChangeEventHandler<HTMLTextAreaElement>)}
+          onKeyDown={e => rowPressEnter(e)}
+          {...(restProps as unknown as TextareaHTMLAttributes<HTMLTextAreaElement>)}
+        />
+      }
       {suffix}
       {rowType === 'search'
         && !enterButton
@@ -151,32 +174,24 @@ const RowInput: FC<InputProps> = props => {
     </div>
   )
 
-  let InputNode: ReactNode = null;
-  switch (rowType) {
-    case 'default':
-      InputNode = RowInputNode
-    case 'search':
-      InputNode = RowInputNode
-    default:
-      InputNode = RowInputNode
-  }
   return (
-    <>
-      {InputNode}
-    </>
+    <>{RowInputNode}</>
   )
-
 }
 
 const KSearch: FC<SearchProps> = props => <RowInput rowType="search" {...props} />
 
 const KPassword: FC<SearchProps> = props => <RowInput rowType="password" {...props} />
 
+const KTextArea: FC<TextAreaProps> = props => <RowInput rowType="textarea" {...props} />
+
 class KInput extends Component<InputProps, {}> {
 
   static Search: FC<SearchProps> = KSearch
 
   static Password: FC<PasswordProps> = KPassword
+
+  static TextArea: FC<TextAreaProps> = KTextArea
 
   render() {
     return (
