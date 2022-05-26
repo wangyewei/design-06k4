@@ -57,3 +57,6 @@ export type { StepsProps } from '@/packages/stpes'
 
 export { default as KInput } from '@/packages/input'
 export type { InputProps } from '@/packages/input'
+
+export { default as KInputNumber } from '@/packages/input-number'
+export type { InputNumberProps } from '@/packages/input-number'
