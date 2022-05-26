@@ -381,3 +381,13 @@ $input-height-m: 32px !default;
 $input-height-l: 40px !default;
 
 $input-fix-color: $secondary;
+
+$input-border-color-error: $error-color !default;
+$input-border-color-error-hover: $error-color-hover !default;
+$input-fix-color-error: rgba($error-color, 75%) !default;
+$input-outline-color-error: rgba($error-color, 40%) !default;
+
+$input-border-color-warning: $warning-color !default;
+$input-border-color-warning-hover: $warning-color-hover !default;
+$input-fix-color-warning: rgba($warning-color, 75%) !default;
+$input-outline-color-warning: rgba($warning-color, 40%) !default;

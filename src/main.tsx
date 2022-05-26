@@ -41,12 +41,13 @@ library.add(fas)
 // import AddonInput from './packages/input/__example__/Addon-input'
 // import SearchInput from './packages/input/__example__/Search-input'
 // import PwdInput from './packages/input/__example__/Pwd-input'
-import MaxLength from './packages/input/__example__/Max-length'
+// import MaxLength from './packages/input/__example__/Max-length'
+import StatusInput from '@/packages/input/__example__/Status-input'
 
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <MaxLength />
+    <StatusInput />
   </>,
   document.getElementById('root')
 )

@@ -3,7 +3,7 @@ $input-prefix-cls: #{$prefix-cls}input;
 
 .#{$input-prefix-cls} {
   @include input-reset();
-
+  @include input-status-default();
   &-middle {
     @include input-size-middle();
   }
@@ -14,5 +14,13 @@ $input-prefix-cls: #{$prefix-cls}input;
 
   &-large {
     @include input-size-large();
+  }
+
+  &-error {
+    @include input-status-error();
+  }
+
+  &-warning {
+    @include input-status-warning();
   }
 }

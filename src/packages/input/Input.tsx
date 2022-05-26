@@ -26,6 +26,7 @@ interface RowInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'siz
   onChange?: (value: string) => void,
   onPressEnter?: () => void,
   showCount?: boolean,
+  status?: 'warning' | 'error',
   rowType?: 'default' | 'search' | 'password',
 }
 
@@ -62,6 +63,7 @@ const RowInput: FC<InputProps> = props => {
     loading = false,
     visibilityToggle = true,
     showCount = false,
+    status,
     maxLength,
     ...restProps
   } = props
@@ -97,7 +99,8 @@ const RowInput: FC<InputProps> = props => {
     prefixCls,
     {
       [`${prefixCls}-with-prefix`]: prefixIcon || suffixIcon || rowType === 'password' || showCount,
-      [`${prefixCls}-${size}`]: size
+      [`${prefixCls}-${size}`]: size,
+      [`${prefixCls}-${status}`]: status && status
     },
     className
   )

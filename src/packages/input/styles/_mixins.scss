@@ -18,25 +18,13 @@
     background-color: rgba($input-border-color, 5%);
   }
   &-inner:not([disabled]) {
-    border-color: $input-border-color;
     height: 100%;
-    &:hover {
-      border-color: $input-border-color-hover;
-    }
-
-    &:active,
-    &:focus {
-      border-color: $input-border-color-hover;
-      box-shadow: $input-outline-offset $input-ouline-blur $input-outline-width
-        $input-ouline-color;
-    }
   }
   &-with-prefix {
     .#{$input-prefix-cls}-prefix {
       position: absolute;
       left: 10px;
       font-size: 14px;
-      color: $input-fix-color;
     }
     .#{$input-prefix-cls}-suffix {
       position: absolute;
@@ -46,7 +34,6 @@
       justify-content: center;
       height: 100%;
       font-size: 14px;
-      color: $input-fix-color;
       display: flex;
     }
     .#{$input-prefix-cls}-inner {
@@ -100,6 +87,66 @@
       height: calc($height + $btn-add-height);
     }
   }
+}
+
+@mixin input-status(
+  $border-color,
+  $boder-color-hover,
+  $border-color-foucs,
+  $outline-color,
+  $fix-color
+) {
+  .#{$input-prefix-cls}-inner:not([disabled]) {
+    border-color: $border-color;
+
+    &:hover {
+      border-color: $boder-color-hover;
+    }
+
+    &:active,
+    &:focus {
+      border-color: $border-color-foucs;
+      box-shadow: $input-outline-offset $input-ouline-blur $input-outline-width
+        $outline-color;
+    }
+  }
+
+  .#{$input-prefix-cls}-prefix {
+    color: $fix-color;
+  }
+  .#{$input-prefix-cls}-suffix {
+    color: $fix-color;
+  }
+}
+
+@mixin input-status-default() {
+  @include input-status(
+    $input-border-color,
+    $input-border-color-hover,
+    $input-border-color-hover,
+    $input-ouline-color,
+    $input-fix-color
+  );
+}
+
+@mixin input-status-error() {
+  @include input-status(
+    $input-border-color-error,
+    $input-border-color-error-hover,
+    $input-border-color-error-hover,
+    $input-outline-color-error,
+    $input-fix-color-error
+  );
+}
+
+@mixin input-status-warning() {
+  @include input-status(
+    $input-border-color-warning,
+    $input-border-color-warning-hover,
+    $input-border-color-warning-hover,
+    $input-outline-color-warning,
+    $input-fix-color-warning
+  );
 }
 
 @mixin input-size-small() {
