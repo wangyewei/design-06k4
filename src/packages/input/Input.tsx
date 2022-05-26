@@ -29,6 +29,7 @@ interface RowInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'siz
   showCount?: boolean,
   status?: 'warning' | 'error',
   rowType?: 'default' | 'search' | 'password' | 'textarea',
+  suffix?: ReactNode
 }
 
 interface SearchProps extends RowInputProps {
@@ -74,6 +75,7 @@ const RowInput: FC<InputProps> = props => {
     showCount = false,
     status,
     maxLength,
+    suffix: PropsSuffix,
     ...restProps
   } = props
 
@@ -107,7 +109,7 @@ const RowInput: FC<InputProps> = props => {
   const cnames = classNames(
     prefixCls,
     {
-      [`${prefixCls}-with-prefix`]: prefixIcon || suffixIcon || rowType === 'password' || showCount,
+      [`${prefixCls}-with-prefix`]: prefixIcon || suffixIcon || rowType === 'password' || showCount || PropsSuffix,
       [`${prefixCls}-${size}`]: size,
       [`${prefixCls}-${status}`]: status && status
     },
@@ -123,6 +125,7 @@ const RowInput: FC<InputProps> = props => {
     <span className={`${prefixCls}-suffix`}>
       {rowType === 'password' && visibilityToggle ? pwdVis ? <KIcon icon="eye-slash" onClick={() => pwdIconClick()} /> : <KIcon icon="eye" onClick={() => pwdIconClick()} /> : ''}
       {showCount && <span> {(value as string).length} / {maxLength}</span>}
+      {PropsSuffix && PropsSuffix}
     </span>
   )
 

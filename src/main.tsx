@@ -43,12 +43,14 @@ library.add(fas)
 // import PwdInput from './packages/input/__example__/Pwd-input'
 // import MaxLength from './packages/input/__example__/Max-length'
 // import StatusInput from '@/packages/input/__example__/Status-input'
-import TextAreaInput from '@/packages/input/__example__/Textarea-input'
+// import TextAreaInput from '@/packages/input/__example__/Textarea-input'
+
+import BasicInputNumber from './packages/input-number/__example__/Basic-input-number'
 
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <TextAreaInput />
+    <BasicInputNumber />
   </>,
   document.getElementById('root')
 )
