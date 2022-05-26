@@ -24,7 +24,8 @@ interface RowInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'siz
   addonBefore?: ReactNode,
   addonAfter?: ReactNode,
   onChange?: (value: string) => void,
-  onPressEnter?: () => void
+  onPressEnter?: () => void,
+  showCount?: boolean,
   rowType?: 'default' | 'search' | 'password',
 }
 
@@ -50,6 +51,7 @@ const RowInput: FC<InputProps> = props => {
     size = 'middle',
     addonBefore,
     addonAfter,
+    defaultValue = '',
     onChange: propsOnChange,
     onInput,
     rowType = 'default',
@@ -59,11 +61,14 @@ const RowInput: FC<InputProps> = props => {
     onPressEnter,
     loading = false,
     visibilityToggle = true,
+    showCount = false,
+    maxLength,
     ...restProps
   } = props
 
   const [_type, _setType] = useState<'text' | 'password' | 'search'>('text')
   const [pwdVis, setPwdVis] = useState<boolean>(false)
+  const [value, setValue] = useState<string | number | readonly string[]>(defaultValue)
 
 
   useEffect(() => {
@@ -72,6 +77,7 @@ const RowInput: FC<InputProps> = props => {
 
   const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const val = e.target.value
+    setValue(val)
     propsOnChange && propsOnChange(val)
   }
 
@@ -90,7 +96,7 @@ const RowInput: FC<InputProps> = props => {
   const cnames = classNames(
     prefixCls,
     {
-      [`${prefixCls}-with-prefix`]: prefixIcon || suffixIcon || rowType === 'password',
+      [`${prefixCls}-with-prefix`]: prefixIcon || suffixIcon || rowType === 'password' || showCount,
       [`${prefixCls}-${size}`]: size
     },
     className
@@ -104,6 +110,7 @@ const RowInput: FC<InputProps> = props => {
   const suffix: ReactNode = (
     <span className={`${prefixCls}-suffix`}>
       {rowType === 'password' && visibilityToggle ? pwdVis ? <KIcon icon="eye-slash" onClick={() => pwdIconClick()} /> : <KIcon icon="eye" onClick={() => pwdIconClick()} /> : ''}
+      {showCount && <span> {(value as string).length} / {maxLength}</span>}
     </span>
   )
 
@@ -113,9 +120,11 @@ const RowInput: FC<InputProps> = props => {
       {prefixIcon && <KIcon icon={prefixIcon} className={`${prefixCls}-prefix`} />}
       <input
         type={_type}
+        value={value}
         className={`${prefixCls}-inner`}
         onKeyDown={e => rowPressEnter(e)}
         onChange={onChange}
+        maxLength={maxLength}
         {...restProps}
       />
       {suffix}
@@ -157,6 +166,7 @@ const RowInput: FC<InputProps> = props => {
 }
 
 const KSearch: FC<SearchProps> = props => <RowInput rowType="search" {...props} />
+
 const KPassword: FC<SearchProps> = props => <RowInput rowType="password" {...props} />
 
 class KInput extends Component<InputProps, {}> {

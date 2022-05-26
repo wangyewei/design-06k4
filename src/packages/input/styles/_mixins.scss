@@ -12,7 +12,12 @@
     outline: none;
     transition: 0.35s all ease-in-out;
   }
-  &-inner {
+
+  &-inner[disabled] {
+    cursor: not-allowed;
+    background-color: rgba($input-border-color, 5%);
+  }
+  &-inner:not([disabled]) {
     border-color: $input-border-color;
     height: 100%;
     &:hover {
@@ -42,6 +47,7 @@
       height: 100%;
       font-size: 14px;
       color: $input-fix-color;
+      display: flex;
     }
     .#{$input-prefix-cls}-inner {
       padding-left: 28px !important;
