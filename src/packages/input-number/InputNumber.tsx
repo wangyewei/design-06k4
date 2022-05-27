@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useState } from "react";
+import React, { FC, ReactNode, useState, KeyboardEvent, ChangeEventHandler } from "react";
 import KInput, { InputProps } from "../input/Input";
 import KIcon from "../icon";
 import classNames from "classnames";
@@ -50,6 +50,11 @@ const KInputNumber: FC<InputNumberProps> = props => {
       }
     }
   }
+
+  const onChange = (value: number) => {
+    setValue(value)
+  }
+
   const suffix: ReactNode = (
     <span className={numControlCls}
       onMouseEnter={() => setControlVis(true)}
@@ -66,6 +71,7 @@ const KInputNumber: FC<InputNumberProps> = props => {
       value={value}
       onMouseEnter={() => setControlVis(true)}
       onMouseLeave={() => setControlVis(false)}
+      onChange={(onChange as unknown as ChangeEventHandler<HTMLInputElement>)}
       style={{ ...style }}
       {...rsetProps} />
   )

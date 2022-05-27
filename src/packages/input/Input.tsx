@@ -16,7 +16,7 @@ import KIcon, { IconProps } from "../icon";
 import KButton from '@/packages/button/'
 import LoadingIcon from '@/packages/button/LoadingIcon'
 
-interface RowInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'onChange'> {
+interface RowInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   className?: string,
   style?: CSSProperties,
   prefixIcon?: IconProps['icon'],
@@ -24,7 +24,7 @@ interface RowInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'siz
   size?: 'small' | 'middle' | 'large',
   addonBefore?: ReactNode,
   addonAfter?: ReactNode,
-  onChange?: (value: string) => void,
+  // onChange?: (value: string) => void,
   onPressEnter?: () => void,
   showCount?: boolean,
   status?: 'warning' | 'error',
