@@ -11,7 +11,7 @@ export interface InputNumberProps extends InputProps {
 
 const KInputNumber: FC<InputNumberProps> = props => {
 
-  const { className, style, defaultValue = 0, max = 100, min = 0, ...rsetProps } = props
+  const { className, style, defaultValue = 0, max = 100, min = 0, onChange: PropsOnchange, ...rsetProps } = props
 
   const [value, setValue] = useState<number>(defaultValue)
   const [controlVis, setControlVis] = useState<boolean>(false)
@@ -53,6 +53,7 @@ const KInputNumber: FC<InputNumberProps> = props => {
 
   const onChange = (value: number) => {
     setValue(value)
+    PropsOnchange && PropsOnchange(value as any)
   }
 
   const suffix: ReactNode = (

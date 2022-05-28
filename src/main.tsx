@@ -45,12 +45,15 @@ library.add(fas)
 // import StatusInput from '@/packages/input/__example__/Status-input'
 // import TextAreaInput from '@/packages/input/__example__/Textarea-input'
 
-import BasicInputNumber from './packages/input-number/__example__/Basic-input-number'
+// import BasicInputNumber from './packages/input-number/__example__/Basic-input-number'
+
+
+import BasicSelector from './packages/select/__example__/Basic-selector'
 
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <BasicInputNumber />
+    <BasicSelector />
   </>,
   document.getElementById('root')
 )
