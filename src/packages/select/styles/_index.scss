@@ -1,12 +1,40 @@
-.#{$prefix-cls}seletor {
+.#{$prefix-cls}selector {
   position: relative;
   box-sizing: border-box;
-  // border: 1px solid red;
 
   &-inner {
     input {
       cursor: pointer;
       caret-color: transparent;
+    }
+  }
+
+  &-menu {
+    box-shadow: $selector-dropdown-menu-shadow;
+    padding: $selector-dropdown-padding-base;
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    top: 40px;
+
+    transition: 0.35s all ease-in;
+    max-height: 800px;
+    overflow: hidden;
+    visibility: visible;
+    &-hidden {
+      max-height: 0;
+      visibility: hidden;
+    }
+  }
+
+  &-option {
+    cursor: pointer;
+
+    padding: $selector-dropdown-padding-base;
+    transition: 0.15s all ease-in-out;
+
+    &:hover {
+      background-color: $selector-dropdown-item-hover-bg;
     }
   }
 }

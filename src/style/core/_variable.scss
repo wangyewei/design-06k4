@@ -391,3 +391,12 @@ $input-border-color-warning: $warning-color !default;
 $input-border-color-warning-hover: $warning-color-hover !default;
 $input-fix-color-warning: rgba($warning-color, 75%) !default;
 $input-outline-color-warning: rgba($warning-color, 40%) !default;
+
+// selector
+
+$selector-dropdown-padding-base: $padding-m $padding-s;
+$selector-dropdown-menu-shadow: $shadow-2;
+
+$selector-dropndown-item-padiing-base: $padding-s $padding-s;
+
+$selector-dropdown-item-hover-bg: rgba($secondary, 10%);

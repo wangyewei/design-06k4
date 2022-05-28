@@ -6,8 +6,8 @@ export default () => (
   <KSeletor
     style={{ width: '150px', margin: '14px' }}
   >
-    <Option>Yewei Wang</Option>
-    <Option>Yu</Option>
-    <Option>Muzhi Wang</Option>
+    <Option value="Yewei Wang">Yewei Wang</Option>
+    <Option value="Yu">Yu</Option>
+    <Option value="Muzhi Wang">Muzhi Wang</Option>
   </KSeletor>
 )
