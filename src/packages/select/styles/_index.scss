@@ -1,0 +1,12 @@
+.#{$prefix-cls}seletor {
+  position: relative;
+  box-sizing: border-box;
+  // border: 1px solid red;
+
+  &-inner {
+    input {
+      cursor: pointer;
+      caret-color: transparent;
+    }
+  }
+}

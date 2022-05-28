@@ -126,6 +126,7 @@ const RowInput: FC<InputProps> = props => {
       {rowType === 'password' && visibilityToggle ? pwdVis ? <KIcon icon="eye-slash" onClick={() => pwdIconClick()} /> : <KIcon icon="eye" onClick={() => pwdIconClick()} /> : ''}
       {showCount && <span> {(value as string).length} / {maxLength}</span>}
       {PropsSuffix && PropsSuffix}
+      {suffixIcon && <KIcon icon={suffixIcon} />}
     </span>
   )
 

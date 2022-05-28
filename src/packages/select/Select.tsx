@@ -1,6 +1,6 @@
-import { getPrefixCls } from "@/utils";
+import React, { Component, FC, ReactElement, cloneElement } from "react";
+import { getPrefixCls, childrenToArray } from "@/utils";
 import classNames from "classnames";
-import React, { Component, FC, ReactElement } from "react";
 import KInput, { InputProps } from "../input";
 import KOptions, { SelectorOptionProps } from "./Option";
 
@@ -20,11 +20,23 @@ const RowSelector: FC<SelectorProps> = props => {
     className
   )
 
+  const child = childrenToArray(children).map((ele: ReactElement, index) => {
+    if (!ele) return
+
+    return cloneElement(ele, {
+      key: index,
+    })
+
+  })
+
   return (
     <div className={selectorCls} style={{ ...style }}>
-      <KInput {...restProps} />
+      <KInput
+        className={`${prefixCls}-inner`}
+        {...restProps}
+        suffixIcon="arrow-down" />
       <ul className={`${prefixCls}-menu`}>
-        {children}
+        {child}
       </ul>
     </div>
   )
