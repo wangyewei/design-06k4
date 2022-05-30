@@ -48,12 +48,13 @@ library.add(fas)
 // import BasicInputNumber from './packages/input-number/__example__/Basic-input-number'
 
 
-import BasicSelector from './packages/select/__example__/Basic-selector'
+// import BasicSelector from './packages/select/__example__/Basic-selector'
+import InputSelector from './packages/select/__example__/Input-selector'
 
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <BasicSelector />
+    <InputSelector />
   </>,
   document.getElementById('root')
 )

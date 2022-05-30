@@ -7,6 +7,13 @@
       cursor: pointer;
       caret-color: transparent;
     }
+
+    &-input {
+      input {
+        cursor: text;
+        caret-color: $text-color;
+      }
+    }
   }
 
   &-menu {
@@ -49,6 +56,12 @@
       color: $selecotr-disabled-color;
       cursor: not-allowed;
       font-weight: lighter;
+    }
+
+    &-empty {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
     }
   }
 }

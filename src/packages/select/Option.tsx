@@ -8,7 +8,8 @@ export interface SelectorOptionProps {
   value: string | number
   index?: number,
   optionSelected?: boolean,
-  disabled?: boolean
+  disabled?: boolean,
+  emptyData?: boolean
 }
 
 const KOptions: FC<SelectorOptionProps> = props => {
@@ -19,6 +20,7 @@ const KOptions: FC<SelectorOptionProps> = props => {
     optionSelected = false,
     index,
     disabled = false,
+    emptyData = false,
     ...restProps
   } = props
 
@@ -37,7 +39,8 @@ const KOptions: FC<SelectorOptionProps> = props => {
     {
       [`${prefixCls}-selected`]: !disabled && selectedOption === index,
       [`${prefixCls}-hover`]: !disabled && hoverOption === index,
-      [`${prefixCls}-disabled`]: disabled
+      [`${prefixCls}-disabled`]: disabled,
+      [`${prefixCls}-empty`]: emptyData
     },
     className
   )
