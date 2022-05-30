@@ -1,9 +1,9 @@
 import React from "react";
-import KSeletor from "../Select";
+import KSelector from "../Select";
 
-const { Option } = KSeletor
+const { Option } = KSelector
 export default () => (
-  <KSeletor
+  <KSelector
     defaultIndex={1}
     style={{ width: 'fit-content', minWidth: '10px', margin: '14px' }}
     loading
@@ -12,5 +12,5 @@ export default () => (
     <Option value="Yu">Yu</Option>
     <Option value="Beck" disabled>Beck</Option>
     <Option value="Muzhi Wang">Muzhi Wang</Option>
-  </KSeletor>
+  </KSelector>
 )

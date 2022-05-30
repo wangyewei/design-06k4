@@ -53,7 +53,7 @@ const RowSelector: FC<SelectorProps> = props => {
 
   ///////////////////////////////////
 
-  ///////////// value render stack ////////
+  ///////////// render the value stack ////////
   const valueStack: Array<{
     value: string | number,
     disabled: boolean
@@ -71,7 +71,7 @@ const RowSelector: FC<SelectorProps> = props => {
     value: string | number,
     disabled: boolean
   }> = useMemo(() => {
-    let _stack = []
+    let _stack: Array<{ value: string | number, disabled: boolean }> = []
     if (input) {
       const filterStack = [];
       [...valueStack].filter(val => {
@@ -105,7 +105,8 @@ const RowSelector: FC<SelectorProps> = props => {
     setInputVal(value)
   }, [value])
 
-  // privite hooks
+
+  ////////// Interaction Hooks  //////////
   const {
     selectedOption,
     setSelectedOption,
@@ -113,6 +114,10 @@ const RowSelector: FC<SelectorProps> = props => {
     setHoverOption,
     onKeyDown
   } = useSelectorSelect(valueRenderStack, setValue, setMenuVis)
+
+  useEffect(() => {
+    setSelectedOption(0)
+  }, [valueRenderStack])
 
   const contextValue: SelectorContextType = {
     setValue,

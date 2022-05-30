@@ -35,9 +35,11 @@ export default (
         hoverOption >= 1 && setHoverOption(dfs(hoverOption - 1))
         break;
       case 'Enter':
-        setValue(valueStack[hoverOption].value)
-        setSelectedOption(hoverOption)
-        setMenuVis(false)
+        if (valueStack[hoverOption].value) {
+          setValue(valueStack[hoverOption].value)
+          setSelectedOption(hoverOption)
+          setMenuVis(false)
+        }
         break;
     }
   }
