@@ -15,9 +15,6 @@ export default (
 
   const selectorMenuCls = classNames(
     `${prefixCls}-menu`,
-    {
-      [`${prefixCls}-menu-hidden`]: !param.menuVis
-    }
   )
 
   const selectorInnerCls = classNames(

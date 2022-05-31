@@ -8,16 +8,20 @@ import React, {
   SetStateAction,
   useEffect,
   useMemo,
-  memo
+  memo,
+  ReactNode,
+  useRef
 } from "react";
 import { getPrefixCls, childrenToArray } from "@/utils";
 import KInput, { InputProps } from "../input";
 import KOptions, { SelectorOptionProps } from "./Option";
 import KIcon from '../icon'
+import KTransition from "@/packages/transition";
 import useSelectorSelect from "./hooks/useSelectorSelect";
 import useSelectorCls from "./hooks/useSelectorCls";
 import { isNumber, isString } from "@/utils/typeUtils";
 
+const { Fold } = KTransition
 
 export interface SelectorProps extends InputProps {
   children?: ReactElement<SelectorOptionProps>[],
@@ -45,6 +49,8 @@ const RowSelector: FC<SelectorProps> = props => {
 
   const [inputVal, setInputVal] = useState<string | number | readonly string[]>(defaultValue || '')
 
+  const [menuHeight, setMenuHeight] = useState<number>(0)
+  const ref = useRef<HTMLUListElement>(null)
   const prefixCls = getPrefixCls('selector')
 
   /////////////// class-name ////////
@@ -56,22 +62,26 @@ const RowSelector: FC<SelectorProps> = props => {
   ///////////// render the value stack ////////
   const valueStack: Array<{
     value: string | number,
-    disabled: boolean
+    disabled: boolean,
+    children: ReactNode
   }> = []
 
   childrenToArray(children).forEach((ele: ReactElement<SelectorOptionProps>) => {
     if (!ele) return
+    // console.log(ele)
     valueStack.push({
       value: ele.props.value,
-      disabled: ele.props.disabled || false
+      disabled: ele.props.disabled || false,
+      children: ele.props.children
     })
   })
 
   const valueRenderStack: Array<{
     value: string | number,
-    disabled: boolean
+    disabled: boolean,
+    children: ReactNode
   }> = useMemo(() => {
-    let _stack: Array<{ value: string | number, disabled: boolean }> = []
+    let _stack: Array<{ value: string | number, disabled: boolean, children: ReactNode }> = []
     if (input) {
       const filterStack = [];
       [...valueStack].filter(val => {
@@ -82,6 +92,7 @@ const RowSelector: FC<SelectorProps> = props => {
           val.value.toLocaleLowerCase().includes(inputVal.toLocaleLowerCase()) && filterStack.push(val)
         }
       })
+
       _stack = filterStack
     } else {
       _stack = [...valueStack]
@@ -104,6 +115,15 @@ const RowSelector: FC<SelectorProps> = props => {
   useEffect(() => {
     setInputVal(value)
   }, [value])
+
+  useEffect(() => {
+    if (ref.current !== null) {
+      // Waiting for the fold adnimation done.
+      setTimeout(() => {
+        if (ref.current) ref.current.style.height = `fit-content`
+      }, 300)
+    }
+  }, [valueRenderStack.length])
 
 
   ////////// Interaction Hooks  //////////
@@ -146,21 +166,24 @@ const RowSelector: FC<SelectorProps> = props => {
       />
 
       <SelectorContext.Provider value={contextValue}>
-        <ul className={selectorMenuCls}>
-          {valueRenderStack.length ?
-            valueRenderStack.map((val, index) => (
-              <KOptions
-                value={val.value}
-                key={val.value.toString(32)}
-                index={index}
-                disabled={val.disabled}>
-                {val.value}
-              </KOptions>
-            ))
-            :
-            <KOptions disabled value="cannot select" emptyData><KIcon icon="box-open" /><span>暂无数据</span></KOptions>
-          }
-        </ul>
+        <Fold show={menuVis}>
+          <ul className={selectorMenuCls} ref={ref}>
+            {valueRenderStack.length ?
+              valueRenderStack.map((val, index) => (
+                <KOptions
+                  value={val.value}
+                  key={val.value.toString(32)}
+                  index={index}
+                  disabled={val.disabled}>
+                  {val.children}
+                </KOptions>
+              ))
+              :
+              <KOptions disabled value="cannot select" emptyData><KIcon icon="box-open" /><span>暂无数据</span></KOptions>
+            }
+          </ul>
+        </Fold>
+
       </SelectorContext.Provider>
     </div>
   )

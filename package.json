@@ -1,6 +1,6 @@
 {
   "name": "design-06k4",
-  "version": "2.17.5",
+  "version": "2.17.6",
   "description": "React components library with Typescript",
   "author": "Yewei Wang<wangyewei1@foxmail.com>",
   "motto": "求知若渴 虚心若愚",
@@ -39,7 +39,8 @@
     "classnames": "^2.3.1",
     "react": "^17.0.2",
     "react-dom": "17.0.2",
-    "react-is": "^18.0.0"
+    "react-is": "^18.0.0",
+    "react-transition-group": "^4.4.2"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
@@ -73,6 +74,7 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-typescript2": "^0.31.2",
+    "react-transition-group": "^4.4.2",
     "sass": "^1.49.9",
     "vite": "^2.8.0"
   }

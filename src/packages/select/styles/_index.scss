@@ -18,7 +18,7 @@
 
   &-menu {
     box-shadow: $selector-dropdown-menu-shadow;
-    padding: $selector-dropdown-padding-base;
+    // padding: $selector-dropdown-padding-base;
     background-color: $component-background;
     position: absolute;
     z-index: 999;
@@ -27,20 +27,13 @@
     top: 40px;
 
     transition: 0.35s all ease-in;
-    max-height: 100vh;
-    overflow: hidden;
-    visibility: visible;
-
-    &-hidden {
-      max-height: 0;
-      visibility: hidden;
-    }
   }
 
   &-option {
     cursor: pointer;
 
     padding: $selector-dropdown-padding-base;
+    // margin: $selector-dropndown-item-padiing-base;
     transition: 0.15s all ease-in-out;
 
     &-hover {

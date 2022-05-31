@@ -64,5 +64,7 @@ export type { InputNumberProps } from '@/packages/input-number'
 export { default as KSelector } from '@/packages/select'
 export type { SelectorProps } from '@/packages/select'
 
+export { default as KTransition } from '@/packages/transition'
+
 export { default as KMentions } from '@/packages/mentions'
 export type { MentionsProps } from '@/packages/mentions'

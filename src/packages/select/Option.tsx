@@ -1,4 +1,4 @@
-import React, { FC, useContext, useState } from "react";
+import React, { FC, ReactNode, useContext, useState } from "react";
 import { getPrefixCls } from "@/utils";
 import classNames from "classnames";
 import { SelectorContext } from "./Select";
@@ -9,7 +9,8 @@ export interface SelectorOptionProps {
   index?: number,
   optionSelected?: boolean,
   disabled?: boolean,
-  emptyData?: boolean
+  emptyData?: boolean,
+  children?: ReactNode
 }
 
 const KOptions: FC<SelectorOptionProps> = props => {
@@ -53,7 +54,7 @@ const KOptions: FC<SelectorOptionProps> = props => {
 
   return (
     <li className={optionCls}
-      onClick={onClick}
+      onClick={() => onClick()}
       onMouseEnter={() => setHoverOption(index)}
       onMouseLeave={() => setHoverOption(-1)}
       {...restProps}>

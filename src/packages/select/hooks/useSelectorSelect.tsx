@@ -35,10 +35,20 @@ export default (
         hoverOption >= 1 && setHoverOption(dfs(hoverOption - 1))
         break;
       case 'Enter':
-        if (valueStack[hoverOption].value) {
-          setValue(valueStack[hoverOption].value)
-          setSelectedOption(hoverOption)
-          setMenuVis(false)
+        try {
+          if (valueStack[hoverOption].value) {
+            try {
+              setValue(valueStack[hoverOption].value)
+              setSelectedOption(hoverOption)
+              setMenuVis(false)
+            } catch (error) {
+              // throw new Error('desing-06k4: cannot get current value', { cause: error })
+            }
+          }
+        } catch (error) {
+          // throw new Error('desing-06k4: cannot get current value', { cause: error })
+
+          // console.warn(`design-06k4-warning: Foucs the option first please`)
         }
         break;
     }
