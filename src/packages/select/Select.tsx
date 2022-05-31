@@ -17,6 +17,7 @@ import KInput, { InputProps } from "../input";
 import KOptions, { SelectorOptionProps } from "./Option";
 import KIcon from '../icon'
 import KTransition from "@/packages/transition";
+import KMultipleInput from "./MultipleInput";
 import useSelectorSelect from "./hooks/useSelectorSelect";
 import useSelectorCls from "./hooks/useSelectorCls";
 import { isNumber, isString } from "@/utils/typeUtils";
@@ -27,6 +28,7 @@ export interface SelectorProps extends InputProps {
   children?: ReactElement<SelectorOptionProps>[],
   defaultIndex?: number,
   input?: boolean,
+  mode?: 'mutiple' | 'tag' | 'default'
 }
 
 type SelectorContextType = {
@@ -41,7 +43,7 @@ export const SelectorContext = createContext<SelectorContextType>(null)
 
 const RowSelector: FC<SelectorProps> = props => {
 
-  const { className, style, children, defaultValue, defaultIndex, input = false, ...restProps } = props
+  const { className, style, children, defaultValue, defaultIndex, input = false, mode = 'default', ...restProps } = props
 
   const [menuVis, setMenuVis] = useState<boolean>(false)
 
@@ -50,11 +52,13 @@ const RowSelector: FC<SelectorProps> = props => {
   const [inputVal, setInputVal] = useState<string | number | readonly string[]>(defaultValue || '')
 
   const ref = useRef<HTMLUListElement>(null)
+
+  const multipleInputRef = useRef<HTMLInputElement>(null)
   const prefixCls = getPrefixCls('selector')
 
   /////////////// class-name ////////
 
-  const { selectorCls, selectorMenuCls, selectorInnerCls } = useSelectorCls(prefixCls, className, { menuVis, input })
+  const { selectorCls, selectorMenuCls, selectorInnerCls, multipleInnerCls } = useSelectorCls(prefixCls, className, { menuVis, input })
 
   ///////////////////////////////////
 
@@ -119,7 +123,6 @@ const RowSelector: FC<SelectorProps> = props => {
     // O(n)
     valueRenderStack.forEach((val, index) => {
       if (val.value === value) {
-        console.log(valueRenderStack)
         setSelectedOption(index)
         return;
       }
@@ -157,22 +160,43 @@ const RowSelector: FC<SelectorProps> = props => {
       style={{ ...style }}
       onKeyDown={onKeyDown}
     >
-      <KInput
-        className={selectorInnerCls}
-        value={value}
-        suffixIcon="angle-down"
-        onFocus={() => setMenuVis(true)}
-        onBlur={() => {
-          // Waiting for the value changed
-          setTimeout(() => {
-            setMenuVis(false)
-          }, 300)
-        }}
-        onClick={() => setMenuVis(true)}
-        onChange={val => setValue((val as unknown as string))}
-        loading={false}
-        {...restProps}
-      />
+      {mode === 'default' && (
+        <KInput
+          className={selectorInnerCls}
+          value={value}
+          suffixIcon="angle-down"
+          onFocus={() => setMenuVis(true)}
+          onBlur={() => {
+            // Waiting for the value changed
+            setTimeout(() => {
+              setMenuVis(false)
+            }, 300)
+          }}
+          onClick={() => setMenuVis(true)}
+          onChange={val => setValue((val as unknown as string))}
+          loading={false}
+          {...restProps}
+        />
+      )}
+      {
+        mode !== 'default' && (
+          // <div tabIndex={0}
+          //   className={multipleInnerCls}
+          //   onFocus={() => multipleInputRef.current.focus()}
+          //   onBlur={() => multipleInputRef.current.blur()}
+          // >
+          //   <div className={`${prefixCls}-multiple-inner-items`}>
+          //     {valueRenderStack.map((val, index) => (
+          //       <span className={`${prefixCls}-multiple-inner-item`} key={`${index.toString(36)}`}>
+          //         {val.value}
+          //       </span>
+          //     ))}
+          //   </div>
+          //   <input type="text" className={`${prefixCls}-multiple-inner-input`} ref={multipleInputRef} />
+          // </div>
+          <KMultipleInput prefixCls={prefixCls} multipleInputRef={multipleInputRef} multipleInnerCls={multipleInnerCls} />
+        )
+      }
 
       <SelectorContext.Provider value={contextValue}>
         <Fold show={menuVis}>
@@ -194,7 +218,7 @@ const RowSelector: FC<SelectorProps> = props => {
         </Fold>
 
       </SelectorContext.Provider>
-    </div>
+    </div >
   )
 
 }

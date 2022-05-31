@@ -23,9 +23,15 @@ export default (
       [`${prefixCls}-inner-input`]: param.input
     }
   )
+
+  const multipleInnerCls = classNames(
+    `${prefixCls}-multiple-inner`
+  )
+
   return {
     selectorCls,
     selectorMenuCls,
-    selectorInnerCls
+    selectorInnerCls,
+    multipleInnerCls
   }
 }

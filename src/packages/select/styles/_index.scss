@@ -1,4 +1,8 @@
-.#{$prefix-cls}selector {
+// $multiple-slector-prefix: #{$prefixCls}selector-multiple-inner;
+
+$selector-prefix-cls: #{$prefix-cls}selector;
+$multiple-selector-cls: #{$selector-prefix-cls}-multiple-inner;
+.#{$selector-prefix-cls} {
   position: relative;
   box-sizing: border-box;
 
@@ -16,16 +20,109 @@
     }
   }
 
+  &-multiple-inner {
+    border: 1px solid $input-border-color;
+    border-radius: 4px;
+    transition: 0.35s all ease-in-out;
+    cursor: text;
+    padding: 4px 8px;
+    position: relative;
+    width: 100%;
+
+    &:hover {
+      border-color: $input-border-color-hover;
+    }
+
+    &-focus {
+      border-color: $input-border-color-hover;
+      box-shadow: $input-outline-offset $input-ouline-blur $input-outline-width
+        $input-ouline-color;
+
+      .#{$multiple-selector-cls} {
+        &-input {
+          &-inner {
+            &-caret {
+              opacity: 1;
+              animation: caret 0.75s infinite;
+            }
+          }
+        }
+      }
+    }
+
+    &-input {
+      border: none;
+      outline: none;
+      max-width: 100%;
+
+      &-inner {
+        width: 100%;
+        outline: none;
+
+        &-child {
+          display: inline;
+          width: 100%;
+          word-wrap: break-word;
+          align-items: center;
+          height: fit-content;
+        }
+        &-caret {
+          font-weight: lighter;
+          opacity: 0;
+        }
+      }
+
+      &-value {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+      }
+    }
+
+    &-items {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &-item {
+      background: $selector-multiple-item-bg;
+      border: $selector-multiple-item-border;
+      border-radius: 2px;
+      margin: 1px;
+      padding: 0 4px;
+      z-index: 999;
+      cursor: default;
+
+      &-content {
+        font-weight: 400;
+        font-size: 14px;
+        display: inline-block;
+        margin-right: 5px;
+      }
+
+      &-icon {
+        font-weight: lighter;
+        font-size: 12px;
+        cursor: pointer;
+
+        :hover {
+          color: $selector-dropdown-item-selected-bg;
+        }
+      }
+    }
+  }
+
   &-menu {
     box-shadow: $selector-dropdown-menu-shadow;
-    // padding: $selector-dropdown-padding-base;
     background-color: $component-background;
     position: absolute;
     z-index: 999;
     width: 100%;
     box-sizing: border-box;
     top: 40px;
-
     transition: 0.35s all ease-in;
   }
 
@@ -56,5 +153,14 @@
       justify-content: space-around;
       align-items: center;
     }
+  }
+}
+
+@keyframes caret {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
