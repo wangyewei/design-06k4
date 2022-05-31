@@ -49,7 +49,6 @@ const RowSelector: FC<SelectorProps> = props => {
 
   const [inputVal, setInputVal] = useState<string | number | readonly string[]>(defaultValue || '')
 
-  const [menuHeight, setMenuHeight] = useState<number>(0)
   const ref = useRef<HTMLUListElement>(null)
   const prefixCls = getPrefixCls('selector')
 
@@ -117,6 +116,14 @@ const RowSelector: FC<SelectorProps> = props => {
   }, [value])
 
   useEffect(() => {
+    // O(n)
+    valueRenderStack.forEach((val, index) => {
+      if (val.value === value) {
+        console.log(valueRenderStack)
+        setSelectedOption(index)
+        return;
+      }
+    })
     if (ref.current !== null) {
       // Waiting for the fold adnimation done.
       setTimeout(() => {
@@ -135,9 +142,6 @@ const RowSelector: FC<SelectorProps> = props => {
     onKeyDown
   } = useSelectorSelect(valueRenderStack, setValue, setMenuVis)
 
-  useEffect(() => {
-    setSelectedOption(0)
-  }, [valueRenderStack])
 
   const contextValue: SelectorContextType = {
     setValue,
@@ -158,7 +162,12 @@ const RowSelector: FC<SelectorProps> = props => {
         value={value}
         suffixIcon="angle-down"
         onFocus={() => setMenuVis(true)}
-        onBlur={() => setMenuVis(false)}
+        onBlur={() => {
+          // Waiting for the value changed
+          setTimeout(() => {
+            setMenuVis(false)
+          }, 300)
+        }}
         onClick={() => setMenuVis(true)}
         onChange={val => setValue((val as unknown as string))}
         loading={false}

@@ -48,15 +48,15 @@ library.add(fas)
 // import BasicInputNumber from './packages/input-number/__example__/Basic-input-number'
 
 
-// import BasicSelector from './packages/select/__example__/Basic-selector'
-import InputSelector from './packages/select/__example__/Input-selector'
+import BasicSelector from './packages/select/__example__/Basic-selector'
+// import InputSelector from './packages/select/__example__/Input-selector'
 
 
 // import FoldDemo from './packages/transition/__example__/Fold-demo'
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <InputSelector />
+    <BasicSelector />
   </>,
   document.getElementById('root')
 )
