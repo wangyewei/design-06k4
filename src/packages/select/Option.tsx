@@ -30,7 +30,10 @@ const KOptions: FC<SelectorOptionProps> = props => {
     selectedOption,
     setSelectedOption,
     hoverOption,
-    setHoverOption
+    setHoverOption,
+    multipleValueStack,
+    setMultipleValueStack,
+    mode
   } = useContext(SelectorContext)
 
   const prefixCls = getPrefixCls('selector-option')
@@ -48,8 +51,13 @@ const KOptions: FC<SelectorOptionProps> = props => {
 
   const onClick = () => {
     if (disabled) return
-    setValue(optionValue)
-    setSelectedOption(index)
+
+    if (mode === 'default') {
+      setValue(optionValue)
+      setSelectedOption(index)
+    } else {
+      setMultipleValueStack([...multipleValueStack, optionValue])
+    }
   }
 
   return (

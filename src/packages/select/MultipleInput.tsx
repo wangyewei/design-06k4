@@ -1,47 +1,51 @@
-import React, { FC, memo, MutableRefObject, useState, ChangeEventHandler, useEffect } from "react";
+import React, { FC, memo, MutableRefObject, useState, ChangeEventHandler, useEffect, useContext } from "react";
 import KIcon from "../icon";
 import classNames from "classnames";
-import useSelectorCls from "./hooks/useSelectorCls";
+import { MultipleContext } from "./Select";
 
 export interface MultipleInputProps {
   prefixCls: string,
   multipleInputRef: MutableRefObject<HTMLInputElement>,
-  multipleInnerCls: string
+  multipleInnerCls: string,
 }
-
-const valueRenderStack = []
-
-for (let i = 0; i < 9; i++) {
-  valueRenderStack.push(`a${i}`)
-}
-
 
 
 const KMultipleInput: FC<MultipleInputProps> = memo(props => {
 
   const { prefixCls, multipleInputRef, multipleInnerCls: className } = props
 
-  const [value, setValue] = useState<string>('')
   const [focus, setFocus] = useState<boolean>(false)
   const [removeIndex, setRemoveIndex] = useState<number>(-1)
 
-  const [renderValueStack, setRenderValueStack] = useState<Array<{ value: string, index: number }>>(valueRenderStack)
+  // const [renderValueStack, setRenderValueStack] = useState<Array<{ value: string, index: number }>>(valueRenderStack)
+
+  //////////  Value Stack State //////
+
+  const {
+    multipleValueStack,
+    setMultipleValueStack,
+    inputVal,
+    setInputVal,
+    setMultipleMenuShow,
+  } = useContext(MultipleContext)
+
+  ///////////////////////////////////
 
   useEffect(() => {
-    console.log(removeIndex)
     if (removeIndex >= 0) {
       const _stack = []
-      renderValueStack.forEach((value, index) => {
+      multipleValueStack.forEach((value, index) => {
         if (index !== removeIndex) {
           _stack.push(value)
         }
       })
-      setRenderValueStack(_stack)
+      setMultipleValueStack(_stack)
+      setRemoveIndex(-1)
     }
   }, [removeIndex])
   const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const val = e.target.value
-    setValue(val)
+    setInputVal(val)
   }
 
   const multipleInnerCls = classNames(
@@ -59,6 +63,7 @@ const KMultipleInput: FC<MultipleInputProps> = memo(props => {
   const onBlur = () => {
     multipleInputRef.current.blur()
     setFocus(false)
+    setInputVal('')
   }
   return (
     <div tabIndex={0}
@@ -67,8 +72,13 @@ const KMultipleInput: FC<MultipleInputProps> = memo(props => {
       onBlur={onBlur}
     >
       <div className={`${prefixCls}-multiple-inner-items`}>
-        {renderValueStack.map((val, index) => (
-          <span className={`${prefixCls}-multiple-inner-item`} key={`${index.toString(36)}`}>
+        {multipleValueStack.map((val, index) => (
+          <span
+            className={`${prefixCls}-multiple-inner-item`}
+            key={`${index.toString(36)}`}
+            onMouseEnter={() => setMultipleMenuShow(true)}
+            onMouseLeave={() => setMultipleMenuShow(false)}
+          >
             <span className={`${prefixCls}-multiple-inner-item-content`}>{val}</span>
             <span className={`${prefixCls}-multiple-inner-item-icon`}
               onClick={() => {
@@ -84,17 +94,17 @@ const KMultipleInput: FC<MultipleInputProps> = memo(props => {
             className={`${prefixCls}-multiple-inner-input-inner`}
           >
             <div>
-              <span className={`${prefixCls}-multiple-inner-input-inner-child`}>{value}</span>
+              <span className={`${prefixCls}-multiple-inner-input-inner-child`}>{inputVal}</span>
               <span className={`${prefixCls}-multiple-inner-input-inner-caret`}>|</span>
             </div>
           </div>
           <input
             type="text"
-            value={value}
+            value={inputVal}
             className={`${prefixCls}-multiple-inner-input-value`}
             ref={multipleInputRef}
             onChange={onChange}
-            onBlur={() => setValue('')} />
+          />
         </span>
 
       </div>

@@ -21,15 +21,16 @@ export default memo((props: FoldProps) => {
 
   const onEntering = (el: HTMLElement) => {
 
-    el.style.height = `${el.scrollHeight + 16}px`
-    el.style.overflow = 'hidden'
+    const height: number = el.scrollHeight <= 400 ? el.scrollHeight : 400
+    el.style.height = `${height + 16}px`
     el.style.padding = '8px 4px'
 
   }
 
 
   const onExit = (el: HTMLElement) => {
-    el.style.height = `${el.scrollHeight + 16}px`
+    const height: number = el.scrollHeight <= 400 ? el.scrollHeight : 400
+    el.style.height = `${height + 16}px`
     el.style.padding = '8px 4px'
 
   }

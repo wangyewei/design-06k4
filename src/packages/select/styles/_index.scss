@@ -5,7 +5,7 @@ $multiple-selector-cls: #{$selector-prefix-cls}-multiple-inner;
 .#{$selector-prefix-cls} {
   position: relative;
   box-sizing: border-box;
-
+  // border: 1px solid red;
   &-inner {
     input {
       cursor: pointer;
@@ -27,7 +27,7 @@ $multiple-selector-cls: #{$selector-prefix-cls}-multiple-inner;
     cursor: text;
     padding: 4px 8px;
     position: relative;
-    width: 100%;
+    // width: 100%;
 
     &:hover {
       border-color: $input-border-color-hover;
@@ -93,7 +93,7 @@ $multiple-selector-cls: #{$selector-prefix-cls}-multiple-inner;
       border-radius: 2px;
       margin: 1px;
       padding: 0 4px;
-      z-index: 999;
+      z-index: 1;
       cursor: default;
 
       &-content {
@@ -122,8 +122,27 @@ $multiple-selector-cls: #{$selector-prefix-cls}-multiple-inner;
     z-index: 999;
     width: 100%;
     box-sizing: border-box;
-    top: 40px;
+    // margin-top: 40px;
+    max-height: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
     transition: 0.35s all ease-in;
+    // background-color: #fff;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    /* 滚动槽 */
+    &::-webkit-scrollbar-track {
+      box-shadow: inset006pxrgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+    }
+    /* 滚动条滑块 */
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.1);
+      box-shadow: inset006pxrgba(0, 0, 0, 0.5);
+    }
   }
 
   &-option {
