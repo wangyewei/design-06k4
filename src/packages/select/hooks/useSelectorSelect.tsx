@@ -1,4 +1,11 @@
-import React, { useState, KeyboardEventHandler, Dispatch, SetStateAction } from "react";
+import React, { useState, KeyboardEventHandler, Dispatch, SetStateAction, useEffect } from "react";
+import type { Mode } from '../Select'
+
+export type MultipleSeletorQuety = {
+  inputVal: string | number | readonly string[],
+  multipleValueStack: Array<string | number>,
+  setMultipleValueStack: Dispatch<SetStateAction<Array<string | number>>>,
+}
 export default (
   valueStack: Array<{
     value: string | number,
@@ -6,10 +13,22 @@ export default (
   }>,
   setValue: Dispatch<SetStateAction<number | string>>,
   setMenuVis: Dispatch<SetStateAction<boolean>>,
+  mode: Mode,
+  multiQeury: MultipleSeletorQuety
 ) => {
-  // >>>>> options setting 
+  // >>>>> options settings state
   const [selectedOption, setSelectedOption] = useState<number>(-1)
   const [hoverOption, setHoverOption] = useState<number>(-1)
+  ////////////////////////
+  // >>>>>  multiple settings staye
+  const { inputVal, multipleValueStack, setMultipleValueStack } = multiQeury
+
+  const [inputValIsEmpty, setInputValIsEmpty] = useState<boolean>(false)
+  useEffect(() => {
+    inputVal === '' ? setInputValIsEmpty(true) : setInputValIsEmpty(false)
+  }, [inputVal])
+
+  ///////////////////////
 
   const dfs = (currIndex: number, oritarion: 'down' | 'up' = "up") => {
 
@@ -51,6 +70,22 @@ export default (
           // console.warn(`design-06k4-warning: Foucs the option first please`)
         }
         break;
+
+      case 'Backspace':
+        if (inputValIsEmpty) {
+          const _stackCopy = []
+          multipleValueStack.forEach(val => _stackCopy.push(val))
+          _stackCopy.pop()
+          setMultipleValueStack(_stackCopy)
+        }
+
+        break;
+
+      default:
+        if (mode !== 'default') {
+          setMenuVis(true)
+        }
+        break
     }
   }
 

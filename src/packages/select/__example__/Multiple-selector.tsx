@@ -25,7 +25,7 @@ export default () => {
       </KSelector>
       <KSelector
         style={{ width: '450px', minWidth: '10px', margin: '14px' }}
-        mode="mutiple"
+        mode="multiple"
       >
         {
           renders.map((val, index) => <Option value={val.value} key={index.toString(36)}>{val.child}</Option>)

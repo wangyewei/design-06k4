@@ -11,7 +11,6 @@ import React, {
   memo,
   ReactNode,
   useRef,
-  Ref
 } from "react";
 import { getPrefixCls, childrenToArray } from "@/utils";
 import KInput, { InputProps } from "../input";
@@ -21,15 +20,18 @@ import KTransition from "@/packages/transition";
 import KMultipleInput from "./MultipleInput";
 import useSelectorSelect from "./hooks/useSelectorSelect";
 import useSelectorCls from "./hooks/useSelectorCls";
-import { isNumber, isString } from "@/utils/typeUtils";
+import { isNumber, isString, tupleStr } from "@/utils/typeUtils";
 
 const { Fold } = KTransition
+
+const modeTuple = tupleStr('multiple', 'tag', 'default')
+export type Mode = typeof modeTuple[number]
 
 export interface SelectorProps extends InputProps {
   children?: ReactElement<SelectorOptionProps>[],
   defaultIndex?: number,
   input?: boolean,
-  mode?: 'mutiple' | 'tag' | 'default',
+  mode?: Mode,
   defaultSelectedValue?: Array<number | string>
 }
 
@@ -41,7 +43,7 @@ type SelectorContextType = {
   setHoverOption: Dispatch<SetStateAction<number>>,
   multipleValueStack: Array<string | number>,
   setMultipleValueStack: Dispatch<SetStateAction<Array<string | number>>>,
-  mode: 'mutiple' | 'tag' | 'default',
+  mode: Mode,
 }
 
 type MultipleContextType = {
@@ -174,7 +176,11 @@ const RowSelector: FC<SelectorProps> = props => {
     hoverOption,
     setHoverOption,
     onKeyDown
-  } = useSelectorSelect(valueRenderStack, setValue, setMenuVis)
+  } = useSelectorSelect(valueRenderStack, setValue, setMenuVis, mode, {
+    inputVal,
+    multipleValueStack,
+    setMultipleValueStack
+  })
 
 
   const contextValue: SelectorContextType = {
@@ -186,7 +192,6 @@ const RowSelector: FC<SelectorProps> = props => {
     multipleValueStack,
     setMultipleValueStack,
     mode,
-
   } as const
 
   const multipleContextValue: MultipleContextType = {
