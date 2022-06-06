@@ -36,12 +36,14 @@ const KOptions: FC<SelectorOptionProps> = props => {
     mode
   } = useContext(SelectorContext)
 
+  const [multipleSelected, setMultipleSelected] = useState<boolean>(false)
+
   const prefixCls = getPrefixCls('selector-option')
 
   const optionCls = classNames(
     prefixCls,
     {
-      [`${prefixCls}-selected`]: !disabled && selectedOption === index,
+      [`${prefixCls}-selected`]: !disabled && selectedOption === index || mode !== 'default' && multipleSelected,
       [`${prefixCls}-hover`]: !disabled && hoverOption === index,
       [`${prefixCls}-disabled`]: disabled,
       [`${prefixCls}-empty`]: emptyData
@@ -51,21 +53,34 @@ const KOptions: FC<SelectorOptionProps> = props => {
 
   const onClick = () => {
     if (disabled) return
-
     if (mode === 'default') {
       setValue(optionValue)
       setSelectedOption(index)
-    } else {
+      return
+    }
+
+    if (!multipleSelected) {
       setMultipleValueStack([...multipleValueStack, optionValue])
     }
+
+    if (multipleSelected) {
+      const _stack = []
+      multipleValueStack.forEach(val => _stack.push(val))
+      _stack.pop()
+      setMultipleValueStack(_stack)
+    }
+
+    setMultipleSelected(!multipleSelected)
   }
 
   return (
+
     <li className={optionCls}
       onClick={() => onClick()}
       onMouseEnter={() => setHoverOption(index)}
       onMouseLeave={() => setHoverOption(-1)}
-      {...restProps}>
+      {...restProps}
+    >
       {children}
     </li>
   )
