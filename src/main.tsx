@@ -50,13 +50,15 @@ library.add(fas)
 
 // import BasicSelector from './packages/select/__example__/Basic-selector'
 // import InputSelector from './packages/select/__example__/Input-selector'
-import MultipleSelector from './packages/select/__example__/Multiple-selector'
+// import MultipleSelector from './packages/select/__example__/Multiple-selector'
 
 // import FoldDemo from './packages/transition/__example__/Fold-demo'
+
+import BasicFileUpload from './packages/upload/__example__/BasicUpload'
 import './style/index.scss'
 ReactDOM.render(
   <>
-    <MultipleSelector />
+    <BasicFileUpload />
   </>,
   document.getElementById('root')
 )

@@ -27,12 +27,13 @@ const { Fold } = KTransition
 const modeTuple = tupleStr('multiple', 'tag', 'default')
 export type Mode = typeof modeTuple[number]
 
-export interface SelectorProps extends InputProps {
+export interface SelectorProps extends Omit<InputProps, 'onChange'> {
   children?: ReactElement<SelectorOptionProps>[],
   defaultIndex?: number,
   input?: boolean,
   mode?: Mode,
-  defaultSelectedValue?: Array<number | string>
+  defaultSelectedValue?: Array<number | string>,
+  onChange?: (value: string | number | readonly string[] | Array<string | number>) => void
 }
 
 type SelectorContextType = {
@@ -60,7 +61,7 @@ export const MultipleContext = createContext<MultipleContextType>(null)
 
 const RowSelector: FC<SelectorProps> = props => {
 
-  const { className, style, children, defaultValue, defaultIndex, mode = 'default', input = mode === 'default' ? false : true, defaultSelectedValue, ...restProps } = props
+  const { className, style, children, defaultValue, defaultIndex, mode = 'default', input = mode === 'default' ? false : true, defaultSelectedValue, onChange: propsOnChannge, ...restProps } = props
 
   const [menuVis, setMenuVis] = useState<boolean>(false)
 
@@ -137,7 +138,19 @@ const RowSelector: FC<SelectorProps> = props => {
 
   }, [valueStack, inputVal])
 
-  //////////////////////////////////
+  ////// onchange callback ////////
+
+  useEffect(() => {
+    setInputVal(value)
+    propsOnChannge && propsOnChannge(value)
+  }, [value])
+
+  useEffect(() => {
+    propsOnChannge && propsOnChannge(multipleValueStack)
+  }, [multipleValueStack])
+
+
+  /////////////////////////////////
 
 
   // default-value didMounted
@@ -147,10 +160,6 @@ const RowSelector: FC<SelectorProps> = props => {
       setSelectedOption(defaultIndex)
     }
   }, [defaultIndex])
-
-  useEffect(() => {
-    setInputVal(value)
-  }, [value])
 
   useEffect(() => {
     // O(n)
