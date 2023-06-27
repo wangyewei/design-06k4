@@ -7,14 +7,12 @@ import typescript from 'rollup-plugin-typescript2'
 import postcss from 'rollup-plugin-postcss'
 import json from '@rollup/plugin-json'
 import babel from '@rollup/plugin-babel'
-// import packageJson from './package.json'
-import dts from 'rollup-plugin-dts'
 import sass from 'sass'
 
 // 入口
 
-const entry = 'src/index.ts'
-const componentsDir = 'src/packages'
+const entry = 'components/index.ts'
+const componentsDir = 'components/packages'
 const componentsName = fs.readdirSync(path.resolve(componentsDir))
 const componentsEntry = componentsName.map(
   (name) => `${componentsDir}/${name}/index.ts`
@@ -69,59 +67,36 @@ const processScss = function (context) {
           reject(result)
         }
       }
-    );
-    sass.compile(context, {}).then(
-      function (output) {
-        if (output && output.css) {
-          resolve(output.css)
-        } else {
-          reject({})
-        }
-      },
-      function (err) {
-        reject(err)
-      }
     )
   })
 }
 
-// ES Module打包输出
+
 const esmOutput = {
   preserveModules: true,
-  // preserveModulesRoot: 'src',
-  // exports: 'named',
-  assetFileNames: ({ name }) => {
-    const { ext, dir, base } = path.parse(name);
-    if (ext !== '.css') return '[name].[ext]';
-    // 规范 style 的输出格式
-    return path.join(dir, 'style', base);
-  }
 }
 
 export default () => {
   switch (BABEL_ENV) {
     case 'esm':
-      return [
-        {
-          input: [entry, ...componentsEntry],
-          output: { ...esmOutput, dir: 'dist/', format: 'es' },
-          external: externalConfig,
-          plugins: [postcss({
-            extract: true,
-            process: processScss,
-
-          }), ...commonPlugins]
-        },
-        {
-          input: [entry, ...componentsEntry],
-          output: { ...esmOutput, dir: 'dist/type', format: 'es' },
-          external: externalConfig,
-          plugins: [postcss({
-            extract: true,
-            process: processScss,
-
-          }), ...commonPlugins, dts()]
-        }
-      ]
+      return {
+        input: [entry, ...componentsEntry],
+        output: { ...esmOutput, dir: 'dist/', format: 'es' },
+        external: externalConfig,
+        plugins: [postcss({
+          extract: true,
+          process: processScss,
+        }), ...commonPlugins]
+      }
+    default:
+      return {
+        input: [entry, ...componentsEntry],
+        output: { ...esmOutput, dir: 'dist/', format: 'es' },
+        external: externalConfig,
+        plugins: [postcss({
+          extract: true,
+          process: processScss,
+        }), ...commonPlugins]
+      }
   }
 }

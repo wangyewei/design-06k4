@@ -1,0 +1,55 @@
+@import "../../../style/core";
+@import "./mixins";
+.#{$prefix-cls}btn {
+  @include btn();
+
+  line-height: $btn-line-height;
+
+  > span {
+    display: inline-block;
+  }
+
+  &-default {
+    @include btn-default();
+  }
+  &-primary {
+    @include btn-primary();
+  }
+
+  &-dashed {
+    @include btn-dashed();
+  }
+
+  &-link {
+    @include btn-link();
+  }
+
+  &-text {
+    @include btn-text();
+  }
+
+  &-ghost {
+    @include btn-ghost();
+  }
+
+  &-shape-circle {
+    @include btn-shape("circle");
+  }
+
+  &-shape-round {
+    @include btn-shape("round");
+  }
+}
+.#{$prefix-cls}loding-icon {
+  animation: loding 1s linear infinite;
+}
+
+@keyframes loding {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

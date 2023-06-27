@@ -16,6 +16,6 @@ import { resolve } from 'path'
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    alias: [{find: '@', replacement: resolve(__dirname, 'src')}]
+    alias: [{ find: '@', replacement: resolve(__dirname, 'components') }]
   }
 })

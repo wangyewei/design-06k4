@@ -1,0 +1,50 @@
+@import "../../../style/core";
+
+.#{$prefix-cls}page-header {
+  padding: $padding-l;
+  // margin: 0;
+
+  &-header {
+    display: flex;
+    // height: $page-header-header-height;
+    align-items: center;
+
+    &-icon {
+      font-size: $page-header-font-size-m;
+      margin-right: $page-header-margin-l;
+      cursor: pointer;
+      transition: 0.25s color ease-in-out;
+
+      &:hover {
+        color: $page-header-text-colot-hover;
+      }
+    }
+
+    &-avator {
+      width: calc($page-header-font-size-l + $page-header-font-size-m);
+      height: calc($page-header-font-size-l + $page-header-font-size-m);
+      border-radius: 100%;
+      margin-right: $page-header-margin-l;
+    }
+
+    &-title {
+      font-size: $page-header-font-size-m;
+      font-weight: $page-header-font-weight-l;
+      margin-right: $page-header-margin-l;
+      color: $page-header-text-color;
+    }
+
+    &-sub-title {
+      font-size: $page-header-font-size-s;
+      font-weight: $page-header-font-weight-s;
+      color: $page-header-text-color-secondary;
+      margin-right: $page-header-margin-l;
+    }
+
+    &-extra {
+      display: flex;
+      flex: 1;
+      justify-content: right;
+    }
+  }
+}

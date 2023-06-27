@@ -7,33 +7,19 @@
     "outDir": "dist",
     "target": "esnext",
     "module": "esnext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "sourceMap": true,
     "jsx": "react",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "removeComments": true, //删除注释
-    // "downlevelIteration": true,
-    // "allowJs": true,
-    // "skipLibCheck": true,
-    // "strict": true,
-    // "forceConsistentCasingInFileNames": true,
-    // "resolveJsonModule": true,
-    // "noEmit": true,
-    // "isolatedModules": true,
+    "removeComments": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
-    },
+      "@/*": ["components/*"]
+    }
   },
-  "include": [
-    "src"
-  ],
+  "include": ["components", "components/main.tsx"],
   "exclude": [
     "node_modules",
     "lib",

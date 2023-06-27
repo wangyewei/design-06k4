@@ -25,23 +25,23 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "pnpm run clean && rollup -c",
+    "build": "pnpm run clean && rollup -c && pnpm run build-css",
     "clean": "rimraf ./dist",
     "update": "pnpm run build:esm && npm publish",
-    "build:esm": "pnpm run clean && cross-env BABEL_ENV=esm rollup -c",
+    "build:esm": "pnpm run clean && cross-env BABEL_ENV=esm rollup -c && pnpm run build-css",
     "build:typed": "tsc --declaration --emitDeclarationOnly --noEmit false --outDir dist/types",
-    "build-css": "sass ./src/style/index.scss ./dist/index.css"
+    "build-css": "node scripts/build-css.js"
   },
   "peerDependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
+    "axios": "^1.3.6",
     "classnames": "^2.3.1",
     "react": "^17.0.2",
     "react-dom": "17.0.2",
     "react-is": "^18.0.0",
-    "react-transition-group": "^4.4.2",
-    "axios": "^1.3.6"
+    "react-transition-group": "^4.4.2"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
@@ -66,7 +66,9 @@
     "@types/classnames": "^2.3.1",
     "@types/react-dom": "^17.0.10",
     "@vitejs/plugin-react": "^1.0.7",
+    "axios": "^1.4.0",
     "cross-env": "^7.0.3",
+    "execa": "^7.1.1",
     "fs": "^0.0.1-security",
     "react-router-dom": "^6.3.0",
     "react-transition-group": "^4.4.2",

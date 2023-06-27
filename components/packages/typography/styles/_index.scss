@@ -1,0 +1,69 @@
+@import "../../../style/core";
+@import "./mixins";
+$title-size: (
+  "title-1": 34px,
+  "title-2": 30px,
+  "title-3": 26px,
+  "title-4": 22px,
+  "title-5": 18px,
+  "title-6": 16px,
+);
+@each $key, $value in $title-size {
+  .#{$prefix-cls}#{$key} {
+    font-size: $value;
+    font-weight: 500;
+  }
+}
+
+.#{$prefix-cls}text {
+  color: $text-color;
+  overflow-wrap: break-word;
+
+  &-secondary {
+    color: $text-color-secondary;
+  }
+
+  &-success {
+    color: $success-color;
+  }
+
+  &-warning {
+    color: $warning-color;
+  }
+
+  &-danger {
+    color: $error-color;
+  }
+
+  &-disabled {
+    color: $disabled-color;
+    cursor: not-allowed;
+    user-select: none;
+  }
+
+  &-mark {
+    background: $yellow;
+  }
+
+  &-underline {
+    text-decoration: underline 1px;
+  }
+
+  &-delete {
+    text-decoration: line-through 1px;
+  }
+
+  &-strong {
+    font-weight: bold;
+  }
+
+  &-italic {
+    font-style: italic;
+  }
+}
+
+.#{$prefix-cls}blockquote {
+  padding: 0 0 0 0.6em;
+  border-left: 4px solid rgba(100, 100, 100, 0.2);
+  opacity: 0.85;
+}
